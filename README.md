@@ -3,15 +3,15 @@ POWON
 
 1) register need existing member's username </br>
 2) personal information add address.  </br>
-*3) admin can edit post, view all post, view all personal information
-*4) email inbox. 
-5) group admin need to type username, email, dob. 
-6) on-line chat (chao)
-7) paypal	(chao)
-8) post image, video. 
-*9) post permission. 
-10) personal main page.(MISSING LATEST post) / public information 
-11) issue: if already a member, dont need 'APPLY'
-12) search group by interest, 
-13) group vote. 
-14) personal post.
+*3) admin can edit post, view all post, view all personal information </br>
+*4) email inbox.  </br>
+5) group admin need to type username, email, dob.  </br>
+6) on-line chat (chao) </br>
+7) paypal	(chao) </br>
+8) post image, video.  </br>
+*9) post permission.  </br>
+10) personal main page.(MISSING LATEST post) / public information  </br>
+11) issue: if already a member, dont need 'APPLY' </br>
+12) search group by interest,  </br>
+13) group vote.  </br>
+14) personal post. </br>
