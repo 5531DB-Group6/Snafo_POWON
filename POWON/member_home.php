@@ -24,6 +24,7 @@ if ($uid == $_COOKIE['uid']){
 
 
 $User = dbSelect('user','*','uid='.$uid.'','',1);
+
 if(empty($User)) {
     $msg = '<font color=red><b>such user is not found</b></font>';
     $url = $_SERVER['HTTP_REFERER'];
@@ -46,11 +47,16 @@ if(empty($User)) {
     }
     $ubirthday = $User[0]['birthday'];
     $uplace = $User[0]['region'];
+    $uprofiession = $User[0]['profession'];
 }
 
 $Friend = dbSelect('friend','uid,approved,type','uid='.$_COOKIE['uid'].' and fid='.$uid.'','',1);
 $friendApp = $Friend[0]['approved'];
 $friendType = $Friend[0]['type'];
+
+// profile visibility
+$visible = dbSelect('profilevisible','*','uid='.$uid.'','',1);
+//
 
 $FriendRequest = dbSelect('friend','uid,approved,type','fid='.$_COOKIE['uid'].' and uid='.$uid.' and approved=0','',1);
 

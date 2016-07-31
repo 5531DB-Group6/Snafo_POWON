@@ -21,19 +21,30 @@
 	{
 
 		$firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $sex = $_POST['sex'];
+		$lastname = $_POST['lastname'];
+		$sex = $_POST['sex'];
 		$birth = $_POST['birthyear'].'-'.$_POST['birthmonth'].'-'.$_POST['birthday'];
 		$place = $_POST['place'];
-        echo $firstname;
-        echo $lastname;
-        echo $sex;
-        echo $birth;
-        echo $place;
+		$profession = $_POST['profession'];
 
-		$owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',birthday="'.$birth.'",region="'.$place.'"', 'uid='.$_COOKIE['uid'].'');
+		$firstname_visible = $_POST['firstname_visible'];
+		$lastname_visible = $_POST['lastname_visible'];
+		$sex_visible = $_POST['sex_visible'];
+		$bday_visible = $_POST['birthday_visible'];
+		$place_visible = $_POST['place_visible'];
+		$profession_visible = $_POST['profession_visible'];
+//        echo $firstname;
+//        echo $lastname;
+//        echo $sex;
+//        echo $birth;
+//        echo $place;
+
+
+		$owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',birthday="'.$birth.'",region="'.$place.'",profession="'.$profession.'" ', 'uid='.$_COOKIE['uid'].'');
+		$visible= dbUpdate('profilevisible', 'firstname_visible='.$firstname_visible.',lastname_visible='.$lastname_visible.',sex_visible='.$sex_visible.',bday_visible='.$bday_visible.',place_visible='.$place_visible.',profession_visible='.$profession_visible.'','uid='.$_COOKIE['uid'].'');
+		//$owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',birthday="'.$birth.'",region="'.$place.'"', 'uid='.$_COOKIE['uid'].'');
         //$owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',region="'.$place.'"', 'uid='.$_COOKIE['uid'].'');
-		if($owner)
+		if($owner || $visible)
 		{
 			header('location:home.php');
 		}else{
@@ -48,6 +59,7 @@
 
 	//读取个人资料
 	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and allowlogin=0','',1);
+	$visible = dbSelect('profilevisible','*', 'uid='.$_COOKIE['uid'].' ','',1);
 	if(!$result)
 	{
 		$msg = '<font color=red><b>The user does not exist or is banded by the administrator</b></font>';

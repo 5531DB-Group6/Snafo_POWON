@@ -32,11 +32,25 @@
 				<td id="tr_firstname">
 					<input type="text" name="firstname" class="px" value="<?php echo $result[0]['firstname']; ?>" />
 				</td>
+				<td id="td_fnvisible">
+					<select name="firstname_visible" id="firstname_visible" class="ps">
+						<option value="0" <?php if($visible[0]['firstname_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['firstname_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="2" <?php if($visible[0]['firstname_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
+					</select>
+				</td>
 			</tr>
 			<tr id="tr_lastname">
 				<th id="tr_lastname">Last Name</th>
 				<td id="tr_lastname">
 					<input type="text" name="lastname" class="px" value="<?php echo $result[0]['lastname']; ?>" />
+				</td>
+				<td id="td_lnvisible">
+					<select name="lastname_visible" id="lastname_visible" class="ps">
+						<option value="0" <?php if($visible[0]['lastname_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['lastname_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="2" <?php if($visible[0]['lastname_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
+					</select>
 				</td>
 			</tr>
 			<tr id="tr_gender">
@@ -46,6 +60,13 @@
 						<option value="0" <?php if($result[0]['sex']==0){?>selected="selected"<?php }?>>secret</option>
 						<option value="1" <?php if($result[0]['sex']==1){?>selected="selected"<?php }?>>femal</option>
 						<option value="2" <?php if($result[0]['sex']==2){?>selected="selected"<?php }?>>male</option>
+					</select>
+				</td>
+				<td id="sx_visible">
+					<select name="sex_visible" id="sex_visible" class="ps">
+						<option value="0" <?php if($visible[0]['sex_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['sex_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="2" <?php if($visible[0]['sex_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
 			</tr>
@@ -140,6 +161,26 @@
 						<option value="31"<?php if($dBirthday == 31){?>selected="selected"<?php }?>>31</option>
 					</select>
 				</td>
+				<td id="bd_visible">
+					<select name="birthday_visible" id="birthday_visible" class="ps">
+						<option value="0" <?php if($visible[0]['bday_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['bday_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="2" <?php if($visible[0]['bday_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
+					</select>
+				</td>
+			</tr>
+			<tr id="tr_profession">
+				<th id="th_profession">Profession</th>
+				<td id="td_profession">
+					<input type="text" name="profession" class="px" value="<?php echo $result[0]['profession']; ?>" />
+				</td>
+				<td id="td_pfsvisible">
+					<select name="profession_visible" id="profession_visible" class="ps">
+						<option value="0" <?php if($visible[0]['profession_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['profession_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="2" <?php if($visible[0]['profession_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
+					</select>
+				</td>
 			</tr>
 			<tr id="tr_birthcity">
 				<th id="th_birthcity">Place</th>
@@ -161,6 +202,13 @@
 						<option did="12" value="Others" <?php if($Jg=='Others'){?>selected="selected"<?php }?>>Others</option>
 					</select>
 					</p>
+				</td>
+				<td id="td_placevisible">
+					<select name="place_visible" id="place_visible" class="ps">
+						<option value="0" <?php if($visible[0]['place_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['place_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="2" <?php if($visible[0]['place_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
+					</select>
 				</td>
 			</tr>
 			<tr>

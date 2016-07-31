@@ -45,33 +45,51 @@
 
                             <tr>
                                 <th>First Name</th>
+                                <?php if(( ($friendApp==1 && $visible[0]['firstname_visible']==1) || $visible[0]['firstname_visible']==2) ){?>
                                 <td>
                                     <?php echo $User[0]['firstname']; ?>
                                 </td>
+                                <?php }?>
                             </tr>
                             <tr>
                                 <th>Last Name</th>
+                                <?php if(( ($friendApp==1 && $visible[0]['lastname_visible']==1) || $visible[0]['lastname_visible']==2) ){?>
                                 <td>
                                     <?php echo $User[0]['lastname']; ?>
                                 </td>
+                                <?php }?>
                             </tr>
                             <tr>
                                 <th>Gender</th>
+                                <?php if(( ($friendApp==1 && $visible[0]['sex_visible']==1) || $visible[0]['sex_visible']==2) ){?>
                                 <td>
                                     <?php echo $ugender; ?>
                                 </td>
+                                <?php }?>
                             </tr>
                             <tr>
                                 <th>Date of birth</th>
+                                <?php if(( ($friendApp==1 && $visible[0]['bday_visible']==1) || $visible[0]['bday_visible']==2) ){?>
                                 <td>
                                     <?php echo $ubirthday; ?>
                                 </td>
+                                <?php }?>
+                            </tr>
+                            <tr>
+                                <th>Profession</th>
+                                <?php if(( ($friendApp==1 && $visible[0]['profession_visible']==1) || $visible[0]['profession_visible']==2) ){?>
+                                <td>
+                                    <?php echo $User[0]['profession']; ?>
+                                </td>
+                                <?php }?>
                             </tr>
                             <tr>
                                 <th>Place</th>
+                                <?php if(( ($friendApp==1 && $visible[0]['place_visible']==1) || $visible[0]['place_visible']==2) ){?>
                                 <td>
                                     <?php echo $uplace; ?>
                                 </td>
+                                <?php }?>
                             </tr>
 
                             <tr><th><br/></th></tr>
