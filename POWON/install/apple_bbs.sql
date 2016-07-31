@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   `isdel` tinyint(2) NOT NULL DEFAULT '0',
   `style` char(10) DEFAULT NULL,
   `isdisplay` tinyint(2) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`pid`)
+  PRIMARY KEY (`pid`),
   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
@@ -70,6 +70,28 @@ CREATE TABLE IF NOT EXISTS `bbs_friend` (
   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
   FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
+
+CREATE TABLE IF NOT EXISTS `bbs_chat` (
+  `chatid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `fid` int(11) NOT NULL,
+  `msg` text,
+   PRIMARY KEY (`chatid`),
+  FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+  FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE)
+  ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10;
+
+CREATE TABLE IF NOT EXISTS `bbs_profileVisible` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname_visible` tinyint(4) DEFAULT '2',
+  `lastname_visible` tinyint(4) DEFAULT '2',
+  `sex_visible` tinyint(4) DEFAULT '2',
+  `bday_visible` tinyint(4) DEFAULT '2',
+  `place_visible` tinyint(4) DEFAULT '2',
+   `profession_visible` tinyint(4) DEFAULT '2',
+   PRIMARY KEY (`uid`),
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10;
 
 INSERT INTO `bbs_category` (`cid`, `classname`, `parentid`, `classpath`, `replycount`, `motifcount`, `compere`, `classpic`, `description`, `orderby`, `lastpost`, `namestyle`, `ispass`) VALUES
 (3, 'PHP框架', 1, NULL, 0, 0, '1,9', 'public/images/forum.gif', NULL, 3, NULL, NULL, 1),
@@ -181,12 +203,15 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `picture` varchar(255) NOT NULL DEFAULT 'public/images/avatar_blank.gif',
   `firstname` char(32) DEFAULT NULL,
   `lastname` char(32) DEFAULT NULL,
-  `sex` tinyint(4) DEFAULT '2',
+  `sex` tinyint(4) DEFAULT '0',
   `birthday` varchar(20) DEFAULT NULL,
   `region` varchar(50) DEFAULT NULL,
+   `profession` varchar(50) DEFAULT NULL,
   `allowlogin` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
+
+
 
 /*
 INSERT INTO `bbs_user` (`uid`, `firtname`, `lastname`, `password`, `email`, `udertype`, `regtime`, `lasttime`, `picture`, `grade`, `sex`, `birthday`, `region`, `allowlogin`) VALUES

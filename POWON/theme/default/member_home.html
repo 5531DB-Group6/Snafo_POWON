@@ -45,33 +45,51 @@
 
                             <tr>
                                 <th>First Name</th>
+                                <!--{if ( ($friendApp==1 && $visible[0]['firstname_visible']==1) || $visible[0]['firstname_visible']==2) }-->
                                 <td>
                                     {$User[0]['firstname']}
                                 </td>
+                                <!--{/if}-->
                             </tr>
                             <tr>
                                 <th>Last Name</th>
+                                <!--{if ( ($friendApp==1 && $visible[0]['lastname_visible']==1) || $visible[0]['lastname_visible']==2) }-->
                                 <td>
                                     {$User[0]['lastname']}
                                 </td>
+                                <!--{/if}-->
                             </tr>
                             <tr>
                                 <th>Gender</th>
+                                <!--{if ( ($friendApp==1 && $visible[0]['sex_visible']==1) || $visible[0]['sex_visible']==2) }-->
                                 <td>
                                     {$ugender}
                                 </td>
+                                <!--{/if}-->
                             </tr>
                             <tr>
                                 <th>Date of birth</th>
+                                <!--{if ( ($friendApp==1 && $visible[0]['bday_visible']==1) || $visible[0]['bday_visible']==2) }-->
                                 <td>
                                     {$ubirthday}
                                 </td>
+                                <!--{/if}-->
+                            </tr>
+                            <tr>
+                                <th>Profession</th>
+                                <!--{if ( ($friendApp==1 && $visible[0]['profession_visible']==1) || $visible[0]['profession_visible']==2) }-->
+                                <td>
+                                    {$User[0]['profession']}
+                                </td>
+                                <!--{/if}-->
                             </tr>
                             <tr>
                                 <th>Place</th>
+                                <!--{if ( ($friendApp==1 && $visible[0]['place_visible']==1) || $visible[0]['place_visible']==2) }-->
                                 <td>
                                     {$uplace}
                                 </td>
+                                <!--{/if}-->
                             </tr>
 
                             <tr><th><br/></th></tr>

@@ -28,7 +28,12 @@
 			
 			if($result && mysqli_affected_rows($conn))
 			{
-			
+
+				$uid=$result[0]['uid'];
+				$n = "`uid`";
+				$v = "$uid";
+				$result = dbInsert('profilevisible',$n,$v);
+
 				echo '安装成功';
 				file_put_contents('../install.lock','');
 				header('location:../index.php');

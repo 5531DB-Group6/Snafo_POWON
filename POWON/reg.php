@@ -12,7 +12,7 @@
 		$uname = strMagic($_POST['username']);
 		$upass = trim($_POST['password']);
 		$urpass = trim($_POST['repassword']);
-		$umail = $_POST['mail'];
+		$email = $_POST['mail'];
 		$pyzm = $_POST['yzm'];
 		
 		//错误跳转页默认值
@@ -29,7 +29,7 @@
 		}
 
 		//验证email
-		if(checkEmail($umail))
+		if(checkEmail($email))
 		{
 			$alterNotice = true;
 			$msgArr[] = '<font color=red><b>Error：not valid email address</b></font>';
@@ -94,6 +94,10 @@
 			setcookie('udertype',$result[0]['udertype'],time()+86400);
 			setcookie('picture',$result[0]['picture'],time()+86400);
 			//setcookie('grade',$result[0]['grade'],time()+86400);
+			$uid=$result[0]['uid'];
+			$n = "`uid`";
+			$v = "$uid";
+			$result = dbInsert('profilevisible',$n,$v);
 			
 			$msg = '<font color=green><b>Thanks for your registration, now you will login as a member</b></font>';
 			$url = 'index.php';
