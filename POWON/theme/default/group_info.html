@@ -1,0 +1,120 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--LIST start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><a href="group.php">Group</a><em>&raquo;</em><a href="group_postlist.php?gid={$groupId}">{$OnGname}</a>
+        </div>
+    </div>
+    <div class="boardnav">
+        <div id="ct" class="wp bm cl" style="margin-left:145px;">
+            <div id="sd_bdl" class="bdl" style="width:130px;margin-left:-145px">
+                <div class="tbn" id="forumleftside"><h2 class="bdl_h">Menue</h2>
+                    <dl class="a" id="lf_group">
+                        <dt><a href="javascript:;" title="Posts">Posts</a></dt>
+                        <dd>
+                            <a href="group_postlist.php?gid={$OnGid}" title="Post List">Post List</a>
+                        </dd>
+                    </dl>
+                    <dl class="a" id="lf_member">
+                        <dt><a href="javascript:;" title="Members">Members</a></dt>
+                        <dd>
+                            <a href="group_memberlist.php?gid={$OnGid}" title="Member List">Member List</a>
+                        </dd>
+                        <!--{if $admin==1}-->
+                        <dd>
+                            <a href="group_pendinglist.php?gid={$OnGid}" title="Pending List">Pending List</a>
+                        </dd>
+                        <!--{/if}-->
+                    </dl>
+                    <dl class="a" id="lf_operation">
+                        <dt><a href="javascript:;" title="Operation">Opeation</a></dt>
+                        <dd class="bdl_a">
+                            <a href="group_info.php?gid={$OnGid}" title="Post List">Opeation</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="mn" style="margin-left:15px;">
+                <div class="bm bw0">
+                    <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                        <table cellspacing="0" cellpadding="0" class="tfm">
+                            <caption>
+                                <h2 class="xs2">{$OnGname}</h2>
+                            </caption>
+                            <tr>
+                                <td>
+                                    <img src="{$Gpic}" style="border:1px solid #ccc;width:auto;height:auto;max-width: 150px;max-height:200px;" /><br /><br />
+                                    <!--{if $admin}-->
+                                    <h2 class="xs2">Set new logo</h2><br/>
+                                    <input name="pic" type="file" style="height:23px; width:300px;" />
+                                    <!--{/if}-->
+                                </td>
+                            </tr>
+                            <!--{if $admin}-->
+                            <tr>
+                                <td>
+                                    <button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true" class="pn pnc" /><strong>Save</strong></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                <h3 class="xs2">Invite new member</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="width:30px;">User Name</th>
+                            </tr>
+                            <tr>
+                                <th><input type="text" name="username" class="px" ></th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <button type="submit" name="invitesubmitbtn" id="invitesubmitbtn" value="true" class="pn pnc" /><strong>Invite</strong></button>
+                                </th>
+                            </tr>
+                            <!--{/if}-->
+                            <tr><th><br/></th></tr>
+                            <!--{if !$isOwner}-->
+                            <tr>
+                                <th>
+                                    <h3 class="xs2">Leave the Group</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th><button type="submit" name="leavesubmitbtn" id="leavesubmitbtn" value="true" class="pn pnc" /><font color="#8b0000"><strong>Leave</strong></font></button></th>
+                            </tr>
+                            <!--{else}-->
+                            <tr>
+                                <th>
+                                    <h3 class="xs2">Dismiss the Group</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th><button type="submit" name="destroyubmitbtn" id="destroyubmitbtn" value="true" class="pn pnc" /><strong><font color="#8b0000">Dismiss</font></strong></button></th>
+                            </tr>
+                            <!--{/if}-->
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--LIST end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+

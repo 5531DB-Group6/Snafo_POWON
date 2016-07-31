@@ -1,0 +1,127 @@
+<!--{include header.html}-->
+<!--TOP start-->
+<!--{include top.html}-->
+<!--TOP end-->
+
+<!--HEAD start-->
+<!--{include head.html}-->
+<!--HEAD end-->
+
+<!--LIST start-->
+<div id="wp" class="wp">
+    <div id="pt" class="bm cl">
+        <div class="z">
+            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><a href="group.php">Group</a><em>&raquo;</em><a href="group_postlist.php?gid={$groupId}">{$OnGname}</a>
+        </div>
+    </div>
+    <div class="boardnav">
+        <div id="ct" class="wp cl" style="margin-left:145px">
+            <div id="sd_bdl" class="bdl" style="width:130px;margin-left:-145px">
+                <div class="tbn" id="forumleftside"><h2 class="bdl_h">Menue</h2>
+                    <dl class="a" id="lf_group">
+                        <dt><a href="javascript:;" title="Posts">Posts</a></dt>
+                        <dd class="bdl_a">
+                            <a href="group_postlist.php?gid={$OnGid}" title="Post List">Post List</a>
+                        </dd>
+                    </dl>
+                    <dl class="a" id="lf_member">
+                        <dt><a href="javascript:;" title="Members">Members</a></dt>
+                        <dd>
+                            <a href="group_memberlist.php?gid={$OnGid}" title="Member List">Member List</a>
+                        </dd>
+                        <!--{if $admin==1}-->
+                        <dd>
+                            <a href="group_pendinglist.php?gid={$OnGid}" title="Pending List">Pending List</a>
+                        </dd>
+                        <!--{/if}-->
+                    </dl>
+                    <dl class="a" id="lf_operation">
+                        <dt><a href="javascript:;" title="Operation">Opeation</a></dt>
+                        <dd>
+                            <a href="group_info.php?gid={$OnGid}" title="Post List">Opeation</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="mn">
+
+                <div class="bm bml pbn">
+                    <div class="bm_h cl">
+                        <h1 class="xs2">
+                            <a href="group_postlist.php?gid={$OnGid}">{$OnGname}</a>
+                            <span class="xs1 xw0 i">Today: <strong class="xi1">{$JCount}</strong><span class="pipe">|</span>Themes: <strong class="xi1">{$zCount}</strong></span></h1>
+                    </div>
+                    <!--{if !empty($Owner)}-->
+                    <div class="bm_c cl pbn">
+
+                        <div>
+                            Owner: <span class="xi2">${getUserName($Owner)}</span>
+                        </div>
+
+                    </div>
+                    <!--{/if}-->
+                </div>
+
+                <div id="pgt" class="bm bw0 pgs cl">
+                    <span class="pgb y"  ><a href="index.php">Back</a></span>
+                    <a href="group_addc.php?gid={$OnGid}" id="newspecial" title="发新帖"><img src="{$domain_resource}/images/pn_post.png" alt="发新帖" /></a>
+                </div>
+
+                <div id="threadlist" class="tl bm bmw">
+                    <div class="th">
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th colspan="2">
+
+                                </th>
+                                <td class="by">Author</td>
+                                <td class="num">Reply    &nbsp;     View</td>
+                                <td class="by">Last Comment</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="bm_c">
+                        <form method="post" autocomplete="off" name="moderate" id="moderate" action="">
+                            <table summary="forum_2" id="forum_2" cellspacing="0" cellpadding="0">
+                                <!--{loop $ListContent $key $val}-->
+                                <tr>
+                                    <td class="icn">
+                                        <a href="group_post_detail.php?pid={$val['pid']}" title="<!--{if $val['addtime']>$newt}-->有新回复 - <!--{/if}-->新窗口打开" target="_blank"><img src="{$domain_resource}/images/folder_<!--{if $val['addtime']>$newt}-->new<!--{else}-->common<!--{/if}-->.gif" /></a>
+                                    </td>
+                                    <th class="<!--{if $val['addtime']>$newt}-->new<!--{else}-->common<!--{/if}-->">
+                                        <a href="group_post_detail.php?pid={$val['pid']}" class="xst" <!--{if !empty($val['style'])}-->style="color:{$val['style']}"<!--{/if}-->>{$val['title']}</a>
+                                    </th>
+                                    <td class="by">
+                                        <cite>${getUserName($val['authorid'])}</cite>
+                                        <em><span class="xi1">${formatTime($val['addtime'])}</span></em>
+                                    </td>
+                                    <td class="num"><a href="group_post_detail.php?pid={$val['pid']}" class="xi2">{$val['replycount']}</a><em>{$val['hits']}</em></td>
+                                    <td class="by">
+                                        ${creatLast(getListUName($val['pid']))}
+                                    </td>
+                                </tr>
+                                <!--{/loop}-->
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="bm bw0 pgs cl">
+                    <span  class="pgb y"><a href="index.php">Back</a></span>
+                    <a href="group_addc.php?gid={$OnGid}" id="newspecialtmp" title="发新帖"><img src="{$domain_resource}/images/pn_post.png" alt="发新帖" /></a></div>
+                <div style="width:800px; margin:0 auto; padding:10px 0px; text-align:right">
+                    ${fpage($zCount,$linum,[8,3,4,5,6,7,0,1,2])}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--LIST end-->
+
+<!--FOOT start-->
+<!--{include footer.html}-->
+<!--FOOT end-->
+</body>
+</html>
+
