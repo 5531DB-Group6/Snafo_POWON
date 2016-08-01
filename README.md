@@ -13,4 +13,4 @@ POWON
 11) issue: if already a member, dont need 'APPLY' </br>
 12) search group by interest,  </br>
 13) group vote.  </br>
-14) personal post. </br>
+14) <strike>personal post </strike>. </br>
