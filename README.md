@@ -2,10 +2,9 @@
 POWON
 
 1) register need existing member's username </br>
-2) personal information add address.  </br>
 *3) admin can edit post, view all post, view all personal information </br>
-*4) email inbox.  </br>
-5) group admin need to type username, email, dob.  </br>
+*4) email inbox(chao).  </br>
+5) group admin need to type username, email, dob to add a group member.  </br>
 6) on-line chat (chao) </br>
 7) paypal	(chao) </br>
 8) post image, video.  </br>
