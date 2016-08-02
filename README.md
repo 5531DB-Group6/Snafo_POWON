@@ -9,7 +9,7 @@ POWON
 7) paypal	(chao) </br>
 8) post image, video.  </br>
 *9) post permission.  </br>
-10) <strike>personal main page.(MISSING LATEST post) / public information <strike> </br>
+10) <strike>personal main page.(MISSING LATEST post) / public information </strike> </br>
 11) issue: if already a member, dont need 'APPLY' </br>
 12) search group by interest,  </br>
 13) group vote.  </br>
