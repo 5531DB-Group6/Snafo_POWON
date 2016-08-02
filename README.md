@@ -15,4 +15,4 @@ POWON
 13) group vote.  </br>
 14) <strike>personal post </strike>. </br>
 15) delete all the chinese from UI .</br>
-16) Gift table, gift exchange, add to email. </br>
+16) Gift table, gift exchange, add to email. (chao) </br>
