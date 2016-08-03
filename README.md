@@ -8,7 +8,7 @@ POWON
 6) on-line chat (chao) </br>
 7) paypal	(chao) </br>
 8) post image, video.  </br>
-*9) post permission.  </br>
+*9) <strike>post permission.  </strike></br>
 10) <strike>personal main page.(MISSING LATEST post) / public information </strike> </br>
 11)<strike> issue: if already a member, dont need 'APPLY'</strike> </br>
 12) search group by interest,  </br>
