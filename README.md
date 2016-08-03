@@ -10,7 +10,7 @@ POWON
 8) post image, video.  </br>
 *9) post permission.  </br>
 10) <strike>personal main page.(MISSING LATEST post) / public information </strike> </br>
-11) issue: if already a member, dont need 'APPLY' </br>
+11)<strike> issue: if already a member, dont need 'APPLY'</strike> </br>
 12) search group by interest,  </br>
 13) group vote.  </br>
 14) <strike>personal post </strike>. </br>
