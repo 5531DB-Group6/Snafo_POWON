@@ -16,3 +16,4 @@ POWON
 14) <strike>personal post </strike>. </br>
 15) delete all the chinese from UI .</br>
 16) Gift table, gift exchange, add to email. (chao) </br>
+17) active, inactive and suspended status.</br>
