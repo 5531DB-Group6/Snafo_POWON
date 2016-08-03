@@ -1,7 +1,7 @@
 # Snafo_POWON
 POWON
 
-1) register need existing member's username </br>
+1) <strike>register need existing member's username </strike></br>
 *3) admin can edit post, view all post, view all personal information </br>
 *4) email inbox(chao).  </br>
 5) group admin need to type username, email, dob to add a group member.  </br>
