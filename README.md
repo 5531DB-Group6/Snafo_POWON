@@ -12,7 +12,7 @@ POWON
 10) <strike>personal main page.(MISSING LATEST post) / public information </strike> </br>
 11)<strike> issue: if already a member, dont need 'APPLY'</strike> </br>
 12) search group by interest,  </br>
-13) group vote.  </br>
+13) <strike>group vote. </strike> </br>
 14) <strike>personal post </strike>. </br>
 15) delete all the chinese from UI .</br>
 16) Gift table, gift exchange, add to email. (chao) </br>
