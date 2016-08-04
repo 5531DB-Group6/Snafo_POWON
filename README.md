@@ -17,3 +17,4 @@ POWON
 15) delete all the chinese from UI .</br>
 16) Gift table, gift exchange, add to email. (chao) </br>
 17) active, inactive and suspended status.</br>
+18) login check if expired, change status (chao)</br>
