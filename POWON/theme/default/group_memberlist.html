@@ -85,12 +85,21 @@
                         <form method="post" autocomplete="off" name="moderate" id="moderate" action="">
                             <table summary="forum_2" id="forum_2" cellspacing="0" cellpadding="0">
                                 <!--{loop $MemberList $key $val}-->
+                                <?php
+                                    $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
+                                ?>
                                 <tr style="width:80px;height:100px">
                                     <?php
                                     $LatestPost = dbSelect('gposts','pid, title,addtime','first=1 and gid='.$groupId.' and authorid='.$val['uid'].' and isdel = 0','pid desc');
                                 ?>
                                     <th style="width:80px;height:100px;text-align: center;">
                                             <a href="group_memberlist.php?gid={$OnGid}" title="open in new window" target="_blank"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
+                                            <a href="member_chatbox_index.php?uid={$val['uid']}"target="_blank">
+                                            <!--{if !empty($msg)  }-->
+                                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                                            <!--{else}-->
+                                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                                            <!--{/if}--></a>
                                             <h1 class="xs2"><a href="group_memberlist.php?gid={$OnGid}" class="xst" >{$val['username']}</a></h1>
                                     </th>
                                     <td class="common">

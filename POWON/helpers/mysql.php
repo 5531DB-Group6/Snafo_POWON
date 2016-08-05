@@ -15,8 +15,9 @@
 		if(!empty($limit)){
 			$sql.=' limit '.$limit;
 		}
-		//echo $sql.'<br />';
-		//exit;
+//		if($tableName=="user"){
+//			echo $sql.'<br />';
+//		}
 		return dbConn(trim($sql), true);
 	}
 
@@ -40,8 +41,8 @@
 		if(!empty($limit)){
 			$sql.=' limit '.$limit;
 		}
-		//echo $sql;
-		//exit;
+//		echo $sql;
+//		exit;
 		return dbConn(trim($sql), true);
 	
 	}
@@ -66,25 +67,26 @@
 	//添加,传进来的都是字符串  表名,[字符串：字段名],[字符串：值]
 	function dbInsert($tableName, $Key=null, $Val=null){
 
+
 		$sql='';
 
-		if(empty($Key) || empty($Val)){
-
-			return false;
-		
-		}else{
-			
+//		if(empty($Key) || empty($Val)){
+//
+//			return false;
+//
+//		}else{
 			$Key=trim($Key);
 
 			$Val=trim($Val);
 
 			$sql='insert into '.DB_PREFIX.$tableName.'('.$Key.') values('.$Val.')';
 
+//			echo $sql;
+//			exit;
 			return dbConn(trim($sql));
 		
-		}
+//		}
 
-		
 	}
 
 	//删除  表名,[查询条件]
@@ -106,7 +108,7 @@
 		}else{
 			$sql='update '.DB_PREFIX.$tableName.' set '.$value.' where '.$where;
 		}
-		//echo $sql;
+//		echo $sql;
 		//exit;
 		return dbConn(trim($sql));
 	}

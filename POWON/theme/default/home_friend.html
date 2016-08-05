@@ -59,8 +59,9 @@
                     <li><a href="home_tx.php">Change Avatar</a></li>
                     <li ><a href="home.php">Personal Info</a></li>
                     <li class="a"><a href="home_friend.php">Friend Requests</a></li>
-                    <li><a href="home_qm.php">个人签名</a></li>
-                    <li><a href="home_pass.php">密码安全</a></li>
+                    <li><a href="home_membership.php">Membership</a></li>
+                    <!--<li><a href="home_qm.php">个人签名</a></li>-->
+                    <!--<li><a href="home_pass.php">密码安全</a></li>-->
                     <!--<li><a href="home_sc.php">收藏管理</a></li>-->
                 </ul>
             </div>

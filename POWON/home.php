@@ -58,7 +58,7 @@
 	}
 
 	//读取个人资料
-	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and allowlogin=0','',1);
+	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and status=0','',1);
 	$visible = dbSelect('profilevisible','*', 'uid='.$_COOKIE['uid'].' ','',1);
 	if(!$result)
 	{

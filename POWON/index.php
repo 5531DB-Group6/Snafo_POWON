@@ -15,6 +15,7 @@ if($_COOKIE['uid'])
 
     $select='u.uid as uid, u.username as username, u.picture as picture';
     $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].'','u.username asc');
+   // $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1','chat as c','on f.uid=c.fid and c.uid=f.fid and u.uid=c.fid',$select,'f.uid ='.$_COOKIE['uid'].'','u.username asc');
     $FriendListRest = 8-count($FriendList)%8;
     $FriendListRest = ($FriendListRest ==8)? 0:$FriendListRest;
 

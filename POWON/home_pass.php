@@ -81,7 +81,7 @@
 	}
 
 	//读取用户密码安全信息
-	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and allowlogin=0','',1);
+	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and status=0','',1);
 	if(!$result)
 	{
 		$msg = '<font color=red><b>用户不存在或已被管理员禁止</b></font>';

@@ -77,9 +77,11 @@
 
 		//创建用户
 		//$money = REWARD_REG;
-		$n = 'username, password, email, udertype, regtime, lasttime';
-		//$v = "'$uname', '".md5($upass)."', '$email', 0, ".time().", ".time().", ".ip2long($_SERVER['REMOTE_ADDR']).", ".$money;
-        $v = "'$uname','".md5($upass)."', '$email', 0, ".time().", ".time();
+		$n = 'username, password, email, udertype, regtime, lasttime, expiretime';
+		$monthlater=time()+60*60*24*30;
+		echo $monthlater;
+		//$v = "'$uname', '".md5($upass)."', '$email', 0, ".time().", ".time().", ".time().", ".ip2long($_SERVER['REMOTE_ADDR']).", ".$money;
+        $v = "'$uname','".md5($upass)."', '$email', 0, ".time().", ".time().", "."$monthlater";
 		$result = dbInsert('user', $n, $v);
 		if(!$result)
 		{
@@ -98,6 +100,7 @@
 			$n = "`uid`";
 			$v = "$uid";
 			$result = dbInsert('profilevisible',$n,$v);
+
 			
 			$msg = '<font color=green><b>Thanks for your registration, now you will login as a member</b></font>';
 			$url = 'index.php';
