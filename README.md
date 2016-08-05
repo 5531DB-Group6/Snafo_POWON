@@ -1,17 +1,20 @@
 # Snafo_POWON
 POWON
 
-1) register need existing member's username </br>
-2) personal information add address.  </br>
+1) <strike>register need existing member's username </strike></br>
 *3) admin can edit post, view all post, view all personal information </br>
-*4) email inbox.  </br>
-5) group admin need to type username, email, dob.  </br>
-6) on-line chat (chao) </br>
-7) paypal	(chao) </br>
+*4) email inbox(chao).  </br>
+5) <strike>group admin need to type username, email, dob to add a group member. </strike> </br>
+6) <strike> on-line chat (chao) </strike></br>
+7) <strike> paypal	(chao) </strike> </br>
 8) post image, video.  </br>
-*9) post permission.  </br>
-10) personal main page.(MISSING LATEST post) / public information  </br>
-11) issue: if already a member, dont need 'APPLY' </br>
-12) search group by interest,  </br>
-13) group vote.  </br>
-14) personal post. </br>
+*9) <strike>post permission.  </strike></br>
+10) <strike>personal main page.(MISSING LATEST post) / public information </strike> </br>
+11)<strike> issue: if already a member, dont need 'APPLY'</strike> </br>
+12)<strike> search group by interest, </strike> </br>
+13) <strike>group vote. </strike> </br>
+14) <strike>personal post </strike>. </br>
+15) delete all the chinese from UI .</br>
+16) Gift table, gift exchange, add to email. (chao) </br>
+17) <strike> active, inactive and suspended status.</strike> Has a issue when user against jump to payment page, by type address to get into index page </br>
+18) <strike>login check if expired, change status (chao)</strike></br>
