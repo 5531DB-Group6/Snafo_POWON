@@ -3,7 +3,7 @@ POWON
 
 1) <strike>register need existing member's username </strike></br>
 *3) <strike>admin can edit post, view all post, view all personal information </strike></br>
-*4) email inbox(chao).  </br>
+*4) <strike>email inbox(chao).</strike>  </br>
 5) <strike>group admin need to type username, email, dob to add a group member. </strike> </br>
 6) <strike> on-line chat (chao) </strike></br>
 7) <strike> paypal	(chao) </strike> </br>
@@ -15,6 +15,7 @@ POWON
 13) <strike>group vote. </strike> </br>
 14) <strike>personal post </strike>. </br>
 15) <strike>delete all the chinese from UI</strike> .</br>
-16) Gift table, gift exchange, add to email. (chao) </br>
+16) <strike>Gift table, gift exchange, add to email. (chao) </strike> </br>
 17) <strike> active, inactive and suspended status.</strike> Has a issue when user against jump to payment page, by type address to get into index page </br>
 18) <strike>login check if expired, change status (chao)</strike></br>
+19) <strike>bonus, send post, or reply has option to delete in the future time</strike> </br>
