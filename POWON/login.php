@@ -8,7 +8,7 @@
 	$password = trim($_POST['password']);
 	$cookietime = $_POST['cookietime'];
 
-    $result = dbSelect('user','uid,username,udertype,picture,allowlogin,lasttime', 'username="'.$username.'" and password="'.md5($password).'"');
+    $result = dbSelect('user','uid,username,udertype,picture,status,lasttime,expiretime', 'username="'.$username.'" and password="'.md5($password).'"');
 
 	//判断是否使用了自动登录
 	if($cookietime)
@@ -26,10 +26,19 @@
 		$toTime = 3000;
 		include 'notice.php';
 	}else{
-		if($result[0]['allowlogin'])
+		if($result[0]['status']==1)
 		{
 			$msg = '<font color=red><b>您的账号已经被锁定，请联系管理员</b></font>';
 			$url = $_SERVER['HTTP_REFERER'];
+			$style = 'alert_error';
+			$toTime = 3000;
+			include 'notice.php';
+			exit;
+		}
+		if($result[0]['status']==2)
+		{
+			$msg = '<font color=red><b>Your membership is expired. Redirect to payment page</b></font>';
+			$url = 'external_membership.php';
 			$style = 'alert_error';
 			$toTime = 3000;
 			include 'notice.php';
@@ -52,6 +61,17 @@
         setcookie('udertype',$result[0]['udertype'],$longTime);
         setcookie('picture',$result[0]['picture'],$longTime);
         //setcookie('grade',$grade,$longTime);
+
+
+		if(time()>$result[0]['expiretime']){
+			dbUpdate('user', 'status=2', 'uid='.$result[0]['uid'].'');
+			$msg = '<font color=red><b>Your membership is expired. Redirect to payment page</b></font>';
+			$url = 'external_membership.php';
+			$style = 'alert_error';
+			$toTime = 3000;
+			include 'notice.php';
+			exit;
+		}
 
 		$msg = '<font color=green><b>login succeeded</b></font>';
 		$url = $_SERVER['HTTP_REFERER'];

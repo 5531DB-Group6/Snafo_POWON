@@ -43,6 +43,28 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
+CREATE TABLE IF NOT EXISTS `bbs_postdelete` (
+  `pid` int(10) NOT NULL,
+  `deletetime` int(12) NOT NULL,
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
+
+
+CREATE TABLE IF NOT EXISTS `bbs_mails` (
+  `mailid` int(10) NOT NULL AUTO_INCREMENT,
+  `senderid` int(11) NOT NULL,
+  `receiverid` int(11) NOT NULL,
+  `title` varchar(600) NOT NULL,
+  `content` mediumtext DEFAULT NULL,
+  `sendtime` int(12) NOT NULL,
+  `isread` tinyint(2)  DEFAULT '0',
+   PRIMARY KEY (`mailid`),
+   FOREIGN KEY (`senderid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+   FOREIGN KEY (`receiverid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+
 CREATE TABLE IF NOT EXISTS `bbs_category` (
   `cid` int(10) NOT NULL AUTO_INCREMENT,
   `classname` varchar(60) NOT NULL,
@@ -75,7 +97,9 @@ CREATE TABLE IF NOT EXISTS `bbs_chat` (
   `chatid` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `fid` int(11) NOT NULL,
-  `msg` text,
+  `msg` text NOT NULL,
+  `posttime` int(12) NOT NULL,
+  `isread` tinyint(2)  DEFAULT '0',
    PRIMARY KEY (`chatid`),
   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
   FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE)
@@ -92,6 +116,17 @@ CREATE TABLE IF NOT EXISTS `bbs_profileVisible` (
    PRIMARY KEY (`uid`),
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10;
+
+CREATE TABLE IF NOT EXISTS `bbs_bill` (
+  `billid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `invoice` varchar(16),
+  `paydate` int(12),
+   `amount` double NULL,
+   PRIMARY KEY (`billid`),
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 
 INSERT INTO `bbs_category` (`cid`, `classname`, `parentid`, `classpath`, `replycount`, `motifcount`, `compere`, `classpic`, `description`, `orderby`, `lastpost`, `namestyle`, `ispass`) VALUES
 (3, 'PHP框架', 1, NULL, 0, 0, '1,9', 'public/images/forum.gif', NULL, 3, NULL, NULL, 1),
@@ -200,6 +235,7 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `udertype` tinyint(2) NOT NULL,
   `regtime` int(12) NOT NULL,
   `lasttime` int(12) NOT NULL,
+  `expiretime` int(12) NOT NULL;
   `picture` varchar(255) NOT NULL DEFAULT 'public/images/avatar_blank.gif',
   `firstname` char(32) DEFAULT NULL,
   `lastname` char(32) DEFAULT NULL,
@@ -207,7 +243,8 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `birthday` varchar(20) DEFAULT NULL,
   `region` varchar(50) DEFAULT NULL,
    `profession` varchar(50) DEFAULT NULL,
-  `allowlogin` tinyint(2) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+   `status` tinyint(2) NOT NULL DEFAULT '10',
   PRIMARY KEY (`uid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
 

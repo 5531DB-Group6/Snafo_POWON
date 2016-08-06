@@ -10,11 +10,24 @@ $menu = WEB_NAME;
 //判断用户是否登录
 if($_COOKIE['uid'])
 {
+    $deletelist = dbSelect('postdelete','*');
+    if($deletelist){
+        foreach ($deletelist as $deletepost){
+            if($deletepost['deletetime'] < time()){
+                dbDel('gposts','pid='.$deletepost['pid'].'');
+//                dbUpdate('gposts','isdel=1','pid='.$deletepost['pid'].'');
+//                dbDel('postdelete','pid='.$deletepost['pid'].'');
+            }
+        }
+    }
+
+
     $UserList = dbSelect('user','uid,username,picture','uid<>'.$_COOKIE['uid'].'','username asc');
     $UserListRest = 8-count($UserList)%8;
 
     $select='u.uid as uid, u.username as username, u.picture as picture';
     $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].'','u.username asc');
+   // $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1','chat as c','on f.uid=c.fid and c.uid=f.fid and u.uid=c.fid',$select,'f.uid ='.$_COOKIE['uid'].'','u.username asc');
     $FriendListRest = 8-count($FriendList)%8;
     $FriendListRest = ($FriendListRest ==8)? 0:$FriendListRest;
 
