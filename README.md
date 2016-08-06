@@ -7,7 +7,7 @@ POWON
 5) <strike>group admin need to type username, email, dob to add a group member. </strike> </br>
 6) <strike> on-line chat (chao) </strike></br>
 7) <strike> paypal	(chao) </strike> </br>
-8) post image, video.  </br>
+8) <strike>post image,</strike> video.  </br>
 *9) <strike>post permission.  </strike></br>
 10) <strike>personal main page.(MISSING LATEST post) / public information </strike> </br>
 11)<strike> issue: if already a member, dont need 'APPLY'</strike> </br>
