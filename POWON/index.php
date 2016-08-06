@@ -10,6 +10,18 @@ $menu = WEB_NAME;
 //判断用户是否登录
 if($_COOKIE['uid'])
 {
+    $deletelist = dbSelect('postdelete','*');
+    if($deletelist){
+        foreach ($deletelist as $deletepost){
+            if($deletepost['deletetime'] < time()){
+                dbDel('gposts','pid='.$deletepost['pid'].'');
+//                dbUpdate('gposts','isdel=1','pid='.$deletepost['pid'].'');
+//                dbDel('postdelete','pid='.$deletepost['pid'].'');
+            }
+        }
+    }
+
+
     $UserList = dbSelect('user','uid,username,picture','uid<>'.$_COOKIE['uid'].'','username asc');
     $UserListRest = 8-count($UserList)%8;
 

@@ -8,7 +8,7 @@
 	$password = trim($_POST['password']);
 	$cookietime = $_POST['cookietime'];
 
-    $result = dbSelect('user','uid,username,udertype,picture,status,lasttime', 'username="'.$username.'" and password="'.md5($password).'"');
+    $result = dbSelect('user','uid,username,udertype,picture,status,lasttime,expiretime', 'username="'.$username.'" and password="'.md5($password).'"');
 
 	//判断是否使用了自动登录
 	if($cookietime)
@@ -61,6 +61,7 @@
         setcookie('udertype',$result[0]['udertype'],$longTime);
         setcookie('picture',$result[0]['picture'],$longTime);
         //setcookie('grade',$grade,$longTime);
+
 
 		if(time()>$result[0]['expiretime']){
 			dbUpdate('user', 'status=2', 'uid='.$result[0]['uid'].'');

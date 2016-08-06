@@ -65,6 +65,7 @@
         $content = strMagic($_POST['content']);		//内容
         $addtime = time();			//发表时间
         $groupId = $_POST['gid'];		//类别ID
+        $futuredelete = "";
         //$rate = $_POST['price'];			//帖子售价
 
         $n = 'first, authorid, title, content, addtime, gid';
@@ -83,16 +84,23 @@
             exit;
 
         }else{
-
-            //$money = REWARD_T;	//发帖赠送积分
-            //$result = dbUpdate('user', "grade=grade+{$money}", 'uid='.$_COOKIE['uid'].'');
-
+            if(isset($_POST['deletelater'])) {
+                $hourlater = intval($_POST['hourlater']) ;
+                $minutelater =intval($_POST['minutelater']) ;
+                if(is_int($hourlater) && is_int($minutelater)){
+                    $deletetime = time()+$hourlater*60*60+$minutelater*60;
+                    $deleteresult = dbInsert('postdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
+                    if($deleteresult){
+                        $futuredelete=" will be deleted in ".$hourlater." hour ".$minutelater." minute later";
+                    }
+                }
+            }
 
             //更新版块表的主题数量[Motifcount](跟帖是回复数量[eplycount])和最后发表[lastpost]
             $last = $insertId.'+||+'.$title.'+||+'.$addtime.'+||+'.$_COOKIE['username'];
             $result = dbUpdate('groups', 'motifcount=motifcount+1, lastpost="'.$last.'"', 'gid='.$groupId.'');
 
-            $msg = '<font color=red><b>Posting succeeded</b></font>';
+            $msg = '<font color=red><b>Posting succeeded</b></font>'.$futuredelete;
             $url = 'group_post_detail.php?pid='.$insertId;
             $style = 'alert_right';
             $toTime = 3000;

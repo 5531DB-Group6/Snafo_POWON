@@ -35,11 +35,16 @@
                         </div>
 
                         <input type="hidden" id="gid" name="gid" value="{$groupId}" />
+                        <div>
+                            <input type="checkbox" name="deletelater" value="false">
+                            Delete in  <input type="number" min="1" name="hourlater"> hour <input type="number" min="1" name="minutelater"> minutes <br>
+                        </div>
                         <div class="mtm mbm pnpost">
                             <button type="submit" id="postsubmit" class="pn pnc" value="true" name="topicsubmit">
                                 <span>Add Post</span>
                             </button>
                         </div>
+
 
                     </div>
                 </div>

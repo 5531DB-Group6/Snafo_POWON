@@ -4,7 +4,6 @@
  */
 
 	include './common/common.php';
-
 	//判断帖子ID是否存在
 	if(empty($_REQUEST['pid']) || !is_numeric($_REQUEST['pid']))
     {
@@ -34,10 +33,14 @@
         $content = strMagic($_POST['message']);		//内容
         $addtime = time();				//发表时间
         $groupId = $_POST['gid'];			//类别ID
+        $futuredelete = "";
 
         $n='first, parentid, authorid, title, content, addtime, gid';
         $v='0, '.$parentid.', '.$authorid.',"'.$title.'", "'.$content.'", '.$addtime.', '.$groupId.'';
         $result = dbInsert('gposts', $n, $v);
+
+        $insert_id = dbSelect('gposts','pid','title="'.$title.'"','pid desc',1);
+        $insertId = $insert_id[0]['pid'];
 
         if(!$result)
         {
@@ -48,8 +51,17 @@
             include 'notice.php';
             exit;
         }else{
-            //$money = REWARD_H;	//回帖赠送积分
-            //$result = dbUpdate('user', "grade=grade+{$money}", 'uid='.$_COOKIE['uid'].'');
+            if(isset($_POST['deletelater'])) {
+                $hourlater = intval($_POST['hourlater']) ;
+                $minutelater =intval($_POST['minutelater']) ;
+                if(is_int($hourlater) && is_int($minutelater)){
+                    $deletetime = time()+$hourlater*60*60+$minutelater*60;
+                    $deleteresult = dbInsert('postdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
+                    if($deleteresult){
+                        $futuredelete=" will be deleted in ".$hourlater." hour ".$minutelater." minute later";
+                    }
+                }
+            }
 
             //更新帖子的回复数量[replycount]
             $result = dbUpdate('gposts', 'replycount=replycount+1', 'pid='.$parentid.'');
@@ -57,7 +69,7 @@
             //更新版块表的回复数量[replycount]
             $result = dbUpdate('groups', 'replycount=replycount+1', 'gid='.$groupId.'');
             //header('location:detail.php?id='.$Id);
-            $msg = '<font color=red><b>Reply succeeded</b></font>';
+            $msg = '<font color=red><b>Reply succeeded</b></font>'.$futuredelete;
             $url = 'group_post_detail.php?pid='.$Id;
             $style = 'alert_right';
             $toTime = 3000;
