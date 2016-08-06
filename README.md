@@ -2,7 +2,7 @@
 POWON
 
 1) <strike>register need existing member's username </strike></br>
-*3) admin can edit post, view all post, view all personal information </br>
+*3) <strike>admin can edit post, view all post, view all personal information </strike></br>
 *4) email inbox(chao).  </br>
 5) <strike>group admin need to type username, email, dob to add a group member. </strike> </br>
 6) <strike> on-line chat (chao) </strike></br>
