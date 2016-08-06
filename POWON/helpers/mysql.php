@@ -15,9 +15,8 @@
 		if(!empty($limit)){
 			$sql.=' limit '.$limit;
 		}
-//		if($tableName=="user"){
 //			echo $sql.'<br />';
-//		}
+
 		return dbConn(trim($sql), true);
 	}
 
@@ -97,6 +96,9 @@
 		}
 		$sql='delete from '.DB_PREFIX.$tableName.' where '.$where;
 
+//		echo $sql;
+//		exit;
+
 		return dbConn(trim($sql));
 	}
 
@@ -109,7 +111,7 @@
 			$sql='update '.DB_PREFIX.$tableName.' set '.$value.' where '.$where;
 		}
 //		echo $sql;
-		//exit;
+//		exit;
 		return dbConn(trim($sql));
 	}
 	

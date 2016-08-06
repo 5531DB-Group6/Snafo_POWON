@@ -43,6 +43,28 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
+CREATE TABLE IF NOT EXISTS `bbs_postdelete` (
+  `pid` int(10) NOT NULL,
+  `deletetime` int(12) NOT NULL,
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
+
+
+CREATE TABLE IF NOT EXISTS `bbs_mails` (
+  `mailid` int(10) NOT NULL AUTO_INCREMENT,
+  `senderid` int(11) NOT NULL,
+  `receiverid` int(11) NOT NULL,
+  `title` varchar(600) NOT NULL,
+  `content` mediumtext DEFAULT NULL,
+  `sendtime` int(12) NOT NULL,
+  `isread` tinyint(2)  DEFAULT '0',
+   PRIMARY KEY (`mailid`),
+   FOREIGN KEY (`senderid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+   FOREIGN KEY (`receiverid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+
 CREATE TABLE IF NOT EXISTS `bbs_category` (
   `cid` int(10) NOT NULL AUTO_INCREMENT,
   `classname` varchar(60) NOT NULL,
@@ -221,7 +243,8 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `birthday` varchar(20) DEFAULT NULL,
   `region` varchar(50) DEFAULT NULL,
    `profession` varchar(50) DEFAULT NULL,
-  `status` tinyint(3) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+   `status` tinyint(2) NOT NULL DEFAULT '10',
   PRIMARY KEY (`uid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
 
