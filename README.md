@@ -14,7 +14,7 @@ POWON
 12)<strike> search group by interest, </strike> </br>
 13) <strike>group vote. </strike> </br>
 14) <strike>personal post </strike>. </br>
-15) delete all the chinese from UI .</br>
+15) <strike>delete all the chinese from UI</strike> .</br>
 16) Gift table, gift exchange, add to email. (chao) </br>
 17) <strike> active, inactive and suspended status.</strike> Has a issue when user against jump to payment page, by type address to get into index page </br>
 18) <strike>login check if expired, change status (chao)</strike></br>
