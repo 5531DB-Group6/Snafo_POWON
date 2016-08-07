@@ -29,9 +29,10 @@ if($_POST['giftsubmit'])
     $receivers =array_unique($receivers);
 
     foreach ($receivers as $receiver){
-        $eachreceiver = dbSelect('user','uid,username,coins','username="'.$receiver.'"');
-        $receiverid = $eachreceiver[0]['uid'];
-        $receivername = $eachreceiver[0]['username'];
+        $eachreceiver = dbSelect('user','uid,username,coins','username="'.$receiver.'"')[0];
+        $receiverid = $eachreceiver['uid'];
+        $receivername = $eachreceiver['username'];
+        $receivercoins = $eachreceiver['coins'];
 
         if(!$receiverid){
             $msg = '<font color=red><b>Mail dilivery is failed, please check the username again</b></font>';
@@ -56,6 +57,8 @@ if($_POST['giftsubmit'])
                 $result = dbInsert('mails', $n, $v);
                 $coins = $coins -1;
                 dbUpdate('user','coins='.$coins.'','uid='.$sender['uid'].'');
+                dbUpdate('user','coins='.$receivercoins.'+1','uid='.$receiverid.'');
+
             }
         }
     }

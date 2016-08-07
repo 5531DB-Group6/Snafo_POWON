@@ -106,8 +106,8 @@
 		}else{
 			$sql='update '.DB_PREFIX.$tableName.' set '.$value.' where '.$where;
 		}
-		//echo $sql;
-		//exit;
+		echo $sql;
+//		exit;
 		return dbConn(trim($sql));
 	}
 	

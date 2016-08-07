@@ -1,10 +1,10 @@
-<!--{include header.html}-->
+<?php include template("header.html");?>
 <!--TOP start-->
-<!--{include top.html}-->
+<?php include template("top.html");?>
 <!--TOP end-->
 
 <!--HEAD start-->
-<!--{include head.html}-->
+<?php include template("head.html");?>
 <!--HEAD end-->
 
 <!--LIST start-->
@@ -15,7 +15,7 @@
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
-            <a href="./" class="nvhm" title="Home">{$title}</a> <em>&rsaquo;</em><a href="home.php">Settings</a> <em>&rsaquo;</em>Membership
+            <a href="./" class="nvhm" title="Home"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">Settings</a> <em>&rsaquo;</em>Membership
         </div>
     </div>
     <div id="ct" class="ct2_a wp cl">
@@ -32,7 +32,7 @@
                             <!--{if !empty($user)}-->
                                 <span class="xi2" id="expiretime"></span> </br> </br></br>
                         <script>
-                            document.getElementById("expiretime").innerHTML = moment.unix({$user[0]['expiretime']}).format("YYYY/MM/DD");
+                            document.getElementById("expiretime").innerHTML = moment.unix(<?php echo $user[0]['expiretime']; ?>).format("YYYY/MM/DD");
                         </script>
                             <!--/if-->
 
@@ -73,7 +73,7 @@
 <!--LIST end-->
 
 <!--FOOT start-->
-<!--{include footer.html}-->
+<?php include template("footer.html");?>
 <!--FOOT end-->
 </body>
 </html>

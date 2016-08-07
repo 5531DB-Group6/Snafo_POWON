@@ -290,6 +290,7 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `udertype` tinyint(2) NOT NULL,
   `regtime` int(12) NOT NULL,
   `lasttime` int(12) NOT NULL,
+   `expiretime` int(12) NOT NULL;
   `picture` varchar(255) NOT NULL DEFAULT 'public/images/avatar_blank.gif',
   `firstname` char(32) DEFAULT NULL,
   `lastname` char(32) DEFAULT NULL,

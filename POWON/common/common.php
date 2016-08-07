@@ -69,7 +69,7 @@
 
 	if ($_COOKIE['uid'])
 	{
-		$GGUser = dbSelect('user', 'picture', 'uid=' . $_COOKIE['uid'], '', 1);
+		$GGUser = dbSelect('user', 'picture, coins', 'uid=' . $_COOKIE['uid'], '', 1);
 		if ($GGUser)
 		{
 			$GGcoins = $GGUser[0]['coins'];

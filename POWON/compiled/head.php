@@ -7,7 +7,8 @@
 				<div id="um">
 					<div class="avt y"><a href="home_tx.php"><img src="<?php echo $GGpicture; ?>" /></a></div>
 					<p>
-					<strong class="vwmy"><a href="home.php"><?php echo $_COOKIE['username']; ?></a></strong>
+						<img src="public/images/mailbox.png" style="width: auto; height: auto;max-width: 30px;max-height: 50px" ><a href="mailbox.php" ><b>Mailbox</b></a>
+						<strong class="vwmy"><a href="home.php"><?php echo $_COOKIE['username']; ?></a></strong>
 					<span class="pipe">|</span><a href="home.php">User Page</a>
 					<?php if($_COOKIE['udertype']){?>
 					<span class="pipe">|</span><a href="admin_member_list.php">Administration center</a>
@@ -15,7 +16,8 @@
 					<span class="pipe">|</span><a href="logout.php">Exit</a>
 					</p>
 					<p>
-					User Group: <?php echo userGroup($_COOKIE['udertype']); ?>
+						<a id="extcreditmenu" href="#">Coins: <?php echo $GGcoins; ?></a>
+						<span class="pipe">|</span>User Group: <?php echo userGroup($_COOKIE['udertype']); ?>
 					</p>
 				</div>
 				<?php } else { ?>
