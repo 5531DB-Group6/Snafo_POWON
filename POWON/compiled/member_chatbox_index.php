@@ -117,8 +117,8 @@
                     <ul class="chat">
                         <?php if(is_array($history)){foreach($history AS $key=>$val) { ?>
                         <?php if(($val['uid']==$receiver['uid'])){?>
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                        <img src="<?php echo $receiver['picture']; ?>" alt="User Avatar" class="img-circle" />
+                        <li class="left clearfix" >
+                        <img src="<?php echo $receiver['picture']; ?>" alt="User Avatar" class="img-circle" style="width: auto; height: auto;max-width: 60px;max-height: 80px"/>
                     </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
@@ -137,7 +137,7 @@
                         <?php }?>
                         <?php if(($val['uid']==$sender['uid'])){?>
                         <li class="right clearfix"><span class="chat-img pull-right">
-                        <img src="<?php echo $receiver['picture']; ?>" alt="User Avatar" class="img-circle" />
+                        <img src="<?php echo $receiver['picture']; ?>" alt="User Avatar" class="img-circle" style="width: auto; height: auto;max-width: 60px;max-height: 80px"/>
                     </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
