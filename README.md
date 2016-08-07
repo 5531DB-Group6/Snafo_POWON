@@ -32,7 +32,7 @@
 11) post video. (chao) </br>
 12) <strike>send gift from group list, friend list. (chao) </strike></br>
 13) qin's bonus</br>
-14) chao's bonus: delte post, change post and reply isdel to 1. put in common.php, friend post, friend reply. (chao)</br>
+14) <strike> chao's bonus: delte post, change post and reply isdel to 1. put in common.php, friend post, friend reply. (chao)</strike></br>
 15  <strike>Has a issue when user against jump to payment page, by type address to get into index page (chao)</strike></br>
 
 
