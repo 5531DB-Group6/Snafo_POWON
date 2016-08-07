@@ -19,7 +19,7 @@
 18) login check if expired, change status (chao)</br>
 19) bonus, send post, or reply has option to delete in the future time </br> </strike>
 
-1) first name of the existing number is show as * </br>
+1) <strike>first name of the existing number is show as * </strike></br>
 2) new added group member does not show in the profile visibility list. </br>
 3) <strike>Fatal error: Call to undefined function jason_decode() in E:\Program Files\wamp\www\Snafo_POWON\POWON\pay.php on line 29 (chao)</strike> </br>
 4) <strike>invite member by email not done (chao) </strike></br>
