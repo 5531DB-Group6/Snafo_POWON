@@ -43,11 +43,18 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
-CREATE TABLE IF NOT EXISTS `bbs_postdelete` (
+CREATE TABLE IF NOT EXISTS `bbs_gpostdelete` (
   `pid` int(10) NOT NULL,
   `deletetime` int(12) NOT NULL,
   PRIMARY KEY (`pid`),
   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
+
+CREATE TABLE IF NOT EXISTS `bbs_upostdelete` (
+  `pid` int(10) NOT NULL,
+  `deletetime` int(12) NOT NULL,
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_mails` (

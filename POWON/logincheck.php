@@ -1,5 +1,5 @@
 <?php
-if(empty($_COOKIE['uid']))
+if(empty($_COOKIE['uid'])&&empty($_COOKIE['username']))
 {
     $msg = '<font color=red><b>You have not logged in</b></font>';
     $url = $_SERVER['HTTP_REFERER'];

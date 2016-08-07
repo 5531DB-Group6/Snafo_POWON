@@ -9,21 +9,11 @@ $menu = WEB_NAME;
 
 $publicpost = dbSelect('pposts','*','','pid desc');
 
+//echo ($_COOKIE['username'] =="");
 //判断用户是否登录
-if($_COOKIE['uid'])
-{
-    $deletelist = dbSelect('postdelete','*');
-    if($deletelist){
-        foreach ($deletelist as $deletepost){
-            if($deletepost['deletetime'] < time()){
-                dbDel('gposts','pid='.$deletepost['pid'].'');
-//                dbUpdate('gposts','isdel=1','pid='.$deletepost['pid'].'');
-//                dbDel('postdelete','pid='.$deletepost['pid'].'');
-            }
-        }
-    }
 
-    $isadmin = isAdmin();
+if( $_COOKIE['uid'] )
+{
 
     $UserList = dbSelect('user','uid,username,picture','status!=1','username asc');
     $UserListRest = 8-count($UserList)%8;

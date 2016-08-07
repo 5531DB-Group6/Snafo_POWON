@@ -69,7 +69,7 @@
 
 	if ($_COOKIE['uid'])
 	{
-		$GGUser = dbSelect('user', 'picture', 'uid=' . $_COOKIE['uid'], '', 1);
+		$GGUser = dbSelect('user', 'picture, coins', 'uid=' . $_COOKIE['uid'], '', 1);
 		if ($GGUser)
 		{
 			$GGcoins = $GGUser[0]['coins'];
@@ -79,3 +79,25 @@
 
 	//读取所有大版块信息,做导航
 	$headMenu = dbSelect('category','cid,classname','parentid=0 and ispass=1','orderby desc,cid desc');
+
+	//delete post in the deletelist
+	$deletelist = dbSelect('gpostdelete','*');
+	if($deletelist){
+		foreach ($deletelist as $deletepost){
+			if($deletepost['deletetime'] < time()){
+	                dbUpdate('gposts','isdel=1','pid='.$deletepost['pid'].'');
+					dbUpdate('gposts', "isdel=1", 'parentid = '.$Id.'');
+	                dbDel('gpostdelete','pid='.$deletepost['pid'].'');
+			}
+		}
+	}
+	$deletelist = dbSelect('upostdelete','*');
+	if($deletelist){
+		foreach ($deletelist as $deletepost){
+			if($deletepost['deletetime'] < time()){
+				dbUpdate('gposts','isdel=1','pid='.$deletepost['pid'].'');
+				dbUpdate('gposts', "isdel=1", 'parentid = '.$Id.'');
+				dbDel('upostdelete','pid='.$deletepost['pid'].'');
+			}
+		}
+	}

@@ -80,6 +80,8 @@
 
 			$sql='insert into '.DB_PREFIX.$tableName.'('.$Key.') values('.$Val.')';
 
+//			echo $sql;
+
 			return dbConn(trim($sql));
 		
 		}
@@ -106,8 +108,8 @@
 		}else{
 			$sql='update '.DB_PREFIX.$tableName.' set '.$value.' where '.$where;
 		}
-		//echo $sql;
-		//exit;
+//		echo $sql;
+//		exit;
 		return dbConn(trim($sql));
 	}
 	

@@ -1,6 +1,6 @@
-<!--{include header.html}-->
+<?php include template("header.html");?>
 <!--TOP start-->
-<!--{include top.html}-->
+<?php include template("top.html");?>
 <!--TOP end-->
 
 <!--CONTENT start-->
@@ -12,7 +12,7 @@
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
-            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a>
+            <a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a>
         </div>
 
     </div>
@@ -53,7 +53,7 @@
         </div>
         <div class="col-sm-9 col-md-10">
 
-            <link rel="stylesheet" type="text/css" href="{$domain_resource}/css/post.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo $domain_resource; ?>/css/post.css" />
             <!--LIST start-->
             <div id="wp" class="wp">
                 <form method="post" autocomplete="off" id="postform" action="mailbox_sendgift.php">
@@ -65,11 +65,11 @@
                                     <div class="pbt cl">
                                         <div class="z">
                                             <span>To <span style="padding: 0 10px"></span>
-                                                <!--{if !empty($replyto)}-->
-                                                <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" value="{$replyto['username']}" />
-                                                <!--{else}-->
+                                                <?php if(!empty($replyto)){?>
+                                                <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" value="<?php echo $replyto['username']; ?>" />
+                                                <?php } else { ?>
                                                 <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" placeholder="username" />
-                                                <!--{/if}-->
+                                                <?php }?>
                                             </span>
                                         </div> </br></br>
                                         <div class="z">
@@ -150,7 +150,7 @@
 <!--CONTENT end-->
 
 <!--FOOT start-->
-<!--{include footer.html}-->
+<?php include template("footer.html");?>
 <!--FOOT end-->
 </body>
 </html>

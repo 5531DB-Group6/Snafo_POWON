@@ -1,6 +1,6 @@
-<!--{include header.html}-->
+<?php include template("header.html");?>
 <!--TOP start-->
-<!--{include top.html}-->
+<?php include template("top.html");?>
 <!--TOP end-->
 
 
@@ -14,7 +14,7 @@
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
-            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a>
+            <a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a>
         </div>
 
     </div>
@@ -87,7 +87,7 @@
                 <a href="mailbox_compose.php" class="btn btn-danger btn-sm btn-block" role="button">COMPOSE</a>
                 <hr />
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="mailbox.php"><span class="badge pull-right">{$unread}</span> Inbox </a>
+                    <li class="active"><a href="mailbox.php"><span class="badge pull-right"><?php echo $unread; ?></span> Inbox </a>
                     </li>
                     <li><a href="mailbox_sentmail.php">Sent Mail</a></li>
                     <li><a href=#"><span class="badge pull-right"></span>Drafts</a></li>
@@ -113,35 +113,35 @@
                     <div class="tab-pane fade in active" id="primary">
                         <div class="list-group">
                             <!--message content-->
-                            <!--{loop $primarymail $key $val}-->
-                            <a href="mailbox_emaildetail.php?mailid={$val['mailid']}" class="list-group-item">
+                            <?php if(is_array($primarymail)){foreach($primarymail AS $key=>$val) { ?>
+                            <a href="mailbox_emaildetail.php?mailid=<?php echo $val['mailid']; ?>" class="list-group-item">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="mailcheckbox[]" value="{$val['mailid']}">
+                                        <input type="checkbox" name="mailcheckbox[]" value="<?php echo $val['mailid']; ?>">
                                 </label>
                             </div>
                             <?php
                                     $sender = dbselect('user','username','uid='.$val['senderid'].'')
                             ?>
-                            <!--{if ($val['isread'] == 0)}-->
+                            <?php if(($val['isread'] == 0)){?>
                             <strong><span class="name" style="min-width: 120px;display: inline-block; color:#ff6600 " >
-                                        {$sender[0]['username']} </span></strong>
-                                        <!--{else}-->
+                                        <?php echo $sender[0]['username']; ?> </span></strong>
+                                        <?php } else { ?>
                                 <span class="name" style="min-width: 120px;display: inline-block; ">
-                                {$sender[0]['username']} </span>
-                                        <!--{/if}-->
-                                        <span class="">{$val['title']}</span>
-                                        <!--{if ($val['content'] == "public/images/treasure-chest.gif")}-->
+                                <?php echo $sender[0]['username']; ?> </span>
+                                        <?php }?>
+                                        <span class=""><?php echo $val['title']; ?></span>
+                                        <?php if(($val['content'] == "public/images/treasure-chest.gif")){?>
                             <span class="text-muted" style="font-size: 11px;">
                                 <img src="public/images/treasure-chest.gif" alt="treasure chest" style="width:40px;height:40px;">
                             </span>
-                                        <!--{else}-->
-                                        <span class="text-muted" style="font-size: 11px;">- {$val['content']}</span>
-                                        <!--{/if}-->
+                                        <?php } else { ?>
+                                        <span class="text-muted" style="font-size: 11px;">- <?php echo $val['content']; ?></span>
+                                        <?php }?>
                             <span class="badge" ><script>
-                                document.write( moment.unix({$val['sendtime']}).format("MM/DD"));
+                                document.write( moment.unix(<?php echo $val['sendtime']; ?>).format("MM/DD"));
                             </script></span> <span class="pull-right"></span></a>
-                            <!--{/loop}-->
+                            <?php }}?>
                         </div>
                     </div>
 
@@ -151,29 +151,29 @@
                             <div class="list-group">
 
                                 <!--message content-->
-                                <!--{loop $socialmail $key $val}-->
+                                <?php if(is_array($socialmail)){foreach($socialmail AS $key=>$val) { ?>
                                 <a href="#" class="list-group-item">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="mailcheckbox[]" value="{$val['mailid']}">
+                                            <input type="checkbox" name="mailcheckbox[]" value="<?php echo $val['mailid']; ?>">
                                     </label>
                                 </div>
                                 <?php
                                     $sender = dbselect('user','username','uid='.$val['senderid'].'')
                             ?>
-                                <!--{if ($val['isread'] == 0)}-->
+                                <?php if(($val['isread'] == 0)){?>
                                 <strong><span class="name" style="min-width: 120px;display: inline-block;">
-                                            {$sender[0]['username']} </span></strong>
-                                            <!--{else}-->
+                                            <?php echo $sender[0]['username']; ?> </span></strong>
+                                            <?php } else { ?>
                                 <span class="name" style="min-width: 120px;display: inline-block;">
-                                {$sender[0]['username']} </span>
-                                            <!--{/if}-->
-                                            <span class="">{$val['title']}</span>
-                                            <span class="text-muted" style="font-size: 11px;">- {$val['content']}</span>
+                                <?php echo $sender[0]['username']; ?> </span>
+                                            <?php }?>
+                                            <span class=""><?php echo $val['title']; ?></span>
+                                            <span class="text-muted" style="font-size: 11px;">- <?php echo $val['content']; ?></span>
                             <span class="badge" ><script>
-                                document.write( moment.unix({$val['sendtime']}).format("MM/DD"));
+                                document.write( moment.unix(<?php echo $val['sendtime']; ?>).format("MM/DD"));
                             </script></span> <span class="pull-right"></span></a>
-                                <!--{/loop}-->
+                                <?php }}?>
 
                             </div>
                         </div>
@@ -183,31 +183,31 @@
                             <div class="list-group">
 
                                 <!--message content-->
-                                <!--{loop $giftmail $key $val}-->
+                                <?php if(is_array($giftmail)){foreach($giftmail AS $key=>$val) { ?>
                                 <a href="#" class="list-group-item">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="mailcheckbox[]" value="{$val['mailid']}">
+                                            <input type="checkbox" name="mailcheckbox[]" value="<?php echo $val['mailid']; ?>">
                                         </label>
                                     </div>
                                     <?php
                                     $sender = dbselect('user','username','uid='.$val['senderid'].'')
                                 ?>
-                                    <!--{if ($val['isread'] == 0)}-->
+                                    <?php if(($val['isread'] == 0)){?>
                                     <strong><span class="name" style="min-width: 120px;display: inline-block;">
-                                {$sender[0]['username']} </span></strong>
-                                    <!--{else}-->
+                                <?php echo $sender[0]['username']; ?> </span></strong>
+                                    <?php } else { ?>
                                 <span class="name" style="min-width: 120px;display: inline-block;">
-                                {$sender[0]['username']} </span>
-                                    <!--{/if}-->
-                                    <span class="">{$val['title']}</span>
+                                <?php echo $sender[0]['username']; ?> </span>
+                                    <?php }?>
+                                    <span class=""><?php echo $val['title']; ?></span>
                                 <span class="text-muted" style="font-size: 11px;">
                                     <img src="public/images/treasure-chest.gif" alt="treasure chest" style="width:40px;height:40px;">
                                 </span>
                                 <span class="badge" ><script>
-                                    document.write( moment.unix({$val['sendtime']}).format("MM/DD"));
+                                    document.write( moment.unix(<?php echo $val['sendtime']; ?>).format("MM/DD"));
                                 </script></span> <span class="pull-right"></span></a>
-                                <!--{/loop}-->
+                                <?php }}?>
 
                             </div>
                         </div>
@@ -226,7 +226,7 @@
 <!--CONTENT end-->
 
 <!--FOOT start-->
-<!--{include footer.html}-->
+<?php include template("footer.html");?>
 <!--FOOT end-->
 </body>
 </html>

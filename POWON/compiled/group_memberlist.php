@@ -78,6 +78,8 @@
                                 <td class="by">Post Time</td>
                                 <td class="by"><?php if(admin){?>Kick out<?php }?></td>
                                 <td class="by"><?php if(admin){?>Upgrade<?php }?></td>
+                                <td class="by">send gift</td>
+
                             </tr>
                         </table>
                     </div>
@@ -85,12 +87,20 @@
                         <form method="post" autocomplete="off" name="moderate" id="moderate" action="">
                             <table summary="forum_2" id="forum_2" cellspacing="0" cellpadding="0">
                                 <?php if(is_array($MemberList)){foreach($MemberList AS $key=>$val) { ?>
+                                <?php
+                                    $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
+                                ?>
                                 <tr style="width:80px;height:100px">
                                     <?php
                                     $LatestPost = dbSelect('gposts','pid, title,addtime','first=1 and gid='.$groupId.' and authorid='.$val['uid'].' and isdel = 0','pid desc');
                                 ?>
                                     <th style="width:80px;height:100px;text-align: center;">
                                             <a href="member_home.php?uid=<?php echo $val['uid']; ?>" title="open in new window" target="_blank"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
+                                            <?php if(!empty($msg)  ){?>
+                                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                                            <?php } else { ?>
+                                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                                            <?php }?></a>
                                             <h1 class="xs2"><a href="member_home.php?uid={$val['uid']" class="xst" ><?php echo $val['username']; ?></a></h1>
                                     </th>
                                     <td class="common">
@@ -106,6 +116,11 @@
                                     </td>
                                     <td class="by">
                                         <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&upg=1"><font color="green"><?php if($admin==1 and $val['admin']!=1){?>Upgrade<?php }?></font></a></h2>
+                                    </td>
+                                    <td class="by">
+                                        <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">
+                                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                                       </a></h2>
                                     </td>
                                 </tr>
                                 <?php }}?>

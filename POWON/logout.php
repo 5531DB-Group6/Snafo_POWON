@@ -5,6 +5,7 @@
 	include './common/common.php';
 
 	setcookie('uid','',time()-1);
+	setcookie('username','""',time()-1);
 	setcookie('udertype','',time()-1);
 	setcookie('picture','',time()-1);
 	setcookie('grade','',time()-1);

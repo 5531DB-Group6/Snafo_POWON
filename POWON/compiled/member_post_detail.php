@@ -312,6 +312,10 @@
                                     </script><br />
 
                                 </div>
+                                <div>
+                                    <input type="checkbox" name="deletelater" value="false">
+                                    Delete in  <input type="number" min="1" name="hourlater"> hour <input type="number" min="1" name="minutelater"> minutes <br>
+                                </div>
                                 <p class="ptm pnpost">
                                     <button type="submit" name="replysubmit" id="fastpostsubmit" class="pn pnc vm" value="replysubmit" tabindex="5">
                                         <strong>Add Reply</strong></button>

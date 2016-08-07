@@ -8,10 +8,14 @@
 <!--HEAD end-->
 
 <!--LIST start-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/POWON/public/js/moment.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
-            <a href="./" class="nvhm" title="首页"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">User Page</a> <em>&rsaquo;</em>Post List
+            <a href="./" class="nvhm" title="Home"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">User Page</a> <em>&rsaquo;</em>Post List
         </div>
     </div>
         <div class="mn"  >
@@ -25,8 +29,10 @@
                             <li><a href="home.php">Personal Info</a></li>
                             <li><a href="home_friend.php">Friend Requests</a></li>
                             <li class="a"><a href="home_postlist.php">Post List</a></li>
-                            <li><a href="home_qm.php">个人签名</a></li>
-                            <li><a href="home_pass.php">密码安全</a></li>
+                            <li><a href="home_membership.php">Membership</a></li>
+                            <li><a href="home_inviteToPOWON.php">Invite new member</a></li>
+                            <!--<li><a href="home_qm.php">个人签名</a></li>-->
+                            <!--<li><a href="home_pass.php">密码安全</a></li>-->
                             <!--<li><a href="home_sc.php">收藏管理</a></li>-->
                         </ul>
                     </div>

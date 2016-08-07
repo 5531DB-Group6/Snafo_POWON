@@ -1,6 +1,6 @@
-<!--{include header.html}-->
+<?php include template("header.html");?>
 <!--TOP start-->
-<!--{include top.html}-->
+<?php include template("top.html");?>
 <!--TOP end-->
 
 <!--CONTENT start-->
@@ -12,7 +12,7 @@
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
-            <a href="./" class="nvhm" title="{$title}">{$title}</a><em>&raquo;</em><a href="index.php">Home</a>
+            <a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a>
         </div>
 
     </div>
@@ -43,20 +43,19 @@
     <div class="row">
         <div class="col-sm-3 col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <a href="mailbox_compose.php" class="btn btn-danger btn-sm btn-block" role="button">COMPOSE</a>
-                <hr />
                 <li class="active"><a href="mailbox.php"><span class="badge pull-right">42</span> Inbox </a>
                 </li>
                 <li><a href="mailbox_sentmail.php">Sent Mail</a></li>
                 <li><a href=#"><span class="badge pull-right"></span>Drafts</a></li>
             </ul>
+            <a href="mailbox_sendgift.php" class="btn btn-success btn-sm btn-block" role="button">Send Gift</a>
         </div>
         <div class="col-sm-9 col-md-10">
 
-            <link rel="stylesheet" type="text/css" href="{$domain_resource}/css/post.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo $domain_resource; ?>/css/post.css" />
             <!--LIST start-->
             <div id="wp" class="wp">
-                <form method="post" autocomplete="off" id="postform" action="mailbox_sendgift.php">
+                <form method="post" autocomplete="off" id="postform" action="mailbox_compose.php">
                     <div id="ct" class="ct2_a ct2_a_r wp cl">
                         <div class="mn">
                             <div class="bm bw0 cl" id="editorbox">
@@ -65,11 +64,11 @@
                                     <div class="pbt cl">
                                         <div class="z">
                                             <span>To <span style="padding: 0 10px"></span>
-                                                <!--{if !empty($replyto)}-->
-                                                <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" value="{$replyto['username']}" />
-                                                <!--{else}-->
+                                                <?php if(!empty($replyto)){?>
+                                                <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" value="<?php echo $replyto['username']; ?>" />
+                                                <?php } else { ?>
                                                 <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" placeholder="username" />
-                                                <!--{/if}-->
+                                                <?php }?>
                                             </span>
                                         </div> </br></br>
                                         <div class="z">
@@ -79,11 +78,13 @@
                                     </div>
 
                                     <div id="e_body_loading">
-                                        <img src="public/images/treasure-chest.gif" alt="treasure chest" style="width:400px;height:400px;">
+                                        <script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
+                                        <script src="public/ckeditor/sample.js" type="text/javascript"></script>
+                                        <textarea  class="ckeditor"  name="content"  id="editor1"></textarea>
                                     </div>
 
                                     <div class="mtm mbm pnpost">
-                                        <button type="submit" id="giftsubmit" class="pn pnc" value="true" name="giftsubmit">
+                                        <button type="submit" id="mailsubmit" class="pn pnc" value="true" name="mailsubmit">
                                             <span>Send</span>
                                         </button>
                                     </div>
@@ -150,7 +151,7 @@
 <!--CONTENT end-->
 
 <!--FOOT start-->
-<!--{include footer.html}-->
+<?php include template("footer.html");?>
 <!--FOOT end-->
 </body>
 </html>

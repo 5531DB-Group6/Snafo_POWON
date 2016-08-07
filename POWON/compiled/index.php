@@ -8,12 +8,30 @@
 <!--HEAD end-->
 
 <!--CONTENT start-->
+<script src="/POWON/public/js/moment.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
             <a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a>
         </div>
-        <div class="z"></div>
+        <?php if($_COOKIE['uid']  && $_COOKIE['username']){?>
+        <div class="z">
+            <?php
+                        $user  = dbSelect('user','*','uid='.$_COOKIE['uid'].'');
+             ?>
+            <script>
+                var  nextmonth= moment().add(30, 'day').unix();
+                var expiretime = <?php echo $user[0]['expiretime']; ?>;
+                if( expiretime < nextmonth){
+                    var dayleft = Math.round((expiretime-moment().unix())/60/60/24);
+                    document.write(String("Your membership will be expired in "+dayleft+" days ").fontcolor("red"))
+                }
+            </script>
+        </div>
+        <?php }?>
+
     </div>
 
     <div class="mn">
@@ -57,7 +75,7 @@
         <!--public end-->
 
 
-        <?php if($_COOKIE['uid']){?>
+        <?php if($_COOKIE['uid']  && $_COOKIE['username']){?>
 
         <!--friend start-->
         <div class="bm bmw cl">
@@ -76,8 +94,17 @@
                 <table cellspacing="0" cellpadding="0" class="fl_tb">
                     <?php if(is_array($FriendList)){foreach($FriendList AS $key=>$val) { ?>
                     <?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
+                    <?php
+                        $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
+                    ?>
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
+                            <?php if(!empty($msg)){?>
+                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php } else { ?>
+                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php }?></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
                     </td>
                     <?php }}?>
@@ -263,8 +290,17 @@
                 <table cellspacing="0" cellpadding="0" class="fl_tb">
                     <?php if(is_array($UserList)){foreach($UserList AS $key=>$val) { ?>
                     <?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
+                    <?php
+                        $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
+                    ?>
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
+                            <?php if(!empty($msg)){?>
+                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php } else { ?>
+                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php }?></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
                     </td>
                     <?php }}?>

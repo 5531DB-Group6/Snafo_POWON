@@ -213,6 +213,9 @@ if($_POST['replysubmit'])
     $v='0, '.$parentid.', '.$authorid.',"'.$title.'", "'.$content.'","'.$picture.'", '.$addtime.', '.$groupId.'';
     $result = dbInsert('gposts', $n, $v);
 
+    $insert_id = dbSelect('gposts','pid','title="'.$title.'"','pid desc',1);
+    $insertId = $insert_id[0]['pid'];
+
     if(!$result)
     {
         $msg = '<font color=red><b>Reply failed，please contact the administrator</b></font>';
@@ -227,7 +230,7 @@ if($_POST['replysubmit'])
             $minutelater =intval($_POST['minutelater']) ;
             if(is_int($hourlater) && is_int($minutelater)){
                 $deletetime = time()+$hourlater*60*60+$minutelater*60;
-                $deleteresult = dbInsert('postdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
+                $deleteresult = dbInsert('gpostdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
                 if($deleteresult){
                     $futuredelete=" will be deleted in ".$hourlater." hour ".$minutelater." minute later";
                 }

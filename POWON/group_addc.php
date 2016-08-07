@@ -89,7 +89,7 @@
                 $minutelater =intval($_POST['minutelater']) ;
                 if(is_int($hourlater) && is_int($minutelater)){
                     $deletetime = time()+$hourlater*60*60+$minutelater*60;
-                    $deleteresult = dbInsert('postdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
+                    $deleteresult = dbInsert('gpostdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
                     if($deleteresult){
                         $futuredelete=" will be deleted in ".$hourlater." hour ".$minutelater." minute later";
                     }
@@ -129,6 +129,19 @@
                     }
                     $presult = dbInsert('gpostspermission','uid,pid,view,comment,addlink',''.$uid.','.$insertId.','.$view.','.$comment.','.$addlink.'');
                 }
+            }
+
+            $groupfinder = dbSelect('groups','gid,name,owner','gid='.$groupId.' and ispass=1','gid desc');
+            foreach ($MemberList as $key=>$val ){
+                $senderid = $authorid;
+                $receiverid = $val['uid'];
+                $emailtitle = "new post from group  ";
+                $emailtitlecontent = $title;
+                $sendtime = time();
+
+                $n = 'senderid, receiverid, title, content, sendtime';
+                $v = ''.$senderid.', '.$receiverid.', "'.$emailtitle.'", "'.$emailtitlecontent.'", '.$sendtime.'';
+                $result = dbInsert('mails', $n, $v);
             }
 
 
