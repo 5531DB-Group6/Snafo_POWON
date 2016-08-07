@@ -211,8 +211,8 @@
                             </div>
                             <div class="pct">
                                 <div class="pcb">
-                                    <?php if($hval['isdisplay']){?>
-                                    <div class="locked">提示: <em>该帖被管理员或版主屏蔽</em></div>
+                                    <?php if($hval['isdisplay']==0){?>
+                                    <div class="locked">Hint: <em>the reply has been blocked</em></div>
                                     <?php } else { ?>
                                     <div class="t_fsz">
                                         <table cellspacing="0" cellpadding="0">

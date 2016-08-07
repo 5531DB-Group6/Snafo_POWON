@@ -124,7 +124,7 @@ $linum = 10;
 $Lpage = empty($_GET['page'])?1:$_GET['page'];
 //循环帖子回复信息
 $select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image';
-$HTiZi = dbDuoSelect('uposts as t','user as u',' on t.authorid=u.uid',null,null,$select,'t.parentid='.$Id.' and t.isdel=0 and t.first=0 t.isdisplay=1','t.pid asc', setLimit($linum));
+$HTiZi = dbDuoSelect('uposts as t','user as u',' on t.authorid=u.uid',null,null,$select,'t.parentid='.$Id.' and t.isdel=0 and t.first=0','t.pid asc');
 
 //保存帖子回复
 if($_POST['replysubmit'])
