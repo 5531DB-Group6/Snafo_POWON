@@ -135,13 +135,13 @@ CREATE TABLE IF NOT EXISTS `bbs_chat` (
 
 CREATE TABLE IF NOT EXISTS `bbs_profileVisible` (
   `uid` int(11) NOT NULL,
-  `firstname_visible` tinyint(4) DEFAULT '2',
-  `lastname_visible` tinyint(4) DEFAULT '2',
-  `sex_visible` tinyint(4) DEFAULT '2',
-  `bday_visible` tinyint(4) DEFAULT '2',
-  `address_visible` tinyint(4) DEFAULT '2',
-  `place_visible` tinyint(4) DEFAULT '2',
-   `profession_visible` tinyint(4) DEFAULT '2',
+  `firstname_visible` tinyint(2) DEFAULT '2',
+  `lastname_visible` tinyint(2) DEFAULT '2',
+  `sex_visible` tinyint(2) DEFAULT '2',
+  `bday_visible` tinyint(2) DEFAULT '2',
+  `address_visible` tinyint(2) DEFAULT '2',
+  `place_visible` tinyint(2) DEFAULT '2',
+   `profession_visible` tinyint(2) DEFAULT '2',
    PRIMARY KEY (`uid`),
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `bbs_upostsPermissionPublic` (
 CREATE TABLE IF NOT EXISTS `bbs_voterecord` (
   `pid` int(10) NOT NULL,
   `uid` int(11) NOT NULL,
-  `vote` tinyint(11) DEFAULT '0',
+  `vote` tinyint(2) DEFAULT '0',
    PRIMARY KEY (`pid`,`uid`),
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
    FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `bbs_bill` (
   `paydate` int(12),
    `amount` double NULL,
    PRIMARY KEY (`billid`),
-   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 INSERT INTO `bbs_category` (`cid`, `classname`, `parentid`, `classpath`, `replycount`, `motifcount`, `compere`, `classpic`, `description`, `orderby`, `lastpost`, `namestyle`, `ispass`) VALUES
@@ -298,6 +298,7 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `address` varchar(255) DEFAULT NULL,
   `region` varchar(50) DEFAULT NULL,
    `profession` varchar(50) DEFAULT NULL,
-    `status` tinyint(1) NOT NULL DEFAULT '0',
-   `coins` tinyint(2) NOT NULL DEFAULT '10',  PRIMARY KEY (`uid`)
+   `status` tinyint(1) NOT NULL DEFAULT '0',
+   `coins` tinyint(2) NOT NULL DEFAULT '10',
+   PRIMARY KEY (`uid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
