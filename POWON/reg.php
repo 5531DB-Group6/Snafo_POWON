@@ -12,6 +12,7 @@
 		$uname = strMagic($_POST['username']);
 		$upass = trim($_POST['password']);
 		$urpass = trim($_POST['repassword']);
+		$mfirstname = trim($_POST['memberfirstname']);
 		$email = $_POST['mail'];
 		$pyzm = $_POST['yzm'];
 		
@@ -56,16 +57,13 @@
 			$alterNotice = true;
 			$msgArr[] = '<font color=red><b>Error：passwords are not identical</b></font>';
 		}
-		
 
-		/*
-		//判断验证码
-		if(checkVerify($pyzm, $_SESSION['code']))
-		{
+		//check whether the entered first name of an existing member is correct
+		$FNexists = dbSelect('user','uid', 'firstname="'.$mfirstname.'"','uid desc',1);
+		if (!$FNexists){
 			$alterNotice = true;
-			$msgArr[] = '<font color=red><b>验证码输入错误</b></font>';
+			$msgArr[] = '<font color=red><b>Error：cannot find the corresponding first name</b></font>';
 		}
-		*/
 
 		//验证是否需要显示提示信息
 		if($alterNotice)
@@ -77,11 +75,11 @@
 
 		//创建用户
 		//$money = REWARD_REG;
-		$n = 'username, password, email, udertype, regtime, lasttime, expiretime';
 		$monthlater=time()+60*60*24*30;
-		echo $monthlater;
-		//$v = "'$uname', '".md5($upass)."', '$email', 0, ".time().", ".time().", ".time().", ".ip2long($_SERVER['REMOTE_ADDR']).", ".$money;
-        $v = "'$uname','".md5($upass)."', '$email', 0, ".time().", ".time().", "."$monthlater";
+		//echo $monthlater;
+		$n = 'username, password, email, udertype, regtime, lasttime, expiretime';
+		//$v = "'$uname', '".md5($upass)."', '$email', 0, ".time().", ".time().", ".ip2long($_SERVER['REMOTE_ADDR']).", ".$money;
+		$v = "'$uname','".md5($upass)."', '$email', 0, ".time().", ".time().", "."$monthlater";
 		$result = dbInsert('user', $n, $v);
 		if(!$result)
 		{
@@ -100,7 +98,6 @@
 			$n = "`uid`";
 			$v = "$uid";
 			$result = dbInsert('profilevisible',$n,$v);
-
 			
 			$msg = '<font color=green><b>Thanks for your registration, now you will login as a member</b></font>';
 			$url = 'index.php';

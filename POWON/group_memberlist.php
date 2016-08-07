@@ -3,6 +3,7 @@
  * group member list
  */
 include './common/common.php';
+include 'logincheck.php';
 
 //判断ID是否存在
 if(empty($_GET['gid']) || !is_numeric($_GET['gid']))
@@ -19,8 +20,16 @@ if(empty($_GET['gid']) || !is_numeric($_GET['gid']))
 
 $result = dbSelect('gmembers','uid,approved,admin','uid='.$_COOKIE['uid'].' and gid='.$groupId.'','',1);
 $approved = $result[0]['approved'];
-$admin = $result[0]['admin'];
-if(!$result || $approved==0)
+$isadmin = isAdmin();
+$result = dbSelect('groups','owner','gid='.$groupId.'','',1);
+$owner = $_COOKIE['uid']==(int)$result[0]['owner'];
+if($isadmin||$owner){
+    $admin=1;
+}else{
+    $admin=0;
+}
+
+if((!$result || $approved==0)&&!$admin)
 {
     $msg = '<font color=red><b>You are not a member of the group<br>please apply for admission</b></font>';
     $url = $_SERVER['HTTP_REFERER'];

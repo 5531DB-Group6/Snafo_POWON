@@ -85,8 +85,8 @@
                                 <!--{loop $PendingList $key $val}-->
                                 <tr style="width:80px;height:100px">
                                     <th style="width:80px;height:100px;text-align: center;">
-                                        <a href="group_memberlist.php?gid={$OnGid}" title="open in new window" target="_blank"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
-                                        <h1 class="xs2"><a href="group_memberlist.php?gid={$OnGid}" class="xst" >{$val['username']}</a></h1>
+                                        <a href="member_home.php?uid={$val['uid']}" title="open in new window" target="_blank"><img src="{$val['picture']}" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
+                                        <h1 class="xs2"><a href="member_home.php?uid={$val['uid']}" class="xst" >{$val['username']}</a></h1>
                                     </th>
                                     <td class="common">
                                         <a></a>

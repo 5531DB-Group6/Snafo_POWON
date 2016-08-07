@@ -3,6 +3,7 @@
  * Friend requests
  */
 	include './common/common.php';
+	include 'logincheck.php';
 	
 	//判断用户是否登录
 	if(empty($_COOKIE['uid'])){
@@ -38,7 +39,7 @@
 	}
 
 	//读取用户签名
-	$result=DBselect('user','*', 'uid='.$_COOKIE['uid'].' and status=0','',1);
+	$result=DBselect('user','*', 'uid='.$_COOKIE['uid'].' and allowlogin=0','',1);
 	if(!$result){
 
 		$msg = '<font color=red><b>用户不存在或已被管理员禁止</b></font>';

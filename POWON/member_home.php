@@ -4,17 +4,8 @@
  */
 
 include './common/common.php';
+include 'logincheck.php';
 
-//判断用户是否登录
-if(empty($_COOKIE['uid']))
-{
-    $msg = '<font color=red><b>You have not logged in</b></font>';
-    $url = $_SERVER['HTTP_REFERER'];
-    $style = 'alert_error';
-    $toTime = 3000;
-    include 'notice.php';
-    exit;
-}
 
 $uid = $_GET['uid'];
 
@@ -48,15 +39,26 @@ if(empty($User)) {
     $ubirthday = $User[0]['birthday'];
     $uplace = $User[0]['region'];
     $uprofiession = $User[0]['profession'];
+    $dateofregistraion = formatTime($User[0]['regtime']);
 }
 
 $Friend = dbSelect('friend','uid,approved,type','uid='.$_COOKIE['uid'].' and fid='.$uid.'','',1);
 $friendApp = $Friend[0]['approved'];
 $friendType = $Friend[0]['type'];
 
+$isadmin = isAdmin();
+
 // profile visibility
-$visible = dbSelect('profilevisible','*','uid='.$uid.'','',1);
-//
+$visiblelevel = dbSelect('profilevisible','*','uid='.$uid.'','',1);
+$visiblepermission = dbSelect('profilevisiblemember','*','uid='.$uid.' and tid='.$_COOKIE['uid'].'');
+$firstnamevisible = (($friendApp==1 && $visiblelevel[0]['firstname_visible']==1 && ($visiblepermission[0]['firstname_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['firstname_visible']==2 || $isadmin);
+$lastnamevisible = (($friendApp==1 && $visiblelevel[0]['lastname_visible']==1 && ($visiblepermission[0]['lastname_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['lastname_visible']==2 || $isadmin);
+$sexvisible = (($friendApp==1 && $visiblelevel[0]['sex_visible']==1 && ($visiblepermission[0]['sex_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['sex_visible']==2 || $isadmin);
+$bdayvisible = (($friendApp==1 && $visiblelevel[0]['bday_visible']==1 && ($visiblepermission[0]['bday_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['bday_visible']==2 || $isadmin);
+$addressvisible = (($friendApp==1 && $visiblelevel[0]['address_visible']==1 && ($visiblepermission[0]['address_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['address_visible']==2 || $isadmin);
+$placevisible = (($friendApp==1 && $visiblelevel[0]['place_visible']==1 && ($visiblepermission[0]['place_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['place_visible']==2 || $isadmin);
+$professionvisible = (($friendApp==1 && $visiblelevel[0]['profession_visible']==1 && ($visiblepermission[0]['profession_visible']==1||empty($visiblepermission))) || $visiblelevel[0]['profession_visible']==2 || $isadmin);
+
 
 $FriendRequest = dbSelect('friend','uid,approved,type','fid='.$_COOKIE['uid'].' and uid='.$uid.' and approved=0','',1);
 

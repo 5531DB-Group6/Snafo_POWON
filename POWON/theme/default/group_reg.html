@@ -27,6 +27,10 @@
                                             <td><input type="text" id="5sMVeV" onblur="checkRegOut('5sMVeV','Please enter group name');" onfocus="checkReg('5sMVeV')" name="groupname" class="px" autocomplete="off" size="25" maxlength="15"/></td>
                                             <td class="tipcol"><i id="tip_5sMVeV" class="p_tip">consist of 3 to 12 characters</i></td>
                                         </tr>
+                                        <tr>
+                                            <th>Group description:</th>
+                                            <td><input type="text" name="groupdescription" class="px" autocomplete="off" size="25" maxlength="15"/></td>
+                                        </tr>
                                     </table>
                                 </div>
                             </div>

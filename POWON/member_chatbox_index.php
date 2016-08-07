@@ -14,7 +14,7 @@ if(empty($_COOKIE['uid']))
 $uid = $_GET['uid'];
 
 if ($uid == $_COOKIE['uid']){
-    header('location:home.php');
+    header('location:group_postlist.php');
 
 }
 

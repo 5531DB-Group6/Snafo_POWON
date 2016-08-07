@@ -85,8 +85,8 @@
                                 <?php if(is_array($PendingList)){foreach($PendingList AS $key=>$val) { ?>
                                 <tr style="width:80px;height:100px">
                                     <th style="width:80px;height:100px;text-align: center;">
-                                        <a href="group_memberlist.php?gid=<?php echo $OnGid; ?>" title="open in new window" target="_blank"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
-                                        <h1 class="xs2"><a href="group_memberlist.php?gid=<?php echo $OnGid; ?>" class="xst" ><?php echo $val['username']; ?></a></h1>
+                                        <a href="member_home.php?uid=<?php echo $val['uid']; ?>" title="open in new window" target="_blank"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
+                                        <h1 class="xs2"><a href="member_home.php?uid=<?php echo $val['uid']; ?>" class="xst" ><?php echo $val['username']; ?></a></h1>
                                     </th>
                                     <td class="common">
                                         <a></a>

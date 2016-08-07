@@ -12,7 +12,7 @@
     <div id="pt" class="bm cl">
         <div class="z"><a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a><em>&raquo;</em><a href="group.php">Group</a><em>&raquo;</em><a href="group_postlist.php?gid=<?php echo $groupId; ?>"><?php echo $OnGname; ?></a><em>&raquo;</em>Add Post</div>
     </div>
-    <form method="post" autocomplete="off" id="postform" action="group_addc.php">
+    <form method="post" autocomplete="off" id="postform" action="group_addc.php" enctype="multipart/form-data">
         <div id="ct" class="ct2_a ct2_a_r wp cl">
             <div class="mn">
                 <div class="bm bw0 cl" id="editorbox">
@@ -23,10 +23,32 @@
                     <div id="postbox">
                         <div class="pbt cl">
                             <div class="z">
-                                <span><input type="text" name="subject" id="subject" class="px" onkeyup="showLength(this,'checklen',80);" style="width: 25em" tabindex="1" /></span>
+                                <span><b>Title </b><input type="text" name="subject" id="subject" class="px" onkeyup="showLength(this,'checklen',80);" style="width: 25em" tabindex="1" /></span>
                                 <span id="subjectchk">Your can still enter another <strong id="checklen">80</strong> Characters </span>
                             </div>
                         </div>
+
+                        <div id = 'picupload'>
+                            <h2 class="xs2">Add image</h2>
+                            <input name="pic" type="file" style="height:23px; width:300px;" />
+                            <br/>
+                        </div>
+                        <div><br/></div>
+
+                        <?php if($voteNum>0){?>
+                        <div id = 'optioncontent'>
+                            <h2 class="xs2">Enter Vote Option Contents</h2>
+                            <?php
+                            for($i=1;$i<=$voteNum;$i++){
+                             ?>
+                            Option <?php echo $i; ?>: <input type="text" name="option<?php echo $i; ?>" class="px" />
+                            <br/>
+                            <?php
+                            }
+                             ?>
+                        </div>
+                        <div><br/></div>
+                        <?php }?>
 
                         <div id="e_body_loading">
                             <script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
@@ -34,20 +56,51 @@
                             <textarea  class="ckeditor"  name="content"  id="editor1"></textarea>
                         </div>
 
+
+
                         <input type="hidden" id="gid" name="gid" value="<?php echo $groupId; ?>" />
-                        <div>
-                            <input type="checkbox" name="deletelater" value="false">
-                            Delete in  <input type="number" min="1" name="hourlater"> hour <input type="number" min="1" name="minutelater"> minutes <br>
-                        </div>
+                        <input type="hidden" id="voteNum" name="voteNum" value="<?php echo $voteNum; ?>" />
                         <div class="mtm mbm pnpost">
-                            <button type="submit" id="postsubmit" class="pn pnc" value="true" name="topicsubmit">
+                            <button type="submit" id="topicsubmit" class="pn pnc" value="true" name="topicsubmit">
                                 <span>Add Post</span>
                             </button>
                         </div>
 
-
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="bm bmw cl">
+            <div class="bm_h cl">
+                <th>
+                    <a><b>Permissions</b></a>
+                </th>
+            </div>
+            <div id="groupmemberlist" class="bm_c">
+                <table cellspacing="0" cellpadding="0" class="fl_tb">
+                    <?php if(is_array($MemberList)){foreach($MemberList AS $key=>$val) { ?>
+                    <?php if($key%3==0 and $key!=0){?><tr> </tr><?php }?>
+                    <td style="width:80px;height:100px;text-align: center;" >
+                        <a><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
+                    </td>
+                    <td>
+                        <select name="permission<?php echo $val['uid']; ?>" id="permission<?php echo $val['uid']; ?>" class="ps">
+                            <option value="0" >cannot view</option>
+                            <option value="1" >view only</option>
+                            <option value="2" selected="selected">view and comment</option>
+                            <option value="3">view and add/link to other contents</option>
+                        </select>
+                    </td>
+                    <?php }}?>
+                    <?php if($key%3!=0){?>
+                    <?php
+                    for($i = 1;$i <= $MemberListRest; $i++){
+                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
+                    }
+                    ?>
+                    <?php }?>
+                </table>
             </div>
         </div>
     </form>
@@ -99,6 +152,7 @@
         }
 
     </script>
+
 </div>
 <!--LIST end-->
 

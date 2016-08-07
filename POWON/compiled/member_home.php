@@ -24,7 +24,7 @@
                             <a href="member_home.php?uid=<?php echo $uid; ?>" title="Information">Information</a>
                         </dd>
                         <dd>
-                            <a href="member_home.php?uid=<?php echo $uid; ?>" title="Post List">Post List</a>
+                            <a href="member_postlist.php?uid=<?php echo $uid; ?>" title="Post List">Post List</a>
                         </dd>
                     </dl>
                 </div>
@@ -45,7 +45,7 @@
 
                             <tr>
                                 <th>First Name</th>
-                                <?php if(( ($friendApp==1 && $visible[0]['firstname_visible']==1) || $visible[0]['firstname_visible']==2) ){?>
+                                <?php if($firstnamevisible){?>
                                 <td>
                                     <?php echo $User[0]['firstname']; ?>
                                 </td>
@@ -53,7 +53,7 @@
                             </tr>
                             <tr>
                                 <th>Last Name</th>
-                                <?php if(( ($friendApp==1 && $visible[0]['lastname_visible']==1) || $visible[0]['lastname_visible']==2) ){?>
+                                <?php if($lastnamevisible){?>
                                 <td>
                                     <?php echo $User[0]['lastname']; ?>
                                 </td>
@@ -61,7 +61,7 @@
                             </tr>
                             <tr>
                                 <th>Gender</th>
-                                <?php if(( ($friendApp==1 && $visible[0]['sex_visible']==1) || $visible[0]['sex_visible']==2) ){?>
+                                <?php if($sexvisible){?>
                                 <td>
                                     <?php echo $ugender; ?>
                                 </td>
@@ -69,7 +69,7 @@
                             </tr>
                             <tr>
                                 <th>Date of birth</th>
-                                <?php if(( ($friendApp==1 && $visible[0]['bday_visible']==1) || $visible[0]['bday_visible']==2) ){?>
+                                <?php if($bdayvisible){?>
                                 <td>
                                     <?php echo $ubirthday; ?>
                                 </td>
@@ -77,19 +77,33 @@
                             </tr>
                             <tr>
                                 <th>Profession</th>
-                                <?php if(( ($friendApp==1 && $visible[0]['profession_visible']==1) || $visible[0]['profession_visible']==2) ){?>
+                                <?php if($professionvisible){?>
                                 <td>
                                     <?php echo $User[0]['profession']; ?>
                                 </td>
                                 <?php }?>
                             </tr>
                             <tr>
-                                <th>Place</th>
-                                <?php if(( ($friendApp==1 && $visible[0]['place_visible']==1) || $visible[0]['place_visible']==2) ){?>
+                                <th>Address</th>
+                                <?php if($addressvisible){?>
+                                <td>
+                                    <?php echo $User[0]['address']; ?>
+                                </td>
+                                <?php }?>
+                            </tr>
+                            <tr>
+                                <th>Region</th>
+                                <?php if($placevisible){?>
                                 <td>
                                     <?php echo $uplace; ?>
                                 </td>
                                 <?php }?>
+                            </tr>
+                            <tr>
+                                <th>Date of Registration</th>
+                                <td>
+                                    <?php echo $dateofregistraion; ?>
+                                </td>
                             </tr>
 
                             <tr><th><br/></th></tr>

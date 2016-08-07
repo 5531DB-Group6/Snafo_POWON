@@ -62,11 +62,25 @@
                     </div>
                     <?php }?>
                 </div>
-
+                <form method="post" autocomplete="off" id="postform" action="group_postlist.php?gid=<?php echo $groupId; ?>">
                 <div id="pgt" class="bm bw0 pgs cl">
-                    <span class="pgb y"  ><a href="index.php">Back</a></span>
-                    <a href="group_addc.php?gid=<?php echo $OnGid; ?>" id="newspecial" title="发新帖"><img src="<?php echo $domain_resource; ?>/images/pn_post.png" alt="发新帖" /></a>
+                    <button type="submit" name="newpostsubmitbtn" id="newpostsubmitbtn" value="true" class="pn pnc" /><strong>Add Post</strong></button>
+                    <span ><b>Vote Set:</b>
+                            <select name="vote" id="vote" class="ps">
+                            <option value="0"  selected="selected">no vote option</option>
+                            <option value="2">2 options</option>
+                            <option value="3">3 options</option>
+                            <option value="4">4 options</option>
+                            <option value="5">5 options</option>
+                            <option value="6">6 options</option>
+                            <option value="7">7 options</option>
+                            <option value="8">8 options</option>
+                            <option value="9">9 options</option>
+                            <option value="10">10 options</option>
+                        </select>
+                    </span>
                 </div>
+                </form>
 
                 <div id="threadlist" class="tl bm bmw">
                     <div class="th">
@@ -90,7 +104,7 @@
                                         <a href="group_post_detail.php?pid=<?php echo $val['pid']; ?>" title="<?php if($val['addtime']>$newt){?>有新回复 - <?php }?>新窗口打开" target="_blank"><img src="<?php echo $domain_resource; ?>/images/folder_<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>.gif" /></a>
                                     </td>
                                     <th class="<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>">
-                                        <a href="group_post_detail.php?pid=<?php echo $val['pid']; ?>" class="xst" <?php if(!empty($val['style'])){?>style="color:<?php echo $val['style']; ?>"<?php }?>><?php echo $val['title']; ?></a>
+                                        <a href="group_post_detail.php?pid=<?php echo $val['pid']; ?>" class="xst"><?php echo $val['title']; ?></a>
                                     </th>
                                     <td class="by">
                                         <cite><?php echo getUserName($val['authorid']); ?></cite>
@@ -107,9 +121,6 @@
                     </div>
                 </div>
 
-                <div class="bm bw0 pgs cl">
-                    <span  class="pgb y"><a href="index.php">Back</a></span>
-                    <a href="group_addc.php?gid=<?php echo $OnGid; ?>" id="newspecialtmp" title="发新帖"><img src="<?php echo $domain_resource; ?>/images/pn_post.png" alt="发新帖" /></a></div>
                 <div style="width:800px; margin:0 auto; padding:10px 0px; text-align:right">
                     <?php echo fpage($zCount,$linum,[8,3,4,5,6,7,0,1,2]); ?>
                 </div>
