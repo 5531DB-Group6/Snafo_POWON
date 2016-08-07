@@ -88,9 +88,9 @@
                         <td class="plc">
                             <div class="pi">
                                 <div id="fj" class="y">
-                                    <label class="z">电梯直达</label>
-                                    <input id="louceng" type="text" class="px p_fre z" size="2" title="跳转到指定楼层" />
-                                    <a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层"><img src="<?php echo $domain_resource; ?>/images/fj_btn.png" onclick="golouceng()" alt="跳转到指定楼层" class="vm" /></a>
+                                    <label class="z">To</label>
+                                    <input id="louceng" type="text" class="px p_fre z" size="2" title="to reply level" />
+                                    <a href="javascript:;" id="fj_btn" class="z" title="to reply level"><img src="<?php echo $domain_resource; ?>/images/fj_btn.png" onclick="golouceng()" alt="跳转到指定楼层" class="vm" /></a>
                                     <script>
                                         function golouceng(){
                                             location.href='member_post_detail.php?pid=<?php echo $Id; ?>#post_'+document.getElementById('louceng').value;
@@ -98,7 +98,7 @@
                                     </script>
                                 </div>
                                 <strong>
-                                    <a href="member_post_detail.php?pid=<?php echo $Id; ?>" id="postnum4">楼主</a>
+                                    <a href="member_post_detail.php?pid=<?php echo $Id; ?>" id="postnum4">Post Owner</a>
                                 </strong>
                                 <div class="pti">
                                     <div class="pdbt">
