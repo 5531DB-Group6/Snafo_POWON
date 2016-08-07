@@ -3,6 +3,8 @@
 
 include './common/common.php';
 
+include 'logincheck.php';
+
 if(empty($_COOKIE['uid']))
 {
     $msg = '<font color=red><b>You have not logged in</b></font>';

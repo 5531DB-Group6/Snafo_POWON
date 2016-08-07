@@ -3,7 +3,7 @@
 		<div class="hdc cl">
 			<h2><a href="./" title="<?php echo $title; ?>"><img src="<?php echo $domain_resource; ?>/images/logo.jpg" height="80" border="0" /></a></h2>
 			<?php if($thispage!='logout.php'){?>
-				<?php if($_COOKIE['uid']){?>
+				<?php if($_COOKIE['uid'] && $_COOKIE['username']){?>
 				<div id="um">
 					<div class="avt y"><a href="home_tx.php"><img src="<?php echo $GGpicture; ?>" /></a></div>
 					<p>

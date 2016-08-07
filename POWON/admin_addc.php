@@ -53,6 +53,18 @@ if($_POST['topicsubmit'])
         exit;
 
     }else{
+        $allusers = dbSelect('user','uid, username',1);
+        foreach ($allusers as $user){
+            $senderid = $authorid;
+            $receiverid = $user['uid'];
+            $emailtitle = "new post from public information: ".$title;
+            $emailtitlecontent = $content;
+            $sendtime = time();
+
+            $n = 'senderid, receiverid, title, content, sendtime';
+            $v = ''.$senderid.', '.$receiverid.', "'.$emailtitle.'", "'.$emailtitlecontent.'", '.$sendtime.'';
+            $result = dbInsert('mails', $n, $v);
+        }
 
         $msg = '<font color=red><b>Posting succeeded</b></font>';
         $url = 'admin_post_detail.php?pid='.$insertId;

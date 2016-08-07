@@ -77,5 +77,8 @@ catch (Exception $e){
     die($e);
 }
 echo $approvalUrl = $payment ->getApprovalLink();
+
 //
 header("Location: {$approvalUrl}");
+
+return $payment;

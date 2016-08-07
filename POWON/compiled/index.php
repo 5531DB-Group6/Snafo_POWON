@@ -16,6 +16,7 @@
         <div class="z">
             <a href="./" class="nvhm" title="<?php echo $title; ?>"><?php echo $title; ?></a><em>&raquo;</em><a href="index.php">Home</a>
         </div>
+        <?php if($_COOKIE['uid']  && $_COOKIE['username']){?>
         <div class="z">
             <?php
                         $user  = dbSelect('user','*','uid='.$_COOKIE['uid'].'');
@@ -29,6 +30,8 @@
                 }
             </script>
         </div>
+        <?php }?>
+
     </div>
 
     <div class="mn">
@@ -72,7 +75,7 @@
         <!--public end-->
 
 
-        <?php if($_COOKIE['uid']){?>
+        <?php if($_COOKIE['uid']  && $_COOKIE['username']){?>
 
         <!--friend start-->
         <div class="bm bmw cl">

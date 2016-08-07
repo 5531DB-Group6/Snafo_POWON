@@ -22,6 +22,7 @@ if($_POST['topicsubmit'])
     $content = strMagic($_POST['content']);		//内容
     $addtime = time();			//发表时间
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
+    $futuredelete = "";
 
     if(empty($title)) {
         $msg = '<font color=red><b>please add a title</b></font>';
@@ -48,6 +49,19 @@ if($_POST['topicsubmit'])
         exit;
 
     }else{
+
+        if(isset($_POST['deletelater'])) {
+            $hourlater = intval($_POST['hourlater']) ;
+            $minutelater =intval($_POST['minutelater']) ;
+            if(is_int($hourlater) && is_int($minutelater)){
+                $deletetime = time()+$hourlater*60*60+$minutelater*60;
+                $deleteresult = dbInsert('upostdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
+                if($deleteresult){
+                    $futuredelete=" will be deleted in ".$hourlater." hour ".$minutelater." minute later";
+                }
+            }
+        }
+
         $permission = $_POST['permissionpublic'];
         switch ($permission) {
             case 0:
@@ -135,7 +149,7 @@ if($_POST['topicsubmit'])
 
 
 
-        $msg = '<font color=red><b>Posting succeeded</b></font>';
+        $msg = '<font color=red><b>Posting succeeded</b></font>'.$futuredelete;
         $url = 'home_postlist.php';
         $style = 'alert_right';
         $toTime = 3000;

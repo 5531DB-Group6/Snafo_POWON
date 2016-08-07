@@ -78,6 +78,8 @@
                                 <td class="by">Post Time</td>
                                 <td class="by"><?php if(admin){?>Kick out<?php }?></td>
                                 <td class="by"><?php if(admin){?>Upgrade<?php }?></td>
+                                <td class="by">send gift</td>
+
                             </tr>
                         </table>
                     </div>
@@ -114,6 +116,11 @@
                                     </td>
                                     <td class="by">
                                         <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&upg=1"><font color="green"><?php if($admin==1 and $val['admin']!=1){?>Upgrade<?php }?></font></a></h2>
+                                    </td>
+                                    <td class="by">
+                                        <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">
+                                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                                       </a></h2>
                                     </td>
                                 </tr>
                                 <?php }}?>

@@ -60,6 +60,10 @@
 
                         <input type="hidden" id="gid" name="gid" value="<?php echo $groupId; ?>" />
                         <input type="hidden" id="voteNum" name="voteNum" value="<?php echo $voteNum; ?>" />
+                        <div>
+                            <input type="checkbox" name="deletelater" value="false">
+                            Delete in  <input type="number" min="1" name="hourlater"> hour <input type="number" min="1" name="minutelater"> minutes <br>
+                        </div>
                         <div class="mtm mbm pnpost">
                             <button type="submit" id="topicsubmit" class="pn pnc" value="true" name="topicsubmit">
                                 <span>Add Post</span>

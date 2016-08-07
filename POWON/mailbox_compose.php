@@ -24,7 +24,6 @@ if($_POST['mailsubmit'])
     $senderid = $_COOKIE['uid'];
     $receivername = strMagic($_POST['sendto']);
     $title = strMagic($_POST['subject']);
-    $sendto = strMagic($_POST['sendto']);
     $content = strMagic($_POST['content']);
     $sendtime = time();
 

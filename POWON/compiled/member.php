@@ -91,6 +91,9 @@
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
+                        <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">
+                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                        </a></h2>
                     </td>
                     <?php }}?>
                     <?php if(!empty($FriendList)){?>
@@ -108,6 +111,9 @@
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
+                        <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">
+                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                        </a></h2>
                     </td>
                     <?php }}?>
                     <?php if(!empty($FamilyList)){?>
@@ -125,6 +131,9 @@
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
+                        <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">
+                            <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">
+                        </a></h2>
                     </td>
                     <?php }}?>
                     <?php if(!empty($ColleagueList)){?>

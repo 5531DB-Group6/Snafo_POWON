@@ -153,6 +153,8 @@ if($_POST['replysubmit'])
     $content = strMagic($_POST['message']);		//内容
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
     $addtime = time();				//发表时间
+    $futuredelete = "";
+
 
     if (empty($content) && $picture==null){
         $msg = '<font color=red><b>please add content</b></font>';
@@ -167,6 +169,9 @@ if($_POST['replysubmit'])
     $v='0, '.$parentid.', '.$ReplyAuthorid.',"'.$title.'", "'.$content.'","'.$picture.'", '.$addtime.'';
     $result = dbInsert('uposts', $n, $v);
 
+    $insert_id = dbSelect('uposts','pid','title="'.$title.'"','pid desc',1);
+    $insertId = $insert_id[0]['pid'];
+
     if(!$result)
     {
         $msg = '<font color=red><b>Reply failed，please contact the administrator</b></font>';
@@ -176,14 +181,24 @@ if($_POST['replysubmit'])
         include 'notice.php';
         exit;
     }else{
-        //$money = REWARD_H;	//回帖赠送积分
-        //$result = dbUpdate('user', "grade=grade+{$money}", 'uid='.$_COOKIE['uid'].'');
+
+        if(isset($_POST['deletelater'])) {
+            $hourlater = intval($_POST['hourlater']) ;
+            $minutelater =intval($_POST['minutelater']) ;
+            if(is_int($hourlater) && is_int($minutelater)){
+                $deletetime = time()+$hourlater*60*60+$minutelater*60;
+                $deleteresult = dbInsert('upostdelete','pid,deletetime',''.$insertId.','.$deletetime.'');
+                if($deleteresult){
+                    $futuredelete=" will be deleted in ".$hourlater." hour ".$minutelater." minute later";
+                }
+            }
+        }
 
         //更新帖子的回复数量[replycount]
         $result = dbUpdate('uposts', 'replycount=replycount+1', 'pid='.$parentid.'');
 
         //更新版块表的回复数量[replycount]
-        $msg = '<font color=red><b>Reply succeeded</b></font>';
+        $msg = '<font color=red><b>Reply succeeded</b></font>'.$futuredelete;
         $url = 'member_post_detail.php?pid='.$Id.'';
         $style = 'alert_right';
         $toTime = 3000;

@@ -65,7 +65,11 @@
                                     <div class="pbt cl">
                                         <div class="z">
                                             <span>To <span style="padding: 0 10px"></span>
+                                                <!--{if !empty($replyto)}-->
+                                                <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" value="{$replyto['username']}" />
+                                                <!--{else}-->
                                                 <input type="text" name="sendto" id="sendto"  style="font-size: 10pt; height: 30px; width:560px;" tabindex="1" placeholder="username" />
+                                                <!--{/if}-->
                                             </span>
                                         </div> </br></br>
                                         <div class="z">

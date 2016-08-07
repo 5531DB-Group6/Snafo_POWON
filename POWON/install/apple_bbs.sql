@@ -43,11 +43,18 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
-CREATE TABLE IF NOT EXISTS `bbs_postdelete` (
+CREATE TABLE IF NOT EXISTS `bbs_gpostdelete` (
   `pid` int(10) NOT NULL,
   `deletetime` int(12) NOT NULL,
   PRIMARY KEY (`pid`),
   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
+
+CREATE TABLE IF NOT EXISTS `bbs_upostdelete` (
+  `pid` int(10) NOT NULL,
+  `deletetime` int(12) NOT NULL,
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_mails` (
@@ -290,7 +297,6 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
   `udertype` tinyint(2) NOT NULL,
   `regtime` int(12) NOT NULL,
   `lasttime` int(12) NOT NULL,
-   `expiretime` int(12) NOT NULL;
   `picture` varchar(255) NOT NULL DEFAULT 'public/images/avatar_blank.gif',
   `firstname` char(32) DEFAULT NULL,
   `lastname` char(32) DEFAULT NULL,
