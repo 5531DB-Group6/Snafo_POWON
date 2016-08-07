@@ -4,6 +4,50 @@
  * 公共函数库																							|
  * -------------------------------------------------------------------------------------------------+
  */
+    /**
+     * calculate age range
+     */
+    function age($birthday){
+        $birthyr = explode('-',$birthday);
+        $currentyr = explode('-',formatTime(time()));
+        $age = (int)$currentyr[0]-(int)$birthyr[0];
+        if(0 <= $age && $age< 5){
+            return '0-5 years old';
+        }elseif(5 <= $age && $age< 10) {
+            return '5-10 years old';
+        }elseif(10 <= $age && $age< 15) {
+            return '10-15 years old';
+        }elseif(15 <= $age && $age< 20) {
+            return '15-20 years old';
+        }elseif(20 <= $age && $age< 25) {
+            return '20-25 years old';
+        }elseif(25 <= $age && $age< 30) {
+            return '25-30 years old';
+        }elseif(30 <= $age && $age< 35) {
+            return '30-35 years old';
+        }elseif(35 <= $age && $age< 40) {
+            return '35-40 years old';
+        }elseif(40 <= $age && $age< 45) {
+            return '40-45 years old';
+        }elseif(45 <= $age && $age< 50) {
+            return '45-50 years old';
+        }elseif(50 <= $age && $age< 55) {
+            return '50-55 years old';
+        }elseif(55 <= $age && $age< 60) {
+            return '55-60 years old';
+        }else{
+            return 'above 60 years old';
+        }
+    }
+
+    /**
+     * admincheck
+     */
+    function isAdmin(){
+        $admin = dbSelect('user','udertype','uid='.$_COOKIE['uid'].'');
+        return $admin[0]['udertype'];
+    }
+
 
 	/**
 	 * 魔术转译
@@ -81,13 +125,13 @@
 		$dur = $nowTime - $showTime;	//当前时间 - 帖子时间
 		if ($dur < 60)
 		{
-			$overTime = $dur . '秒前';
+			$overTime = $dur . 'seconds ago';
 		} else if ($dur < 3600) {
-			$overTime = floor($dur/60) . '分钟前';
+			$overTime = floor($dur/60) . ' minutes ago';
 		} else if ($dur < 86400) {
-			$overTime = floor($dur/3600) . '小时前';
+			$overTime = floor($dur/3600) . ' hours ago';
 		} else if ($dur < 259200) {//3天内
-			$overTime = floor($dur/86400) . '天前';
+			$overTime = floor($dur/86400) . ' days ago';
 		} else {
 			$overTime = date('Y-m-d H:i:s', $showTime);
 		}
@@ -157,7 +201,7 @@
 	 * @param Integer $len 共len个
 	 * @return String
 	 */
-	function chineseSubstr($str, $start, $len)
+	function stringSubstr($str, $start, $len)
 	{
 		$strlen = $start+$len;
 		$str = strip_tags($str);

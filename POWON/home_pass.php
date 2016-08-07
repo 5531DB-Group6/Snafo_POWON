@@ -4,7 +4,7 @@
  */
 
 	include './common/common.php';
-
+	include 'logincheck.php';
 	//判断用户是否登录
 	if(empty($_COOKIE['uid']))
 	{

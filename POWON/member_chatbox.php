@@ -6,6 +6,8 @@
  * Time: 5:05 PM
  */
 
+include 'logincheck.php';
+
 if(empty($_COOKIE['uid']))
 {
     $msg = '<font color=red><b>You have not logged in</b></font>';

@@ -7,14 +7,19 @@ include './common/common.php';
 $title = 'Home - ' . WEB_NAME;
 $menu = WEB_NAME;
 
+$publicpost = dbSelect('pposts','*','','pid desc');
+
 //判断用户是否登录
 if($_COOKIE['uid'])
 {
-    $UserList = dbSelect('user','uid,username,picture','uid<>'.$_COOKIE['uid'].'','username asc');
+    $isadmin = isAdmin();
+
+    $UserList = dbSelect('user','uid,username,picture','status!=1','username asc');
     $UserListRest = 8-count($UserList)%8;
+    $UserListRest = ($UserListRest ==8)? 0:$UserListRest;
 
     $select='u.uid as uid, u.username as username, u.picture as picture';
-    $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].'','u.username asc');
+    $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].' and u.status!=1','u.username asc');
     $FriendListRest = 8-count($FriendList)%8;
     $FriendListRest = ($FriendListRest ==8)? 0:$FriendListRest;
 

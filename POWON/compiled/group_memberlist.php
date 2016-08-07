@@ -90,8 +90,8 @@
                                     $LatestPost = dbSelect('gposts','pid, title,addtime','first=1 and gid='.$groupId.' and authorid='.$val['uid'].' and isdel = 0','pid desc');
                                 ?>
                                     <th style="width:80px;height:100px;text-align: center;">
-                                            <a href="group_memberlist.php?gid=<?php echo $OnGid; ?>" title="open in new window" target="_blank"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
-                                            <h1 class="xs2"><a href="group_memberlist.php?gid=<?php echo $OnGid; ?>" class="xst" ><?php echo $val['username']; ?></a></h1>
+                                            <a href="member_home.php?uid=<?php echo $val['uid']; ?>" title="open in new window" target="_blank"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
+                                            <h1 class="xs2"><a href="member_home.php?uid={$val['uid']" class="xst" ><?php echo $val['username']; ?></a></h1>
                                     </th>
                                     <td class="common">
                                         <a href="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium"><?php if(!empty($LatestPost)){?><?php echo $LatestPost[0]['title']; ?><?php }?></a>

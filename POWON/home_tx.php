@@ -4,17 +4,7 @@
  */
 
 	include './common/common.php';
-
-	//判断用户是否登录
-	if(empty($_COOKIE['uid']))
-	{
-		$msg = '<font color=red><b>您还没有登录</b></font>';
-		$url = $_SERVER['HTTP_REFERER'];
-		$style = 'alert_error';
-		$toTime = 3000;
-		include 'notice.php';
-		exit;
-	}
+	include 'logincheck.php';
 
 	//修改头像
 	if($_POST['profilesubmitbtn'])
@@ -25,7 +15,7 @@
 			setcookie('picture',$picture,2592000);
 			header('location:home_tx.php');
 		}else{
-		$msg = '<font color=red><b>错误，请联系管理员</b></font>';
+		$msg = '<font color=red><b>error，please contact the administrator</b></font>';
 		$url = $_SERVER['HTTP_REFERER'];
 		$style = 'alert_error';
 		$toTime = 3000;
@@ -35,10 +25,10 @@
 	}
 
 	//读取头像
-	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and allowlogin=0','',1);
+	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and status!=2','',1);
 	if(!$result)
 	{
-		$msg = '<font color=red><b>用户不存在或已被管理员禁止</b></font>';
+		$msg = '<font color=red><b>the user dose not exist or has been baned by the administrator</b></font>';
 		$url = $_SERVER['HTTP_REFERER'];
 		$style = 'alert_error';
 		$toTime = 3000;

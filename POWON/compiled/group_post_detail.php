@@ -18,18 +18,10 @@
 
 
     <div id="ct" class="wp cl">
-        <div id="pgt" class="pgs mbm cl pbm bbs">
-            <div class="pgt"></div>
-            <span class="y pgb" id="visitedforums"><a href="group_postlist.php?gid=<?php echo $groupId; ?>">Back to List</a></span>
-            <a id="newspecial" href="group_addc.php?gid=<?php echo $groupId; ?>" target="_blank" title="Add Post"><img src="<?php echo $domain_resource; ?>/images/pn_post.png" alt="Add Post" /></a>
-            <a id="post_reply" href="#f_pst" title="Reply"><img src="<?php echo $domain_resource; ?>/images/pn_reply.png" alt="Reply" /></a>
-        </div>
         <?php if($GuanLi){?>
         <div id="modmenu" class="xi2 pbm">
-            <a href="group_post_detail.php?pid=<?php echo $Id; ?>&del=1">删除主题</a><span class="pipe">|</span>
-            <a href="group_post_detail.php?pid=<?php echo $Id; ?>&istop=1">置顶</a><span class="pipe">|</span>
-            <a href="group_post_detail.php?pid=<?php echo $Id; ?>&style=1">高亮</a><span class="pipe">|</span>
-            <a href="group_post_detail.php?pid=<?php echo $Id; ?>&elite=1">精华</a><span class="pipe">|</span>
+            <a href="group_post_detail.php?pid=<?php echo $Id; ?>&del=1">Delete the Post</a>
+
         </div>
         <?php }?>
         <div id="postlist" class="pl bm">
@@ -77,7 +69,7 @@
                                         <strong><?php echo $U_sername; ?></strong>
                                         <em>currently online</em>
                                     </div>
-                                    <dl class="cl"><dt>reg time</dt><dd><?php echo $R_egtime; ?></dd><dt>grade</dt><dd><?php echo $G_rade; ?></dd><dt>last login</dt><dd><?php echo $L_asttime; ?></dd></dl>
+                                    <dl class="cl"><dt>reg time</dt><dd><?php echo $R_egtime; ?></dd><dt></dt><dd></dd><dt>last login</dt><dd><?php echo $L_asttime; ?></dd></dl>
                                     <div class="imicn">
                                         <a href="#" target="_blank" title="view info"><img src="<?php echo $domain_resource; ?>/images/userinfo.gif" alt="view info" /></a>
                                     </div>
@@ -90,7 +82,6 @@
                                     <img src="<?php echo $P_icture; ?>" class="max_pic" />
                                 </div>
                                 <p><em><?php echo userGroup($U_dertype); ?></em></p>
-                                <p><em><?php echo userGrade($G_rade); ?></em></p>
                             </div>
 
                         </td>
@@ -114,7 +105,7 @@
                                     </div>
                                     <div class="authi">
                                         <img class="authicn vm" id="authicon<?php echo $Id; ?>" src="<?php echo $domain_resource; ?>/images/online_admin.gif" />
-                                        <em id="authorposton<?php echo $Id; ?>">发表于 <?php echo $Addtime; ?></em>
+                                        <em id="authorposton<?php echo $Id; ?>">Posted on<?php echo $Addtime; ?></em>
                                         <!--<span class="pipe">|</span><a href="#">只看该作者</a>-->
                                     </div>
                                 </div>
@@ -138,6 +129,8 @@
                                         <tr>
                                             <td class="t_f" id="postmessage_<?php echo $Id; ?>">
                                                 <?php echo $Content; ?>
+                                                <br/>
+                                                <img src="<?php echo $Image; ?>" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
                                             </td>
                                         </tr>
                                     </table>
@@ -149,6 +142,27 @@
                                         <tr>
                                             <td class="t_f" id="postmessage_<?php echo $Id; ?>">
                                                 <?php echo $Content; ?>
+                                                <br/>
+                                                <img src="<?php echo $Image; ?>" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
+                                                <br/>
+                                                <?php if(!empty($voteoptions)){?>
+                                                <b>The result of the vote is</b><br/>
+                                                <?php if(is_array($voteoptions)){foreach($voteoptions AS $vkey=>$vval) { ?>
+                                                <?php
+                                            $vresult = 0;
+                                            if (is_array($voteresult)){
+                                                foreach($voteresult as $vrkey=>$vrval){
+                                                            if ($vkey == $vrval['vote']){
+                                                            $vresult = $vrval['votecount'];
+                                                            }
+                                                        }
+                                                    }
+                                                ?>
+                                                <?php echo $vval; ?>: <?php echo $vresult; ?> votes
+                                                <br/>
+
+                                                <?php }}?>
+                                                <?php }?>
                                             </td>
                                         </tr>
                                     </table>
@@ -163,13 +177,7 @@
                     </tr>
                     <tr>
                         <td class="plc plm">
-                            <?php if($Elite){?>
-                            <div class="modact">本主题已加入精华</div>
-                            <?php }?>
 
-                            <?php if($A_utograph){?>
-                            <div class="sign" style="max-height:100px;maxHeightIE:100px;"><?php echo $A_utograph; ?></div>
-                            <?php }?>
                         </td>
                     </tr>
                     <tr>
@@ -179,13 +187,13 @@
                                 <?php if($GuanLi){?>
                                 <span class="y">
 									<label for="manage5">
-									<a href="group_post_detail.php?pid=<?php echo $Id; ?>&del=1">删除</a><span class="pipe">|</span><a href="detail.php?id=<?php echo $Id; ?>&istop=1">置顶</a><span class="pipe">|</span><a href="detail.php?id=<?php echo $Id; ?>&elite=1">精华</a>
+									<a href="group_post_detail.php?pid=<?php echo $Id; ?>&del=1">delete</a>
 									</label>
 								</span>
                                 <?php }?>
                                 <div class="pob cl">
                                     <em>
-                                        <a class="fastre" href="#f_pst">回复</a>
+                                        <a class="fastre" href="#f_pst">Reply</a>
                                     </em>
                                 </div>
                             </div>
@@ -217,9 +225,9 @@
                                 <div class="i y">
                                     <div>
                                         <strong><?php echo $hval['username']; ?></strong>
-                                        <em>当前在线</em>
+                                        <em>online now</em>
                                     </div>
-                                    <dl class="cl"><dt>注册时间</dt><dd><?php echo formatTime($hval['regtime']); ?></dd><dt>积分</dt><dd><?php echo $hval['grade']; ?></dd><dt>最后登录</dt><dd><?php echo formatTime($hval['lasttime']); ?></dd></dl>
+                                    <dl class="cl"><dt>reg time</dt><dd><?php echo formatTime($hval['regtime']); ?></dd><dt></dt><dd></dd><dt>last login</dt><dd><?php echo formatTime($hval['lasttime']); ?></dd></dl>
                                     <div class="imicn">
                                         <a href="#" target="_blank" title="查看详细资料"><img src="<?php echo $domain_resource; ?>/images/userinfo.gif" alt="查看详细资料" /></a>
                                     </div>
@@ -232,7 +240,6 @@
                                     <img src="<?php echo $hval['picture']; ?>" class="max_pic" />
                                 </div>
                                 <p><em><?php echo userGroup($hval['udertype']); ?></em></p>
-                                <p><em><?php echo userGrade($hval['grade']); ?></em></p>
                             </div>
                         </td>
                         <td class="plc">
@@ -243,7 +250,7 @@
                                     </div>
                                     <div class="authi">
                                         <img class="authicn vm" id="authicon<?php echo $hval['id']; ?>" src="<?php echo $domain_resource; ?>/images/online_admin.gif" />
-                                        <em id="authorposton<?php echo $hval['id']; ?>">发表于 <span title="<?php echo formatTime($hval['addtime'],false); ?>"><?php echo getFormatTime($hval['addtime']); ?></span></em>
+                                        <em id="authorposton<?php echo $hval['id']; ?>">Posted on <span title="<?php echo formatTime($hval['addtime'],false); ?>"><?php echo getFormatTime($hval['addtime']); ?></span></em>
                                         <!--<span class="pipe">|</span><a href="#">只看该作者</a>-->
                                     </div>
                                 </div>
@@ -258,6 +265,8 @@
                                             <tr>
                                                 <td class="t_f" id="postmessage_<?php echo $hval['id']; ?>">
                                                     <?php echo $hval['content']; ?>
+                                                    <br/>
+                                                    <img src="<?php echo $hval['image']; ?>" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -268,9 +277,6 @@
                                     <div id="post_rate_div_<?php echo $hval['id']; ?>"></div>
                                 </div>
                             </div>
-                            <?php if($hval['autograph']){?>
-                            <div class="sign" style="max-height:100px;maxHeightIE:100px;"><?php echo $hval['autograph']; ?></div>
-                            <?php }?>
                         </td>
                     </tr>
                     <tr>
@@ -280,16 +286,16 @@
                         <td class="pls"></td>
                         <td class="plc">
                             <div class="po">
-                                <?php if($GuanLi){?>
+                                <?php if($GuanLi or $hval[authorid]==$_COOKIE['uid']){?>
                                 <span class="y">
 									<label for="manage5">
-									<a href="detail.php?id=<?php echo $Id; ?>&hid=<?php echo $hval['id']; ?>&delht=1">删除</a><span class="pipe">|</span><a href="detail.php?id=<?php echo $Id; ?>&hid=<?php echo $hval['id']; ?>&istopht=1">置顶</a><span class="pipe">|</span><a href="detail.php?id=<?php echo $Id; ?>&hid=<?php echo $hval['id']; ?>&isdislpay=1">屏蔽</a>
+									<a href="group_post_detail.php?pid=<?php echo $Id; ?>&hid=<?php echo $hval['pid']; ?>&delht=1">delete</a>
 									</label>
 								</span>
                                 <?php }?>
                                 <div class="pob cl">
                                     <em>
-                                        <a class="fastre" href="#f_pst">回复</a>
+                                        <a class="fastre" href="#f_pst">Reply</a>
                                     </em>
                                 </div>
                             </div>
@@ -308,15 +314,33 @@
         <div class="pgs mtm mbm cl">
 			<span class="pgb y" id="visitedforumstmp">
 			<a href="group_postlist.php?gid=<?php echo $groupId; ?>">Back to List</a></span>
-            <a id="newspecialtmp" href="gourp_addc.php?gid=<?php echo $groupId; ?>" target="_blank" title ="Add Post"><img src="<?php echo $domain_resource; ?>/images/pn_post.png" alt="Add Post" /></a>
-            <a id="post_replytmp" href="#f_pst" title="Reply"><img src="<?php echo $domain_resource; ?>/images/pn_reply.png" alt="Reply" /></a>
+            <form method="post" autocomplete="off" id="postform" action="group_postlist.php?gid=<?php echo $groupId; ?>">
+                <div id="pgt" class="bm bw0 pgs cl">
+                    <button type="submit" name="newpostsubmitbtn" id="newpostsubmitbtn" value="true" class="pn pnc" /><strong>Add Post</strong></button>
+                    <span ><b>Vote Set:</b>
+                            <select name="vote" id="vote" class="ps">
+                            <option value="0"  selected="selected">no vote option</option>
+                            <option value="2">2 options</option>
+                            <option value="3">3 options</option>
+                            <option value="4">4 options</option>
+                            <option value="5">5 options</option>
+                            <option value="6">6 options</option>
+                            <option value="7">7 options</option>
+                            <option value="8">8 options</option>
+                            <option value="9">9 options</option>
+                            <option value="10">10 options</option>
+                        </select>
+                    </span>
+                </div>
+            </form>
         </div>
         <div style="width:960px; margin:0 auto; padding:10px 0px; text-align:right">
             <?php echo fpage($zCount, $linum, [8,3,4,5,6,7,0,1,2]); ?>
         </div>
-        <!--回帖 START-->
+        <!--Reply START-->
+        <?php if($commentPermit){?>
         <div id="f_pst" class="pl bm bmw">
-            <form method="post" autocomplete="off" id="fastpostform" action="group_post_detail.php">
+            <form method="post" autocomplete="off" id="fastpostform" action="group_post_detail.php" enctype="multipart/form-data">
                 <table cellspacing="0" cellpadding="0">
                     <tr>
                         <td class="pls">
@@ -325,6 +349,11 @@
                         <td class="plc">
                             <span id="fastpostreturn"></span>
                             <div class="cl">
+                                <div id = 'picupload'>
+                                    <h2 class="xs2">Add image</h2>
+                                    <input name="pic" type="file" style="height:23px; width:300px;" />
+                                    <br/>
+                                </div>
                                 <div id="fastsmiliesdiv" class="y">
                                     <script type="text/javascript" src="public/ckeditor/ckeditor.js"></script>
                                     <script src="public/ckeditor/sample.js" type="text/javascript"></script>
@@ -353,6 +382,25 @@
                                         <strong>Add Reply</strong></button>
                                 </p>
                             </div>
+                            <?php if(!empty($voteoptions)){?>
+                            <div>
+                                <br/>
+                                <h1>Vote</h1>
+                                <?php if(!empty($votecheck)){?>
+                                <b>You have already voted</b>
+                                <?php } else { ?>
+                                <select name="voteselect" id="voteselect" class="ps">
+                                    <?php if(is_array($voteoptions)){foreach($voteoptions AS $vkey=>$vval) { ?>
+                                    <option value=<?php echo $vkey; ?> ><?php echo $vval; ?></option>
+                                    <?php }}?>
+                                </select>
+                                <p class="ptm pnpost">
+                                    <button type="submit" name="votesubmit" id="votesubmit" class="pn pnc vm" value="true" tabindex="5">
+                                        <strong>submit vote</strong></button>
+                                </p>
+                                <?php }?>
+                            </div>
+                            <?php }?>
                             <input name="pid" type="hidden" value="<?php echo $Id; ?>" />
                             <input name="gid" type="hidden" value="<?php echo $groupId; ?>" />
                         </td>
@@ -360,7 +408,8 @@
                 </table>
             </form>
         </div>
-        <!--回帖 END-->
+        <?php }?>
+        <!--Reply END-->
     </div>
 
 
@@ -402,48 +451,7 @@
 					document.body.scrolltop + (document.body.clientheight - this.clientheight)/2);/*ie5 ie5.5*/
     }
 </style>
-<div class="paylist" style="width:410px; overflow:hidden; border:5px solid #ccc;<?php if(empty($_GET['pay'])){?> display:none;<?php }?>">
-    <form id="payform" method="post" autocomplete="off" action="">
-        <div class="f_c">
-            <h3 class="flb">
-                <em id="return_">购买主题</em>
-                <span>
-				<a href="detail.php?id=<?php echo $Id; ?>" class="flbc" title="关闭">关闭</a>
-			</span>
-            </h3>
-            <div class="c">
-                <table class="list" cellspacing="0" cellpadding="0" style="width:400px">
-                    <tr>
-                        <td width="20"></td>
-                        <td><b>帖子</b></td>
-                        <td width="80"><b>作者</b></td>
-                        <td width="100"><b>售价(积分)</b></td>
-                    </tr>
-                    <?php if(is_array($OrderList)){foreach($OrderList AS $key=>$val) { ?>
-                    <tr>
-                        <td><input type="checkbox" name="oidarr[<?php echo $val['oid']; ?>]" value="<?php echo $val['authorid']; ?>,<?php echo $val['rate']; ?>" /></td>
-                        <td><?php echo $val['title']; ?></td>
-                        <td><?php echo getUserName($val['authorid']); ?></td>
-                        <td><?php echo $val['rate']; ?></td>
-                    </tr>
-                    <?php }}?>
-                    <tr>
-                        <td colspan="3"><b>总计：</b></th>
-                        <td><b><?php echo $allpay['zpay']; ?></b></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <div class="o pns">
-                                <button type="submit" name="paysubmit" class="pn pnc" value="true"><span>购买</span></button>
-                                <button type="submit" name="delsubmit" class="pn pnc" value="true"><span>删除</span></button>
-                            </div>
-                        </th>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </form>
-</div>
+
 
 </body>
 </html>

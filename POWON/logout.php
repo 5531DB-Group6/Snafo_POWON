@@ -9,7 +9,7 @@
 	setcookie('picture','',time()-1);
 	setcookie('grade','',time()-1);
 
-	$msg = '<font color=green><b>您已退出站点，现在将以游客身份转入退出前页面</b></font>';
+	$msg = '<font color=green><b>You have logged out，now you will visit as a tourist</b></font>';
 	$url = 'index.php';
 	$style = 'alert_right';
 	$toTime = 3000;

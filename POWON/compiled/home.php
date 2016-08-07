@@ -11,7 +11,7 @@
 <div id="wp" class="wp">
 	<div id="pt" class="bm cl">
 		<div class="z">
-			<a href="./" class="nvhm" title="Home"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">Settings</a> <em>&rsaquo;</em>Personal Information
+			<a href="./" class="nvhm" title="Home"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">User Page</a> <em>&rsaquo;</em>Personal Information
 		</div>
 	</div>
 	<div id="ct" class="ct2_a wp cl">
@@ -26,6 +26,8 @@
 			<tr>
 				<th>username</th>
 				<td><?php echo $_COOKIE['username']; ?></td>
+				<td>&nbsp</td>
+				<td>&nbsp </td>
 			</tr>
 			<tr id="tr_firstname">
 				<th id="tr_firstname">First Name</th>
@@ -35,7 +37,7 @@
 				<td id="td_fnvisible">
 					<select name="firstname_visible" id="firstname_visible" class="ps">
 						<option value="0" <?php if($visible[0]['firstname_visible']==0){?>selected="selected"<?php }?>>private</option>
-						<option value="1" <?php if($visible[0]['firstname_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="1" <?php if($visible[0]['firstname_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
 						<option value="2" <?php if($visible[0]['firstname_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
@@ -48,7 +50,7 @@
 				<td id="td_lnvisible">
 					<select name="lastname_visible" id="lastname_visible" class="ps">
 						<option value="0" <?php if($visible[0]['lastname_visible']==0){?>selected="selected"<?php }?>>private</option>
-						<option value="1" <?php if($visible[0]['lastname_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="1" <?php if($visible[0]['lastname_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
 						<option value="2" <?php if($visible[0]['lastname_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
@@ -65,7 +67,7 @@
 				<td id="sx_visible">
 					<select name="sex_visible" id="sex_visible" class="ps">
 						<option value="0" <?php if($visible[0]['sex_visible']==0){?>selected="selected"<?php }?>>private</option>
-						<option value="1" <?php if($visible[0]['sex_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="1" <?php if($visible[0]['sex_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
 						<option value="2" <?php if($visible[0]['sex_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
@@ -164,7 +166,7 @@
 				<td id="bd_visible">
 					<select name="birthday_visible" id="birthday_visible" class="ps">
 						<option value="0" <?php if($visible[0]['bday_visible']==0){?>selected="selected"<?php }?>>private</option>
-						<option value="1" <?php if($visible[0]['bday_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="1" <?php if($visible[0]['bday_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
 						<option value="2" <?php if($visible[0]['bday_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
@@ -177,44 +179,65 @@
 				<td id="td_pfsvisible">
 					<select name="profession_visible" id="profession_visible" class="ps">
 						<option value="0" <?php if($visible[0]['profession_visible']==0){?>selected="selected"<?php }?>>private</option>
-						<option value="1" <?php if($visible[0]['profession_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="1" <?php if($visible[0]['profession_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
 						<option value="2" <?php if($visible[0]['profession_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
 			</tr>
-			<tr id="tr_birthcity">
-				<th id="th_birthcity">Place</th>
-				<td id="td_birthcity">
-					<p id="birthdistrictbox">
-					<select name="place" id="place" class="ps">
-						<option value="">-Province-</option>
-						<option did="1" value="Alberta" <?php if($Jg=='Alberta'){?>selected="selected"<?php }?>>Alberta</option>
-						<option did="2" value="British Columbia" <?php if($Jg=='British Columbia'){?>selected="selected"<?php }?>>British Columbia</option>
-						<option did="3" value="Manitoba" <?php if($Jg=='Manitoba'){?>selected="selected"<?php }?>>Manitoba</option>
-						<option did="4" value="New Brunswick" <?php if($Jg=='New Brunswick'){?>selected="selected"<?php }?>>New Brunswick</option>
-						<option did="5" value="Newfoundland" <?php if($Jg=='Newfoundland'){?>selected="selected"<?php }?>>Newfoundland</option>
-						<option did="6" value="Nova Scotia" <?php if($Jg=='Nova Scotia'){?>selected="selected"<?php }?>>Nova Scotia</option>
-						<option did="7" value="Ontario" <?php if($Jg=='Ontario'){?>selected="selected"<?php }?>>Ontario</option>
-						<option did="8" value="Prince Edward Island" <?php if($Jg=='Prince Edward Island'){?>selected="selected"<?php }?>>Prince Edward Island</option>
-						<option did="9" value="Quebec" <?php if($Jg=='Quebec'){?>selected="selected"<?php }?>>Quebec</option>
-						<option did="10" value="Saskatchewan" <?php if($Jg=='Saskatchewan'){?>selected="selected"<?php }?>>Saskatchewan</option>
-						<option did="11" value="Oversea" <?php if($Jg=='Oversea'){?>selected="selected"<?php }?>>Oversea</option>
-						<option did="12" value="Others" <?php if($Jg=='Others'){?>selected="selected"<?php }?>>Others</option>
+			<tr id="th_address">
+				<th id="th_address">Address</th>
+				<td id="address">
+					<input type="text" name="address" class="px" value="<?php echo $result[0]['address']; ?>" />
+				</td>
+				<td id="td_addressvisible">
+					<select name="address_visible" id="address_visible" class="ps">
+						<option value="0" <?php if($visible[0]['address_visible']==0){?>selected="selected"<?php }?>>private</option>
+						<option value="1" <?php if($visible[0]['address_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
+						<option value="2" <?php if($visible[0]['address_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
+				</td>
+			</tr>
+			<tr id="td_birthcity">
+				<th id="td_birthcity">Region</th>
+				<td>
+					<p id="td_birthcity">
+						<select name="place" id="place" class="ps">
+							<option value="">-Province-</option>
+							<option did="1" value="Alberta" <?php if($Jg=='Alberta'){?>selected="selected"<?php }?>>Alberta</option>
+							<option did="2" value="British Columbia" <?php if($Jg=='British Columbia'){?>selected="selected"<?php }?>>British Columbia</option>
+							<option did="3" value="Manitoba" <?php if($Jg=='Manitoba'){?>selected="selected"<?php }?>>Manitoba</option>
+							<option did="4" value="New Brunswick" <?php if($Jg=='New Brunswick'){?>selected="selected"<?php }?>>New Brunswick</option>
+							<option did="5" value="Newfoundland" <?php if($Jg=='Newfoundland'){?>selected="selected"<?php }?>>Newfoundland</option>
+							<option did="6" value="Nova Scotia" <?php if($Jg=='Nova Scotia'){?>selected="selected"<?php }?>>Nova Scotia</option>
+							<option did="7" value="Ontario" <?php if($Jg=='Ontario'){?>selected="selected"<?php }?>>Ontario</option>
+							<option did="8" value="Prince Edward Island" <?php if($Jg=='Prince Edward Island'){?>selected="selected"<?php }?>>Prince Edward Island</option>
+							<option did="9" value="Quebec" <?php if($Jg=='Quebec'){?>selected="selected"<?php }?>>Quebec</option>
+							<option did="10" value="Saskatchewan" <?php if($Jg=='Saskatchewan'){?>selected="selected"<?php }?>>Saskatchewan</option>
+							<option did="11" value="Oversea" <?php if($Jg=='Oversea'){?>selected="selected"<?php }?>>Oversea</option>
+							<option did="12" value="Others" <?php if($Jg=='Others'){?>selected="selected"<?php }?>>Others</option>
+						</select>
 					</p>
 				</td>
 				<td id="td_placevisible">
 					<select name="place_visible" id="place_visible" class="ps">
 						<option value="0" <?php if($visible[0]['place_visible']==0){?>selected="selected"<?php }?>>private</option>
-						<option value="1" <?php if($visible[0]['place_visible']==1){?>selected="selected"<?php }?>>visible to friend</option>
+						<option value="1" <?php if($visible[0]['place_visible']==1){?>selected="selected"<?php }?>>visible to friend/group members</option>
 						<option value="2" <?php if($visible[0]['place_visible']==2){?>selected="selected"<?php }?>>visible to public</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
+				<th>Date of Registraion</th>
+				<td><?php echo $dateofregistraion; ?></td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
 				<th>&nbsp;</th>
-				<td colspan="2">
+				<td>
 					<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true" class="pn pnc" /><strong>Save</strong></button>
+				</td>
+				<td style="text-align: left">
+					<a href="home_infopermission.php" title="Set Permission"><font color="#00008b"><b>Set Permissions to Singal Member</b></font></a>
 				</td>
 			</tr>
 		</table>
@@ -224,11 +247,12 @@
 	
 		<div class="appl">
 			<div class="tbn">
-				<h2 class="mt bbda">设置</h2>
+				<h2 class="mt bbda">User Page</h2>
 				<ul>
 					<li><a href="home_tx.php">Change Avatar</a></li>
 					<li  class="a"><a href="home.php">Personal Info</a></li>
 					<li><a href="home_friend.php">Friend Requests</a></li>
+					<li><a href="home_postlist.php">Post List</a></li>
 					<li><a href="home_qm.php">个人签名</a></li>
 					<li><a href="home_pass.php">密码安全</a></li>
 					<!--<li><a href="home_sc.php">收藏管理</a></li>-->

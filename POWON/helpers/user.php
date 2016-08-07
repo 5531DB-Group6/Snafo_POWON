@@ -112,12 +112,12 @@
 	{
 		switch($ugroup){
 			case 1:
-				echo '管理员';
+				echo 'Administrator';
 				break;
 			case 0:
-				echo '普通用户';
+				echo 'Common User';
 				break;
 			default:
-				echo '普通用户';
+				echo 'Common User';
 		}
 	}

@@ -12,6 +12,7 @@
 		$uname = strMagic($_POST['username']);
 		$upass = trim($_POST['password']);
 		$urpass = trim($_POST['repassword']);
+		$mfirstname = trim($_POST['memberfirstname']);
 		$email = $_POST['mail'];
 		$pyzm = $_POST['yzm'];
 		
@@ -56,16 +57,13 @@
 			$alterNotice = true;
 			$msgArr[] = '<font color=red><b>Error：passwords are not identical</b></font>';
 		}
-		
 
-		/*
-		//判断验证码
-		if(checkVerify($pyzm, $_SESSION['code']))
-		{
+		//check whether the entered first name of an existing member is correct
+		$FNexists = dbSelect('user','uid', 'firstname="'.$mfirstname.'"','uid desc',1);
+		if (!$FNexists){
 			$alterNotice = true;
-			$msgArr[] = '<font color=red><b>验证码输入错误</b></font>';
+			$msgArr[] = '<font color=red><b>Error：cannot find the corresponding first name</b></font>';
 		}
-		*/
 
 		//验证是否需要显示提示信息
 		if($alterNotice)

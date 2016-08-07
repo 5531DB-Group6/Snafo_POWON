@@ -7,16 +7,15 @@
 				<div id="um">
 					<div class="avt y"><a href="home_tx.php"><img src="<?php echo $GGpicture; ?>" /></a></div>
 					<p>
-					<strong class="vwmy"><a href="home.php" target="_blank"><?php echo $_COOKIE['username']; ?></a></strong>
-					<span class="pipe">|</span><a href="home.php">Setting</a>
+					<strong class="vwmy"><a href="home.php"><?php echo $_COOKIE['username']; ?></a></strong>
+					<span class="pipe">|</span><a href="home.php">User Page</a>
 					<?php if($_COOKIE['udertype']){?>
-					<span class="pipe">|</span><a href="admin.php" target="_blank">Administration centre</a>
+					<span class="pipe">|</span><a href="admin_member_list.php">Administration center</a>
 					<?php }?>
 					<span class="pipe">|</span><a href="logout.php">Exit</a>
 					</p>
 					<p>
-					<a id="extcreditmenu" href="#">积分: <?php echo $GGgrade; ?></a>
-					<span class="pipe">|</span>用户权限: <?php echo userGroup($_COOKIE['udertype']); ?>
+					User Group: <?php echo userGroup($_COOKIE['udertype']); ?>
 					</p>
 				</div>
 				<?php } else { ?>
@@ -48,11 +47,9 @@
 	
 		<div id="nv">
 			<ul>	
-				<li <?php if(empty($bigId)){?>class="a"<?php }?> id="mn_forum" ><a href="index.php" hidefocus="true" title="<?php echo $web_name; ?>">首页</a><span><?php echo $web_name; ?></span></li>
-				<?php if(is_array($headMenu)){foreach($headMenu AS $hmVal) { ?>
-				<li <?php if($bigId == $hmVal['cid']){?>class="a"<?php }?> id="mn_home" ><a href="index.php?bigid=<?php echo $hmVal['cid']; ?>" hidefocus="true" title="Space"><?php echo $hmVal['classname']; ?></a></li>
-				<?php }}?>
-				
+				<li><a href="index.php" hidefocus="true" title="<?php echo $web_name; ?>">Home</a><span><?php echo $web_name; ?></span></li>
+				<li><a href="member.php?mlist=1" hidefocus="true" title="My Friends">My Friends</a><span><?php echo $web_name; ?></span></li>
+				<li><a href="group.php?glist=1" hidefocus="true" title="My Groups">My Groups</a><span><?php echo $web_name; ?></span></li>
 			</ul>
 		</div>
 		
@@ -61,16 +58,13 @@
 			<table cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="scbar_icon_td"></td>
-					<td class="scbar_txt_td"><input type="text" name="keywords" id="scbar_txt" onfocus="if(this.value=='请输入搜索内容'){this.value='';this.style.color='#666';}" onblur="if(this.value==''){this.value='请输入搜索内容';this.style.color='#ccc';}" value="请输入搜索内容" style="color:#CCCCCC" autocomplete="off" /></td>
+					<td class="scbar_txt_td"><input type="text" name="keywords" id="scbar_txt" onfocus="if(this.value=='please enter search detail'){this.value='';this.style.color='#666';}" onblur="if(this.value==''){this.value='please enter search detail';this.style.color='#ccc';}" value="please enter search detail" style="color:#CCCCCC" autocomplete="off" /></td>
 					<td class="scbar_btn_td">
 						<button type="submit" name="searchsubmit" id="scbar_btn" class="pn pnc" value="true"><strong class="xi2 xs2">Search</strong></button>
 					</td>
 					<td class="scbar_hot_td">
 						<div id="scbar_hot">
-							<strong class="xw1">热搜: </strong>
-							<?php if(is_array($keyWords)){foreach($keyWords AS $kwVal) { ?>
-							<a href="search.php?keywords=<?php echo $kwVal; ?>" target="_blank" class="xi2"><?php echo $kwVal; ?></a>
-							<?php }}?>
+
 						</div>
 					</td>
 				</tr>

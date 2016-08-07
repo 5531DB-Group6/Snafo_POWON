@@ -4,17 +4,8 @@
  */
 
 include './common/common.php';
+include 'logincheck.php';
 
-//判断用户是否登录
-if(empty($_COOKIE['uid']))
-{
-    $msg = '<font color=red><b>You have not logged in</b></font>';
-    $url = $_SERVER['HTTP_REFERER'];
-    $style = 'alert_error';
-    $toTime = 3000;
-    include 'notice.php';
-    exit;
-}
 
 $select='u.uid as uid, u.username as username, u.picture as picture';
 $Friend = dbDuoSelect('friend as f','user as u','on u.uid=f.uid and f.approved=0',null,null,$select,'f.fid='.$_COOKIE['uid'].'','f.addtime desc');
@@ -27,6 +18,17 @@ if ($_POST['approvesubmitbtn']){
     $insert = dbInsert('friend','uid,fid,approved,type,addtime',''.$_COOKIE['uid'].','.$uid.',1,'.$type.','.time().'');
 
     if($result && $insert){
+
+        $uposts = dbselect('uposts','pid','first=1 and isdel=0 and authorid='.$uid.'');
+        foreach($uposts as $key=>$val) {
+            dbInsert('upostspermission', 'pid, uid', '' . $val['pid'] . ',' . $_COOKIE['uid'] . '');
+        }
+
+        $uposts = dbselect('uposts','pid','first=1 and isdel=0 and authorid='.$_COOKIE['uid'].'');
+        foreach($uposts as $key=>$val) {
+            dbInsert('upostspermission', 'pid, uid', '' . $val['pid'] . ',' . $uid . '');
+        }
+
         header('location:home_friend.php');
     }else{
         $msg = '<font color=red><b>'.$type.'operation failed</b></font>';

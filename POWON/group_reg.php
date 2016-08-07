@@ -3,23 +3,15 @@
  * 注册
  */
 include './common/common.php';
-
+include 'logincheck.php';
 $title = 'Create Group - ' . WEB_NAME;
 
-if(empty($_COOKIE['uid']))
-{
-    $msg = '<font color=red><b>You have not logged in</b></font>';
-    $url = $_SERVER['HTTP_REFERER'];
-    $style = 'alert_error';
-    $toTime = 3000;
-    include 'notice.php';
-    exit;
-}
 
 //验证是否为提交注册信息
 if (!empty($_POST['regsubmit']))
 {
     $gname = trim($_POST['groupname']);
+    $description = trim($_POST['groupdescription']);
 
     //错误跳转页默认值
     $url = $_SERVER['HTTP_REFERER'];
@@ -28,7 +20,7 @@ if (!empty($_POST['regsubmit']))
 
     $alterNotice = false;	//提示页面标记位
     //验证用户名长度
-    if(stringLen($gname))
+    if(stringLen($gname,3,60))
     {
         $alterNotice = true;
         $msgArr[] = '<font color=red><b>Wrong length of username：consist of 3 to 12 characters</b></font>';
@@ -42,7 +34,6 @@ if (!empty($_POST['regsubmit']))
         $msgArr[] = '<font color=red><b>group name has been used</b></font>';
     }
 
-
     //验证是否需要显示提示信息
     if($alterNotice)
     {
@@ -53,8 +44,8 @@ if (!empty($_POST['regsubmit']))
 
     //创建用户
     $uid = $_COOKIE['uid'];
-    $n = 'name, owner';
-    $v = '"'.$gname.'", "'.$uid.'"';
+    $n = 'name, owner,description';
+    $v = '"'.$gname.'", "'.$uid.'","'.$description.'"';
     $result = dbInsert('groups', $n, $v);
 
     if(!$result)

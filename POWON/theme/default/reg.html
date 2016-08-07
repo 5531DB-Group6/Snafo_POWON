@@ -50,6 +50,15 @@
 								<div class="rfm">
 									<table>
 										<tr>
+											<th><span class="rq">*</span><label for="LzI43d">First name of an existing member:</label></th>
+											<td><input type="password" id="LzI43d" onblur="checkRegOut('LzI43d','Please enter the first name of an existing member');" onfocus="checkReg('LzI43d')" name="memberfirstname" size="25" class="px" /></td>
+											<td class="tipcol"><i id="tip_LzI43d" class="p_tip">Please enter the first name of an existing member</i></td>
+										</tr>
+									</table>
+								</div>
+								<div class="rfm">
+									<table>
+										<tr>
 											<th><span class="rq">*</span><label for="FQ817D">Email:</label></th>
 											<td><input type="text" id="FQ817D" name="mail"  onblur="checkRegOut('FQ817D','please enter a valid email address');" onfocus="checkReg('FQ817D')" size="25" class="px" /><br /><em id="emailmore">&nbsp;</em></td>
 											<td class="tipcol"><i id="tip_FQ817D" class="p_tip">please enter a valid email address</i></td>

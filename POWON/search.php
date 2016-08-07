@@ -7,7 +7,7 @@
 	$key = trim($_GET['keywords']);
 	if(!$key)
 	{
-		$msg = '<font color=red><b>没有输入关键词</b></font>';
+		$msg = '<font color=red><b>no key word has been entered</b></font>';
 		$url = $_SERVER['HTTP_REFERER'];
 		$style = 'alert_error';
 		$toTime = 3000;
@@ -16,25 +16,45 @@
 	}
 
 	$arrKey = explode(' ',$key);
+
 	$where = '';
 	for($i=0; $i<count($arrKey); $i++)
 	{
 		if(empty($where))
 		{
-			$where .= "title like '%$arrKey[$i]%'";
+			$where .= "username like '%$arrKey[$i]%'";
 		}else{
-			$where .= " or title like '%$arrKey[$i]%'";
+			$where .= " or username like '%$arrKey[$i]%'";
 		}
 	}
 
 	$where = ' and (' . $where . ')';
 
-	$cSearch = dbFuncSelect('details', 'count(id)', 'first=1 and isdel=0 ' . $where);
 
-	$select = 't.id as id,t.authorid as authorid,t.content as content,t.addtime as addtime,t.title as title,t.classid as classid,t.replycount as replycount,t.hits as hits,u.username as username,c.classname as classname';
-	$search = dbDuoSelect('details as t','user as u','on t.authorid=u.uid','category as c','on c.cid=t.classid',$select,'first=1 and isdel=0 '.$where.'','id desc');
+	$uSearch = dbSelect('user', '*', 'status!=1' . $where);
 
-	$title = $key . '的搜索结果 - ' . WEB_NAME;
+
+	$where='';
+
+	for($i=0; $i<count($arrKey); $i++)
+	{
+		if(empty($where))
+		{
+			$where .= "name like '%$arrKey[$i]%' or description like '%$arrKey[$i]%'";
+		}else{
+			$where .= " or name like '%$arrKey[$i]%' or description like '%$arrKey[$i]%'";
+		}
+	}
+
+	//$where = ' and (' . $where . ')';
+
+	$gSearch = dbSelect('groups', '*', $where);
+
+
+	//$select = 't.id as id,t.authorid as authorid,t.content as content,t.addtime as addtime,t.title as title,t.classid as classid,t.replycount as replycount,t.hits as hits,u.username as username,c.classname as classname';
+	//$search = dbDuoSelect('details as t','user as u','on t.authorid=u.uid','category as c','on c.cid=t.classid',$select,'first=1 and isdel=0 '.$where.'','id desc');
+
+	$title = $key . 'search result - ' . WEB_NAME;
 
 	include template("search.html");
 

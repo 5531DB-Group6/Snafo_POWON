@@ -8,7 +8,7 @@
 	$password = trim($_POST['password']);
 	$cookietime = $_POST['cookietime'];
 
-    $result = dbSelect('user','uid,username,udertype,picture,allowlogin,lasttime', 'username="'.$username.'" and password="'.md5($password).'"');
+    $result = dbSelect('user','uid,username,udertype,picture,status,lasttime', 'username="'.$username.'" and password="'.md5($password).'"');
 
 	//判断是否使用了自动登录
 	if($cookietime)
@@ -20,16 +20,16 @@
 
 	if(!$result)
 	{
-		$msg = '<font color=red><b>登录失败，用户名或密码错误</b></font>';
-		$url = $_SERVER['HTTP_REFERER'];
+		$msg = '<font color=red><b>login failed，incorrect username or password</b></font>';
+		$url = 'index.php';
 		$style = 'alert_error';
 		$toTime = 3000;
 		include 'notice.php';
 	}else{
-		if($result[0]['allowlogin'])
+		if($result[0]['status']==2)
 		{
-			$msg = '<font color=red><b>您的账号已经被锁定，请联系管理员</b></font>';
-			$url = $_SERVER['HTTP_REFERER'];
+			$msg = '<font color=red><b>you have been suspended by the administrator</b></font>';
+			$url = 'logout.php';
 			$style = 'alert_error';
 			$toTime = 3000;
 			include 'notice.php';
@@ -57,7 +57,7 @@
 		$url = $_SERVER['HTTP_REFERER'];
 		$style = 'alert_right';
 		$toTime = 3000;
-		
+
 		include 'notice.php';
 
         /*

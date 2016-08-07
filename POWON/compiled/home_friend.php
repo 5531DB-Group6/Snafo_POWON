@@ -11,7 +11,7 @@
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
-            <a href="./" class="nvhm" title="Home"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">Settings</a> <em>&rsaquo;</em>Friend Requests
+            <a href="./" class="nvhm" title="Home"><?php echo $title; ?></a> <em>&rsaquo;</em><a href="home.php">User Page</a> <em>&rsaquo;</em>Friend Requests
         </div>
     </div>
     <div id="ct" class="ct2_a wp cl">
@@ -54,11 +54,12 @@
 
         <div class="appl">
             <div class="tbn">
-                <h2 class="mt bbda">设置</h2>
+                <h2 class="mt bbda">User Page</h2>
                 <ul>
                     <li><a href="home_tx.php">Change Avatar</a></li>
                     <li ><a href="home.php">Personal Info</a></li>
                     <li class="a"><a href="home_friend.php">Friend Requests</a></li>
+                    <li><a href="home_postlist.php">Post List</a></li>
                     <li><a href="home_qm.php">个人签名</a></li>
                     <li><a href="home_pass.php">密码安全</a></li>
                     <!--<li><a href="home_sc.php">收藏管理</a></li>-->
