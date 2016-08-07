@@ -35,5 +35,5 @@
 14) <strike> chao's bonus: delte post, change post and reply isdel to 1. put in common.php, friend post, friend reply. (chao)</strike></br>
 15  <strike>Has a issue when user against jump to payment page, by type address to get into index page (chao)</strike></br>
 16 issue: personal post cannot see reply. </br>
-16 issue: avatar pic size too big in chat. </br>
-
+17 issue: avatar pic size too big in chat. </br>
+18 issue: send email to inactive member.</br>
