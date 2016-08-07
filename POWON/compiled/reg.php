@@ -50,9 +50,9 @@
 								<div class="rfm">
 									<table>
 										<tr>
-											<th><span class="rq">*</span><label for="LzI43d">First name of an existing member:</label></th>
-											<td><input type="password" id="LzI43d" onblur="checkRegOut('LzI43d','Please enter the first name of an existing member');" onfocus="checkReg('LzI43d')" name="memberfirstname" size="25" class="px" /></td>
-											<td class="tipcol"><i id="tip_LzI43d" class="p_tip">Please enter the first name of an existing member</i></td>
+											<th><span class="rq">*</span><label for="A5MVeV">First name of an existing member:</label></th>
+											<td><input type="text" id="A5MVeV" onblur="checkRegOut('A5MVeV','Please enter the first name of an existing user');" onfocus="checkReg('A5MVeV')" name="memberfirstname" class="px" autocomplete="off" size="25" maxlength="15"/></td>
+											<td class="tipcol"><i id="tip_A5MVeV" class="p_tip">Please enter the first name of an existing user</i></td>
 										</tr>
 									</table>
 								</div>
@@ -77,7 +77,7 @@
 									<span id="reginfo_a_btn">
 									<em>&nbsp;</em>
 									<button class="pn pnc" id="registerformsubmit" type="submit" name="regsubmit" value="true">
-										<strong>提交</strong>
+										<strong>Submit</strong>
 									</button>
 									</span>
 									</td>

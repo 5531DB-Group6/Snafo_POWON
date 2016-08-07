@@ -4,7 +4,7 @@
  */
 	include './common/common.php';
 
-	$title = '用户注册 - ' . WEB_NAME;
+	$title = 'Register - ' . WEB_NAME;
 
 	//验证是否为提交注册信息
 	if (!empty($_POST['regsubmit']))

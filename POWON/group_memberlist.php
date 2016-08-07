@@ -104,7 +104,7 @@ $linum = 10;	//每页显示数量
 //$ListContent = dbSelect('gposts','uid,title,authorid,addtime,replycount,hits,style','first=1 and isdel=0 and gid='.$groupId.'','pid desc', setLimit($linum));
 $select='u.uid as uid, u.username as username,u.picture as picture,m.admin as admin';
 //$MemberList = DBduoSelect('groups as g','gmembers as m','on g.gid = m.gid','user as u','on u.uid = m.uid',$select,'g.gid ='.$groupId.'');
-$MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=1',null,null,$select,'m.gid ='.$groupId.'');
+$MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=1 and status!=1',null,null,$select,'m.gid ='.$groupId.'');
 //$PendingList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=0',null,null,$select,'m.gid ='.$groupId.'');
 
 if($admin){
