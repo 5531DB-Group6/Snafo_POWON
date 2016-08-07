@@ -26,7 +26,7 @@
 5) view add/link in permission not done. </br>
 6) group admin can mute somebody. modify the post permission </br>
 7) <strike>?? membership payment is not updated? （chao)</strike></br>
-8) group, friend list can show inactive user. </br>
+8) <strike>group, friend list can show inactive user. </strike></br>
 9) <strike>public infor, group news to mailbox/ (chao)</strike> </br>
 10) The group owner has a feature to view and manage the permissions to any content </br>
 11) post video. (chao) </br>
