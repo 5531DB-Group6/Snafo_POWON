@@ -37,5 +37,7 @@
 16 <strike>issue: personal post cannot see reply. </strike></br>
 17 <strike>issue: avatar pic size too big in chat. </strike></br>
 18 <strike>issue: send email to inactive member.</strike></br>
-19 issue:email validation
-20 new post email add link
+19 issue:email validation </br>
+20 new post email add link </br>
+21 Install has issue: $result && mysqli_affected_rows($conn) false. And where to dbInsert('profilevisible',$n,$v) to admin account. </br>
+
