@@ -6,6 +6,8 @@
 <!--HEAD start-->
 <!--{include head.html}-->
 <!--HEAD end-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+      crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{$domain_resource}/css/post.css" />
 <!--LIST start-->
 <div id="wp" class="wp">
@@ -43,6 +45,10 @@
 
 
                         <input type="hidden" id="gid" name="gid" value="{$groupId}" />
+                        <div class="form-group">
+                            <label for="video">Paste the video enbedd code here</label>
+                            <input type="text" name="video" class="form-control" id="video">
+                        </div>
                         <div>
                             <input type="checkbox" name="deletelater" value="false">
                             Delete in  <input type="number" min="1" name="hourlater"> hour <input type="number" min="1" name="minutelater"> minutes <br>

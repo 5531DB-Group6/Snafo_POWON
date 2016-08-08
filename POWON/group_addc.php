@@ -51,6 +51,7 @@ if ($mute && !$admin){
         $authorid = $_COOKIE['uid'];		//发布人ID
         $title = strMagic($_POST['subject']);		//标题
         $content = strMagic($_POST['content']);		//内容
+        $video = strMagic($_POST['video']);     //video
         $addtime = time();			//发表时间
         $groupId = $_POST['gid'];		//类别ID
         $voteNum = $_POST['voteNum'];
@@ -76,8 +77,8 @@ if ($mute && !$admin){
             exit;
         }
 
-        $n = 'first, authorid, title, content,image, addtime, gid, voteoptions';
-        $v = '1, '.$authorid.', "'.$title.'", "'.$content.'", "'.$picture.'" ,'.$addtime.', '.$groupId.', "'.$voteoptions.'"';
+        $n = 'first, authorid, title, content,image, video, addtime, gid, voteoptions';
+        $v = '1, '.$authorid.', "'.$title.'", "'.$content.'", "'.$picture.'","'.$video.'" ,'.$addtime.', '.$groupId.', "'.$voteoptions.'"';
         $result = dbInsert('gposts', $n, $v);
 
         $insert_id = dbSelect('gposts','pid','title="'.$title.'"','pid desc',1);

@@ -20,6 +20,7 @@ if($_POST['topicsubmit'])
     $authorid = $_COOKIE['uid'];		//发布人ID
     $title = strMagic($_POST['subject']);		//标题
     $content = strMagic($_POST['content']);		//内容
+    $video = strMagic($_POST['video']);  //video
     $addtime = time();			//发表时间
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
     $futuredelete = "";
@@ -33,8 +34,8 @@ if($_POST['topicsubmit'])
         exit;
     }
 
-    $n = 'first, authorid, title, content,image, addtime';
-    $v = '1, '.$authorid.', "'.$title.'", "'.$content.'", "'.$picture.'" ,'.$addtime.'';
+    $n = 'first, authorid, title, content,image,video, addtime';
+    $v = '1, '.$authorid.', "'.$title.'", "'.$content.'", "'.$picture.'" ,"'.$video.'",'.$addtime.'';
     $result = dbInsert('uposts', $n, $v);
 
     $insert_id = dbSelect('uposts','pid','title="'.$title.'"','pid desc',1);

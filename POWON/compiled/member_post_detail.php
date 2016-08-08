@@ -8,6 +8,7 @@
 <!--HEAD end-->
 
 <!--LIST start-->
+
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
         <div class="z">
@@ -312,6 +313,10 @@
                                     </script><br />
 
                                 </div>
+                                <div class="form-group">
+                                    <label for="video">Paste the video enbedd code here</label>
+                                    <input type="text" name="video" class="form-control" id="video">
+                                </div></br>
                                 <div>
                                     <input type="checkbox" name="deletelater" value="false">
                                     Delete in  <input type="number" min="1" name="hourlater"> hour <input type="number" min="1" name="minutelater"> minutes <br>

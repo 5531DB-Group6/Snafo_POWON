@@ -4,7 +4,7 @@
 	}
 	include '../config/database.php';
 	if(!empty($_POST['submitname'])){
-	
+
 			$conn=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 			
 			if(mysqli_errno($conn)){
@@ -23,7 +23,8 @@
 			$email=trim($_POST['email']);
 			
 			$sql="insert into ".DB_PREFIX."user(uid,username,password,email,udertype,regtime,lasttime) values(1,'{$username}','{$password}','{$email}',1,$time,$time)";
-			
+
+
 			$result=mysqli_query($conn, $sql);
 			
 			if($result && mysqli_affected_rows($conn))
@@ -34,17 +35,17 @@
 				$v = "$uid";
 				$result = dbInsert('profilevisible',$n,$v);
 
-				echo '安装成功';
+				echo 'installation done';
 				file_put_contents('../install.lock','');
 				header('location:../index.php');
 				exit;
 			
 			}else{
 			
-				echo '添加管理员失败';
+				echo 'installation failed';
 				
 			}
-			
+
 			mysqli_close($conn);
 			
 	}

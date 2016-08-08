@@ -1,3 +1,25 @@
+CREATE TABLE IF NOT EXISTS `bbs_user` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `username` char(32) NOT NULL,
+  `password` char(32) NOT NULL,
+  `email` char(30) NOT NULL,
+  `udertype` tinyint(2) NOT NULL,
+  `regtime` int(12) NOT NULL,
+  `lasttime` int(12) NOT NULL,
+   `expiretime` int(12) NOT NULL,
+  `picture` varchar(255) NOT NULL DEFAULT 'public/images/avatar_blank.gif',
+  `firstname` char(32) DEFAULT NULL,
+  `lastname` char(32) DEFAULT NULL,
+  `sex` tinyint(4) DEFAULT '0',
+  `birthday` varchar(20) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `region` varchar(50) DEFAULT NULL,
+   `profession` varchar(50) DEFAULT NULL,
+   `status` tinyint(1) NOT NULL DEFAULT '0',
+   `coins` tinyint(2) NOT NULL DEFAULT '10',
+   PRIMARY KEY (`uid`)
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
+
 CREATE TABLE IF NOT EXISTS `bbs_groups` (
   `gid` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
@@ -51,13 +73,6 @@ CREATE TABLE IF NOT EXISTS `bbs_gpostdelete` (
   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
-CREATE TABLE IF NOT EXISTS `bbs_upostdelete` (
-  `pid` int(10) NOT NULL,
-  `deletetime` int(12) NOT NULL,
-  PRIMARY KEY (`pid`),
-  FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
-
 CREATE TABLE IF NOT EXISTS `bbs_mails` (
   `mailid` int(10) NOT NULL AUTO_INCREMENT,
   `senderid` int(11) NOT NULL,
@@ -88,6 +103,14 @@ CREATE TABLE IF NOT EXISTS `bbs_uposts` (
   PRIMARY KEY (`pid`),
   FOREIGN KEY (`authorid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
+
+CREATE TABLE IF NOT EXISTS `bbs_upostdelete` (
+  `pid` int(10) NOT NULL,
+  `deletetime` int(12) NOT NULL,
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
+
 
 CREATE TABLE IF NOT EXISTS `bbs_pposts` (
   `pid` int(10) NOT NULL AUTO_INCREMENT,
@@ -204,23 +227,3 @@ CREATE TABLE IF NOT EXISTS `bbs_bill` (
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; dbg6;
 
-CREATE TABLE IF NOT EXISTS `bbs_user` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `username` char(32) NOT NULL,
-  `password` char(32) NOT NULL,
-  `email` char(30) NOT NULL,
-  `udertype` tinyint(2) NOT NULL,
-  `regtime` int(12) NOT NULL,
-  `lasttime` int(12) NOT NULL,
-  `picture` varchar(255) NOT NULL DEFAULT 'public/images/avatar_blank.gif',
-  `firstname` char(32) DEFAULT NULL,
-  `lastname` char(32) DEFAULT NULL,
-  `sex` tinyint(4) DEFAULT '0',
-  `birthday` varchar(20) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `region` varchar(50) DEFAULT NULL,
-   `profession` varchar(50) DEFAULT NULL,
-   `status` tinyint(1) NOT NULL DEFAULT '0',
-   `coins` tinyint(2) NOT NULL DEFAULT '10',
-   PRIMARY KEY (`uid`)
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;

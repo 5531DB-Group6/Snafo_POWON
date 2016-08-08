@@ -210,6 +210,7 @@ if($_POST['replysubmit'])
     $authorid = $_COOKIE['uid'];			//发布人ID
     $content = strMagic($_POST['message']);		//内容
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
+    $video = strMagic($_POST['video']);  //video
     $addtime = time();				//发表时间
     $groupId = $_POST['gid'];			//类别ID
     $futuredelete = "";
@@ -223,8 +224,8 @@ if($_POST['replysubmit'])
         exit;
     }
 
-    $n='first, parentid, authorid, title, content,image, addtime, gid';
-    $v='0, '.$parentid.', '.$authorid.',"'.$title.'", "'.$content.'","'.$picture.'", '.$addtime.', '.$groupId.'';
+    $n='first, parentid, authorid, title, content,image, video, addtime, gid';
+    $v='0, '.$parentid.', '.$authorid.',"'.$title.'", "'.$content.'","'.$picture.'", "'.$video.'", '.$addtime.', '.$groupId.'';
     $result = dbInsert('gposts', $n, $v);
 
     $insert_id = dbSelect('gposts','pid','title="'.$title.'"','pid desc',1);

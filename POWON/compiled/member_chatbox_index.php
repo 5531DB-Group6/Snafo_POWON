@@ -125,7 +125,7 @@
                                     <strong class="primary-font"><?php echo $receiver['username']; ?></strong> <small class="pull-right text-muted">
                                     <span class="glyphicon glyphicon-time" ></span>
                                     <script>
-                                        document.write(moment.unix(<?php echo $val['posttime']; ?>).startOf('hours').fromNow())
+                                        document.write(moment.unix(<?php echo $val['posttime']; ?>).fromNow())
                                     </script></small>
                                 </div>
                                 <p>
@@ -143,7 +143,7 @@
                                 <div class="header">
                                     <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>
                                         <script>
-                                            document.write(moment.unix(<?php echo $val['posttime']; ?>).startOf('hours').fromNow())
+                                            document.write(moment.unix(<?php echo $val['posttime']; ?>).fromNow())
                                         </script></small>
                                     <strong class="pull-right primary-font"><?php echo $sender['username']; ?></strong>
                                 </div>
