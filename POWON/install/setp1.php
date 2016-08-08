@@ -13,7 +13,7 @@
 		
 		} else {
 		
-			$visitor_os = '其它';
+			$visitor_os = 'Other';
 		
 		}
 		
@@ -24,39 +24,39 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>安装向导</h1>
-		<span>简体中文 UTF8 版</span>
+		<h1>Installation Guide</h1>
+		<span>Group 6</span>
 	<div class="setup step1">
-		<h2>开始安装</h2>
-		<p>检查安装环境</p>
+		<h2>Install stated</h2>
+		<p>Examine the install environment</p>
 	</div>
 	<div class="stepstat">
 		<ul>
-			<li class="current">检查安装环境</li>
-			<li class="unactivated">检查文件权限</li>
-			<li class="unactivated">创建数据库</li>
-			<li class="unactivated last">安装</li>
+			<li class="current">Examine the install environment</li>
+			<li class="unactivated">Examine the authority</li>
+			<li class="unactivated">Establish data base</li>
+			<li class="unactivated last">Install</li>
 		</ul>
 		<div class="stepstatbg stepstat1"></div>
 	</div>
 	</div>
 <div class="main">
-<h2 class="title">环境检查</h2>
+<h2 class="title">Examine environment</h2>
 <table class="tb" style="margin:20px 0 20px 55px;">
 <tr>
-	<th>项目</th>
-	<th class="padleft">所需配置</th>
-	<th class="padleft">最佳配置</th>
-	<th class="padleft">当前服务器</th>
+	<th>Options</th>
+	<th class="padleft">Basic Hardware</th>
+	<th class="padleft">Best Hardware</th>
+	<th class="padleft">Current Server</th>
 </tr>
 <tr>
-<td>操作系统</td>
-<td class="padleft">不限制</td>
+<td>Operation System</td>
+<td class="padleft">Not limited</td>
 <td class="padleft">Linux</td>
 <td class="w pdleft1"><?php echo userOS() ?></td>
 </tr>
 <tr>
-<td>PHP 版本</td>
+<td>PHP version</td>
 <td class="padleft">5.5.x</td>
 <td class="padleft">5.5.x</td>
 <td class="w pdleft1"><?php echo PHP_VERSION ?></td>
@@ -64,8 +64,8 @@
 </table>
 <form action="setp2.php" method="post">
 <div class="btnbox marginbot">
-	<input type="button" onclick="history.back();" value="上一步">
-	<input type="submit" value="下一步">
+	<input type="button" onclick="history.back();" value="Last Step">
+	<input type="submit" value="Next step">
 </div>
 </form>
 		<?php

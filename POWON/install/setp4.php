@@ -28,7 +28,7 @@
 			mysqli_query($link, "CREATE DATABASE IF NOT EXISTS `".DB_NAME."`");
 		}
 		if(mysqli_connect_errno($link)){
-			exit('数据库不存在');
+			exit('Database does not exist');
 		}
 		mysqli_close($link);
 			
@@ -49,9 +49,9 @@
 				$result = mysqli_query($conn, $Nval);
 
 				if($result){
-						$sql = '<font color="green">数据库导入成功</font>';
+						$sql = '<font color="green">Data writing succeeded</font>';
 				}else{
-						$sql = '<font color="red">数据库导入失败</font>';
+						$sql = '<font color="red">Data writing failed</font>';
 				}
 			}
 		}
@@ -63,18 +63,18 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>安装向导</h1>
-		<span>简体中文 UTF8 版</span>
-	<div class="setup step4">
-		<h2>安装</h2>
-		<p><?php echo $sql; ?>, 输入管理员的账号密码</p>
-	</div>
+		<h1>Installation Guide</h1>
+		<span>Group 6</span>
+		<div class="setup step2">
+			<h2>Examine file authority</h2>
+			<p>Examine file root authority</p>
+		</div>
 	<div class="stepstat">
 		<ul>
-			<li class="">检查安装环境</li>
-			<li class="">检查文件权限</li>
-			<li class="">创建数据库</li>
-			<li class="current last">安装</li>
+			<li class="">Examine environment</li>
+			<li class="current">File authority</li>
+			<li class="unactivated">Establish database</li>
+			<li class="unactivated last">Install</li>
 		</ul>
 		<div class="stepstatbg stepstat1"></div>
 	</div>
@@ -83,22 +83,22 @@
 <form method="post" action="setp5.php">
 <div id="form_items_3" >
 <br />
-<div class="desc"><b>填写管理员信息</b></div>
+<div class="desc"><b>Administrator infomation</b></div>
 <table class="tb2">
-<tr><th class="tbopt" align="left">&nbsp;Administrater name:</th>
+<tr><th class="tbopt" align="left">&nbsp;Admin name:</th>
 <td><input type="text" name="username" value="admin" size="35" class="txt"></td>
 <td></td>
 </tr>
-<tr><th class="tbopt" align="left">&nbsp;管理员密码:</th>
+<tr><th class="tbopt" align="left">&nbsp;Admin password:</th>
 <td><input type="password" name="password" value="" size="35" class="txt"></td>
-<td>管理员密码不能为空</td>
+<td>Admin password cannot be null</td>
 </tr>
-<tr><th class="tbopt" align="left">&nbsp;管理员 Email:</th>
+<tr><th class="tbopt" align="left">&nbsp;Admin Email:</th>
 <td><input type="text" name="email" value="" size="35" class="txt"></td>
 <td></td>
 </tr>
 <tr><th class="tbopt" align="left">&nbsp;</th>
-<td><input type="submit" name="submitname" value="完成" class="btn"></td>
+<td><input type="submit" name="submitname" value="Finish" class="btn"></td>
 <td></td>
 </tr>
 </table>

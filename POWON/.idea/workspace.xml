@@ -24,113 +24,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reg.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reg.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="32" column="19" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="21" />
+            <state relative-caret-position="152">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/user.php">
+      <file leaf-file-name="setp1.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/setp1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+            <state relative-caret-position="672">
+              <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mailbox_sentmail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mailbox_sentmail.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mailbox_compose.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mailbox_compose.php">
+      <file leaf-file-name="setp2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/setp2.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+              <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_memberlist.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/theme/default/group_memberlist.html">
+      <file leaf-file-name="setp3.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/setp3.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#1;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theme/default/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="106" column="44" selection-start-line="101" selection-start-column="24" selection-end-line="106" selection-end-column="44" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reg.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theme/default/reg.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="53" column="211" selection-start-line="53" selection-start-column="211" selection-end-line="53" selection-end-column="211" />
+            <state relative-caret-position="1026">
+              <caret line="54" column="61" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_permission_modify.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theme/default/group_permission_modify.html">
+      <file leaf-file-name="setp4.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/setp4.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+            <state relative-caret-position="285">
+              <caret line="42" column="35" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_post_detail.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/group_post_detail.php">
+      <file leaf-file-name="apple_bbs.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/install/apple_bbs.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="188" column="23" selection-start-line="188" selection-start-column="23" selection-end-line="188" selection-end-column="23" />
-              <folding>
-                <marker date="1470617667188" expanded="true" signature="1492:1590" ph="select vote,... ${DB_PREFIX}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="group_post_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theme/default/group_post_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="343" column="40" selection-start-line="343" selection-start-column="40" selection-end-line="343" selection-end-column="40" />
-              <folding>
-                <marker date="1470617703561" expanded="true" signature="24188:24441" ph="{...}" />
-                <marker date="1470617703561" expanded="true" signature="24352:24359" ph="/*...*/" />
-              </folding>
+            <state relative-caret-position="1387">
+              <caret line="73" column="32" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -147,11 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/logincheck.php" />
-        <option value="$PROJECT_DIR$/helpers/func.php" />
-        <option value="$PROJECT_DIR$/group_pendinglist.php" />
-        <option value="$PROJECT_DIR$/theme/default/group_postlist.html" />
-        <option value="$PROJECT_DIR$/theme/default/group_info.html" />
         <option value="$PROJECT_DIR$/admin_index.php" />
         <option value="$PROJECT_DIR$/admin_member.php" />
         <option value="$PROJECT_DIR$/theme/default/admin_member_llist.html" />
@@ -189,7 +133,6 @@
         <option value="$PROJECT_DIR$/helpers/mysql.php" />
         <option value="$PROJECT_DIR$/group_permission_modify.php" />
         <option value="$PROJECT_DIR$/theme/default/group_permission_modify.html" />
-        <option value="$PROJECT_DIR$/install/apple_bbs.sql" />
         <option value="$PROJECT_DIR$/group_memberlist.php" />
         <option value="$PROJECT_DIR$/group_postlist.php" />
         <option value="$PROJECT_DIR$/group_addc.php" />
@@ -198,6 +141,12 @@
         <option value="$PROJECT_DIR$/helpers/user.php" />
         <option value="$PROJECT_DIR$/mailbox_compose.php" />
         <option value="$PROJECT_DIR$/theme/default/group_memberlist.html" />
+        <option value="$PROJECT_DIR$/install/index.php" />
+        <option value="$PROJECT_DIR$/install/setp1.php" />
+        <option value="$PROJECT_DIR$/install/setp2.php" />
+        <option value="$PROJECT_DIR$/install/setp3.php" />
+        <option value="$PROJECT_DIR$/install/setp4.php" />
+        <option value="$PROJECT_DIR$/install/apple_bbs.sql" />
       </list>
     </option>
   </component>
@@ -421,7 +370,7 @@
       <workItem from="1470421245731" duration="37745000" />
       <workItem from="1470496639633" duration="34534000" />
       <workItem from="1470598347432" duration="2786000" />
-      <workItem from="1470602973628" duration="11806000" />
+      <workItem from="1470602973628" duration="13099000" />
     </task>
     <servers />
   </component>
@@ -434,7 +383,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372791000" />
+    <option name="totallyTimeSpent" value="374084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -500,41 +449,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/install/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/admin_member_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="43" column="51" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_member_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1634">
-          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="447" selection-start-line="9" selection-start-column="447" selection-end-line="9" selection-end-column="447" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/admin_post_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="127" column="48" selection-start-line="127" selection-start-column="48" selection-end-line="127" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/theme/default/admin_member_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -767,14 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/install/apple_bbs.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/theme/default/group_addc.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -922,6 +828,54 @@
             <element signature="n#style#0;n#img#0;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#1;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/setp1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="67" column="41" selection-start-line="67" selection-start-column="41" selection-end-line="67" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/setp2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/setp3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="54" column="61" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/setp4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="42" column="35" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/apple_bbs.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1387">
+          <caret line="73" column="32" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

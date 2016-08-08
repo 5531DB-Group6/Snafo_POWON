@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `bbs_mails` (
    PRIMARY KEY (`mailid`),
    FOREIGN KEY (`senderid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
    FOREIGN KEY (`receiverid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_uposts` (
   `pid` int(10) NOT NULL AUTO_INCREMENT,
@@ -217,25 +217,6 @@ CREATE TABLE IF NOT EXISTS `bbs_bill` (
    `amount` double NULL,
    PRIMARY KEY (`billid`),
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
-INSERT INTO `bbs_category` (`cid`, `classname`, `parentid`, `classpath`, `replycount`, `motifcount`, `compere`, `classpic`, `description`, `orderby`, `lastpost`, `namestyle`, `ispass`) VALUES
-(3, 'PHP框架', 1, NULL, 0, 0, '1,9', 'public/images/forum.gif', NULL, 3, NULL, NULL, 1),
-(4, '开源产品', 1, NULL, 0, 0, '1', 'public/images/forum.gif', NULL, 2, NULL, NULL, 1),
-(5, '内核源码', 1, NULL, 10, 9, '1,8', 'public/images/forum.gif', NULL, 4, '9+||+本论坛超管的账号、密码都为admin+||+1444301395+||+admin', NULL, 1),
-(6, '进阶讨论', 1, NULL, 0, 0, '1', 'public/images/forum.gif', NULL, 1, NULL, NULL, 1),
-(7, '名人故事', 2, NULL, 0, 0, '1', 'public/images/forum.gif', NULL, 1, NULL, NULL, 1),
-(8, '经验分享', 2, NULL, 0, 0, '1', 'public/images/forum.gif', NULL, 2, NULL, NULL, 1),
-(9, '求职招聘', 2, NULL, 0, 0, '1', 'public/images/forum.gif', NULL, 3, NULL, NULL, 1),
-(1, 'PHP技术交流', 0, NULL, 0, 0, '', 'public/images/forum.gif', NULL, 2, NULL, NULL, 1),
-(2, '程序人生', 0, NULL, 0, 0, '', 'public/images/forum.gif', NULL, 1, NULL, NULL, 1); dbg6;
-
-CREATE TABLE IF NOT EXISTS `bbs_closeip` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `ip` int(12) NOT NULL,
-  `addtime` int(12) NOT NULL,
-  `overtime` int(12) DEFAULT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_details` (
@@ -261,34 +242,6 @@ CREATE TABLE IF NOT EXISTS `bbs_details` (
   `isdisplay` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
-
-CREATE TABLE IF NOT EXISTS `bbs_link` (
-  `lid` smallint(6) NOT NULL AUTO_INCREMENT,
-  `displayorder` tinyint(2) NOT NULL DEFAULT '0',
-  `name` varchar(30) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `description` mediumtext,
-  `logo` varchar(255) DEFAULT NULL,
-  `addtime` int(12) NOT NULL,
-  PRIMARY KEY (`lid`)
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6; dbg6;
-
-INSERT INTO `bbs_link` (`lid`, `displayorder`, `name`, `url`, `description`, `logo`, `addtime`) VALUES
-(1, 1, '官方论坛', 'http://www.discuz.net', '提供最新 Discuz! 产品新闻、软件下载与技术交流', 'public/images/logo_88_31.gif', 2147483647),
-(2, 3, '漫游平台', 'http://www.manyou.com/', '', '', 2147483647),
-(3, 2, 'Yeswan', 'http://www.yeswan.com/', '', '', 2147483647),
-(4, 1, '我的领地', 'http://www.5d6d.com/', '', '', 0),
-(5, 4, '百度', 'http://www.baidu.com', '', '', 2147483647); dbg6;
-
-CREATE TABLE IF NOT EXISTS `bbs_order` (
-  `oid` int(10) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL,
-  `tid` int(11) NOT NULL,
-  `rate` int(11) NOT NULL,
-  `addtime` int(11) NOT NULL,
-  `ispay` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否已付款',
-  PRIMARY KEY (`oid`)
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_user` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
