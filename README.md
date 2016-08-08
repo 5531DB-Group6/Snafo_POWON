@@ -24,7 +24,7 @@
 3) <strike>Fatal error: Call to undefined function jason_decode() in E:\Program Files\wamp\www\Snafo_POWON\POWON\pay.php on line 29 (chao)</strike> </br>
 4) <strike>invite member by email not done (chao) </strike></br>
 5) view add/link in permission not done. </br>
-6) group admin can mute somebody. modify the post permission </br>
+6) <strike>group admin can mute somebody. modify the post permission</strike> </br>
 7) <strike>?? membership payment is not updated? （chao)</strike></br>
 8) <strike>group, friend list can show inactive user. </strike></br>
 9) <strike>public infor, group news to mailbox/ (chao)</strike> </br>
