@@ -77,7 +77,7 @@
                                 <td class="common">Latest Post</td>
                                 <td class="by">Post Time</td>
                                 <td class="by"><?php if(admin){?>Kick out<?php }?></td>
-                                <td class="by"><?php if(admin){?>Upgrade<?php }?></td>
+                                <td class="by"><?php if(admin){?>Mute<?php }?></td>
                                 <td class="by">send gift</td>
 
                             </tr>
@@ -112,10 +112,14 @@
                                         <?php }?>
                                     </td>
                                     <td class="by">
-                                        <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&del=1" style="color: rgba(159, 27, 5, 0.94);"><?php if($admin==1 and $val['admin']!=1){?>Kick out<?php }?></a></h2>
+                                        <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&del=1" style="color: rgba(159, 27, 5, 0.94);"><?php if($admin==1){?>Kick out<?php }?></a></h2>
                                     </td>
                                     <td class="by">
-                                        <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&upg=1"><font color="green"><?php if($admin==1 and $val['admin']!=1){?>Upgrade<?php }?></font></a></h2>
+                                        <?php if($val['mute']!=1){?>
+                                        <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&mut=1"><font color="green"><?php if($admin==1 && $OwnerId != $val['uid']){?>Mute<?php }?></font></a></h2>
+                                        <?php } else { ?>
+                                        <h2><a href="group_memberlist.php?gid=<?php echo $groupId; ?>&uid=<?php echo $val['uid']; ?>&unm=1"><font color="green"><?php if($admin==1 && $OwnerId != $val['uid']){?>Release<?php }?></font></a></h2>
+                                        <?php }?>
                                     </td>
                                     <td class="by">
                                         <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">

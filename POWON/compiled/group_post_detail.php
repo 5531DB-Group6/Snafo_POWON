@@ -341,7 +341,7 @@
             <?php echo fpage($zCount, $linum, [8,3,4,5,6,7,0,1,2]); ?>
         </div>
         <!--Reply START-->
-        <?php if($commentPermit){?>
+        <?php if($commentPermit && !$mute){?>
         <div id="f_pst" class="pl bm bmw">
             <form method="post" autocomplete="off" id="fastpostform" action="group_post_detail.php" enctype="multipart/form-data">
                 <table cellspacing="0" cellpadding="0">

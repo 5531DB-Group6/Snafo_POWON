@@ -77,7 +77,7 @@
                                 <td class="common">Latest Post</td>
                                 <td class="by">Post Time</td>
                                 <td class="by"><!--{if admin}-->Kick out<!--{/if}--></td>
-                                <td class="by"><!--{if admin}-->Upgrade<!--{/if}--></td>
+                                <td class="by"><!--{if admin}-->Mute<!--{/if}--></td>
                                 <td class="by">send gift</td>
 
                             </tr>
@@ -112,10 +112,14 @@
                                         <!--{/if}-->
                                     </td>
                                     <td class="by">
-                                        <h2><a href="group_memberlist.php?gid={$groupId}&uid={$val['uid']}&del=1" style="color: rgba(159, 27, 5, 0.94);"><!--{if $admin==1 and $val['admin']!=1}-->Kick out<!--{/if}--></a></h2>
+                                        <h2><a href="group_memberlist.php?gid={$groupId}&uid={$val['uid']}&del=1" style="color: rgba(159, 27, 5, 0.94);"><!--{if $admin==1}-->Kick out<!--{/if}--></a></h2>
                                     </td>
                                     <td class="by">
-                                        <h2><a href="group_memberlist.php?gid={$groupId}&uid={$val['uid']}&upg=1"><font color="green"><!--{if $admin==1 and $val['admin']!=1}-->Upgrade<!--{/if}--></font></a></h2>
+                                        <!--{if $val['mute']!=1}-->
+                                        <h2><a href="group_memberlist.php?gid={$groupId}&uid={$val['uid']}&mut=1"><font color="green"><!--{if $admin==1 && $OwnerId != $val['uid']}-->Mute<!--{/if}--></font></a></h2>
+                                        <!--{else}-->
+                                        <h2><a href="group_memberlist.php?gid={$groupId}&uid={$val['uid']}&unm=1"><font color="green"><!--{if $admin==1 && $OwnerId != $val['uid']}-->Release<!--{/if}--></font></a></h2>
+                                        <!--{/if}-->
                                     </td>
                                     <td class="by">
                                         <h2><a href="mailbox_sendgift.php?senderid={$val['uid']}">

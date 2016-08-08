@@ -30,6 +30,14 @@
         $admin=0;
     }
 
+if ($mute && !$admin){
+    $msg = '<font color=red><b>you are not allowed to add new content</b></font>';
+    $url = $_SERVER['HTTP_REFERER'];
+    $style = 'alert_error';
+    $toTime = 3000;
+    include 'notice.php';
+}
+
     $voteNum = $_REQUEST['VNum'];
 
     $select='u.uid as uid, u.username as username,u.picture as picture';

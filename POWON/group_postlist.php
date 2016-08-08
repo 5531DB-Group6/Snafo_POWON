@@ -18,8 +18,9 @@ if(empty($_GET['gid']) || !is_numeric($_GET['gid']))
 }else{
     $groupId = $_GET['gid'];
 }
-$result = dbSelect('gmembers','uid,approved','uid='.$_COOKIE['uid'].' and gid='.$groupId.'','',1);
+$result = dbSelect('gmembers','uid,approved,mute','uid='.$_COOKIE['uid'].' and gid='.$groupId.'','',1);
 $approved = $result[0]['approved'];
+$mute = $result[0]['mute'];
 $isadmin = isAdmin();
 
 if(!$isadmin){
@@ -84,6 +85,13 @@ if(!$OnMenu)
 }
 
 if ($_POST['newpostsubmitbtn']){
+    if ($mute && !$isadmin){
+        $msg = '<font color=red><b>you are not allowed to add new content</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+    }
     header('location:group_addc.php?gid='.$groupId.'&VNum='.$_POST['vote']);
 }
 

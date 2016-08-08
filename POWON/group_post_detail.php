@@ -36,8 +36,9 @@ if (!empty($TiZi[0]['voteoptions'])){
 }
 
 $isadmin = isAdmin();
-$result = dbSelect('gmembers','uid,approved','uid='.$_COOKIE['uid'].' and gid='.$groupId.'','',1);
+$result = dbSelect('gmembers','uid,approved,mute','uid='.$_COOKIE['uid'].' and gid='.$groupId.'','',1);
 $approved = $result[0]['approved'];
+$mute = $result[0]['mute'];
 if(!$isadmin){
     if(!$result || $approved==0)
     {
@@ -178,8 +179,19 @@ if($_POST['replysubmit'])
     if(!$_COOKIE['uid']){
 
         $notice='Sorry，you have not logged in';
-        include 'close.php';
+        $url = 'index.php';
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
         exit;
+    }
+
+    if ($mute && !$isadmin){
+        $msg = '<font color=red><b>you are not allowed to reply</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
     }
 
     if(!$commentPermit){
@@ -257,6 +269,13 @@ if($_POST['replysubmit'])
 }
 
 if ($_POST['newpostsubmitbtn']){
+    if ($mute && !$isadmin){
+        $msg = '<font color=red><b>you are not allowed to add new content</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+    }
     header('location:group_addc.php?gid='.$groupId.'&VNum='.$_POST['vote']);
 }
 
