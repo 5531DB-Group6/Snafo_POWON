@@ -32,7 +32,7 @@ if($_POST['mailsubmit'])
     $receivers =array_unique($receivers);
 
     foreach ($receivers as $receiver){
-        $receiver_id = dbSelect('user','uid,username','username="'.$receiver.'"');
+        $receiver_id = dbSelect('user','uid,username','username="'.$receiver.'" and status!=1');
         $receiverid = $receiver_id[0]['uid'];
         $receivername = $receiver_id[0]['username'];
 //        echo  $receiverid;

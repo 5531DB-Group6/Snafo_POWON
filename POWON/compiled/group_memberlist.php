@@ -96,12 +96,13 @@
                                 ?>
                                     <th style="width:80px;height:100px;text-align: center;">
                                             <a href="member_home.php?uid=<?php echo $val['uid']; ?>" title="open in new window" target="_blank"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
-                                            <?php if(!empty($msg)  ){?>
+                                            <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
+                                            <?php if(!empty($msg)){?>
                                             <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
                                             <?php } else { ?>
                                             <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
                                             <?php }?></a>
-                                            <h1 class="xs2"><a href="member_home.php?uid={$val['uid']" class="xst" ><?php echo $val['username']; ?></a></h1>
+                                            <h1 class="xs2"><a href="member_home.php?uid=<?php echo $val['uid']; ?>" class="xst" ><?php echo $val['username']; ?></a></h1>
                                     </th>
                                     <td class="common">
                                         <a href="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium"><?php if(!empty($LatestPost)){?><?php echo $LatestPost[0]['title']; ?><?php }?></a>

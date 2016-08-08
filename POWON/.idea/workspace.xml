@@ -24,41 +24,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="group_memberlist.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/group_memberlist.php">
+      <file leaf-file-name="reg.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reg.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="195" column="46" selection-start-line="195" selection-start-column="46" selection-end-line="195" selection-end-column="46" />
+            <state relative-caret-position="266">
+              <caret line="32" column="19" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_postlist.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/group_postlist.php">
+      <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="93" column="5" selection-start-line="87" selection-start-column="4" selection-end-line="93" selection-end-column="5" />
+            <state relative-caret-position="284">
+              <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_memberlist.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mailbox_sentmail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mailbox_sentmail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mailbox_compose.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mailbox_compose.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="group_memberlist.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/theme/default/group_memberlist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="117" column="61" selection-start-line="117" selection-start-column="61" selection-end-line="117" selection-end-column="61" />
-              <folding />
+            <state relative-caret-position="321">
+              <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#1;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_permission_modify.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/group_permission_modify.php">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/theme/default/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="21" column="7" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="7" />
+            <state relative-caret-position="245">
+              <caret line="106" column="44" selection-start-line="101" selection-start-column="24" selection-end-line="106" selection-end-column="44" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reg.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/theme/default/reg.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="53" column="211" selection-start-line="53" selection-start-column="211" selection-end-line="53" selection-end-column="211" />
               <folding />
             </state>
           </provider>
@@ -70,19 +106,6 @@
             <state relative-caret-position="342">
               <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mysql.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/mysql.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="110" column="2" selection-start-line="110" selection-start-column="2" selection-end-line="110" selection-end-column="2" />
-              <folding>
-                <marker date="1470614743903" expanded="true" signature="1774:1837" ph="insert into ${DB_PREFIX}... " />
-                <marker date="1470614743903" expanded="true" signature="2014:2057" ph="delete from " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -99,17 +122,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group_addc.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/theme/default/group_addc.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="79" column="45" selection-start-line="79" selection-start-column="45" selection-end-line="79" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="group_post_detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="group_post_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/theme/default/group_post_detail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="377">
@@ -134,7 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/group.php" />
         <option value="$PROJECT_DIR$/logincheck.php" />
         <option value="$PROJECT_DIR$/helpers/func.php" />
         <option value="$PROJECT_DIR$/group_pendinglist.php" />
@@ -157,7 +169,6 @@
         <option value="$PROJECT_DIR$/theme/default/admin_postlist.html" />
         <option value="$PROJECT_DIR$/admin_post_detail.php" />
         <option value="$PROJECT_DIR$/theme/default/index.html" />
-        <option value="$PROJECT_DIR$/helpers/user.php" />
         <option value="$PROJECT_DIR$/theme/default/admin_member_list.html" />
         <option value="$PROJECT_DIR$/theme/default/header.html" />
         <option value="$PROJECT_DIR$/admin_group_list.php" />
@@ -179,12 +190,14 @@
         <option value="$PROJECT_DIR$/group_permission_modify.php" />
         <option value="$PROJECT_DIR$/theme/default/group_permission_modify.html" />
         <option value="$PROJECT_DIR$/install/apple_bbs.sql" />
-        <option value="$PROJECT_DIR$/theme/default/group_memberlist.html" />
         <option value="$PROJECT_DIR$/group_memberlist.php" />
         <option value="$PROJECT_DIR$/group_postlist.php" />
         <option value="$PROJECT_DIR$/group_addc.php" />
         <option value="$PROJECT_DIR$/group_post_detail.php" />
         <option value="$PROJECT_DIR$/theme/default/group_post_detail.html" />
+        <option value="$PROJECT_DIR$/helpers/user.php" />
+        <option value="$PROJECT_DIR$/mailbox_compose.php" />
+        <option value="$PROJECT_DIR$/theme/default/group_memberlist.html" />
       </list>
     </option>
   </component>
@@ -408,7 +421,7 @@
       <workItem from="1470421245731" duration="37745000" />
       <workItem from="1470496639633" duration="34534000" />
       <workItem from="1470598347432" duration="2786000" />
-      <workItem from="1470602973628" duration="10519000" />
+      <workItem from="1470602973628" duration="11806000" />
     </task>
     <servers />
   </component>
@@ -421,7 +434,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="371504000" />
+    <option name="totallyTimeSpent" value="372791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -487,27 +500,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin_postlist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/admin_postlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/install/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -610,26 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reg.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/reg.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="53" column="211" selection-start-line="53" selection-start-column="211" selection-end-line="53" selection-end-column="211" />
           <folding />
         </state>
       </provider>
@@ -735,17 +711,6 @@
         <state relative-caret-position="551">
           <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-988">
-          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,14 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/theme/default/group_memberlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="117" column="61" selection-start-line="117" selection-start-column="61" selection-end-line="117" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/group_postlist.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -902,6 +859,68 @@
           <folding>
             <marker date="1470617703561" expanded="true" signature="24188:24441" ph="{...}" />
             <marker date="1470617703561" expanded="true" signature="24352:24359" ph="/*...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theme/default/reg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="53" column="211" selection-start-line="53" selection-start-column="211" selection-end-line="53" selection-end-column="211" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reg.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mailbox_sentmail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mailbox_compose.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theme/default/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="106" column="44" selection-start-line="101" selection-start-column="24" selection-end-line="106" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#td#0;n#table#0;n#div#1;n#div#2;n#div#2;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theme/default/group_memberlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#a#1;n#th#0;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
