@@ -32,7 +32,7 @@
 
     $voteNum = $_REQUEST['VNum'];
 
-    $select='u.uid as uid, u.username as username,u.picture as picture,m.admin as admin';
+    $select='u.uid as uid, u.username as username,u.picture as picture';
     $MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=1',null,null,$select,'m.gid ='.$groupId.' and u.uid!='.$_COOKIE['uid'].'');
     $MemberListRest = 3-count($MemberList)%3;
     $MemberListRest = ($MemberListRest ==3)? 0:$MemberListRest;

@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `bbs_gmembers` (
   `uid` int(11) NOT NULL,
   `approved` tinyint(2) NOT NULL DEFAULT '0',
   `admin` tinyint(2) NOT NULL DEFAULT '0',
+  `mute` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`gid`,`uid`),
   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE,
   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE

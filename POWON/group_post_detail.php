@@ -105,6 +105,8 @@ if($category)
     exit;
 }
 
+$isAuthor = $authorid==$_COOKIE['uid'];
+
 if($isadmin||$_COOKIE['uid']==(int)$BanZhu){
     $GuanLi=1;
 }else{

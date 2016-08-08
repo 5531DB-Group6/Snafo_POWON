@@ -18,10 +18,13 @@
 
 
     <div id="ct" class="wp cl">
-        <?php if($GuanLi){?>
+        <?php if($GuanLi || $isAuthor){?>
         <div id="modmenu" class="xi2 pbm">
             <a href="group_post_detail.php?pid=<?php echo $Id; ?>&del=1">Delete the Post</a>
-
+            <?php if($GuanLi){?>
+            <span class="pipe">|</span>
+            <a href="group_permission_modify.php?pid=<?php echo $Id; ?>">Modify the Permission</a>
+            <?php }?>
         </div>
         <?php }?>
         <div id="postlist" class="pl bm">
