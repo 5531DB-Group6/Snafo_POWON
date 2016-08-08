@@ -28,7 +28,7 @@
 7) <strike>?? membership payment is not updated? （chao)</strike></br>
 8) <strike>group, friend list can show inactive user. </strike></br>
 9) <strike>public infor, group news to mailbox/ (chao)</strike> </br>
-10) The group owner has a feature to view and manage the permissions to any content </br>
+10) <strike>The group owner has a feature to view and manage the permissions to any content </strike></br>
 11) post video. (chao) </br>
 12) <strike>send gift from group list, friend list. (chao) </strike></br>
 13) qin's bonus</br>
