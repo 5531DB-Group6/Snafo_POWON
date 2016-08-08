@@ -37,3 +37,4 @@
 16 <strike>issue: personal post cannot see reply. </strike></br>
 17 <strike>issue: avatar pic size too big in chat. </strike></br>
 18 issue: send email to inactive member.</br>
+19 issue:email validation
