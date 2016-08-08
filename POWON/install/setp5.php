@@ -1,6 +1,6 @@
 <?php
 	if(file_exists('../install.lock')){
-		exit('网站已经被安装过了，如果需要重新安装网站，请删除 /install.lock 文件');
+		exit('the website has been installed, for re-install please delete ./install.lock ');
 	}
 	include '../config/database.php';
 	if(!empty($_POST['submitname'])){
@@ -19,10 +19,11 @@
 			$password=md5(trim($_POST['password']));
 			
 			$time=time();
+			$expiretime = time() + 60*60*24*365*10;
 			
 			$email=trim($_POST['email']);
 			
-			$sql="insert into ".DB_PREFIX."user(uid,username,password,email,udertype,regtime,lasttime) values(1,'{$username}','{$password}','{$email}',1,$time,$time)";
+			$sql="insert into ".DB_PREFIX."user(uid,username,password,email,udertype,regtime,lasttime,expiretime) values(1,'{$username}','{$password}','{$email}',1,$time,$time,$expiretime)";
 
 
 			$result=mysqli_query($conn, $sql);
@@ -31,9 +32,10 @@
 			{
 
 				$uid=$result[0]['uid'];
-				$n = "`uid`";
-				$v = "$uid";
-				$result = dbInsert('profilevisible',$n,$v);
+				//$n = "`uid`";
+				//$v = "$uid";
+				$sql="insert into ".DB_PREFIX."profileVisible (uid) values(1)";
+				$result=mysqli_query($conn, $sql);
 
 				echo 'installation done';
 				file_put_contents('../install.lock','');

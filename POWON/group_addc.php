@@ -141,17 +141,20 @@ if ($mute && !$admin){
             }
 
             $groupfinder = dbSelect('groups','gid,name,owner','gid='.$groupId.' and ispass=1','gid desc');
-            foreach ($MemberList as $key=>$val ){
-                $senderid = $authorid;
-                $receiverid = $val['uid'];
-                $emailtitle = "new post from group  ";
-                $emailtitlecontent = $title;
-                $sendtime = time();
+            if (is_array($MemberList)) {
+                foreach ($MemberList as $key => $val) {
+                    $senderid = $authorid;
+                    $receiverid = $val['uid'];
+                    $emailtitle = "new post from group  ";
+                    $emailtitlecontent = $title;
+                    $sendtime = time();
 
-                $n = 'senderid, receiverid, title, content, sendtime';
-                $v = ''.$senderid.', '.$receiverid.', "'.$emailtitle.'", "'.$emailtitlecontent.'", '.$sendtime.'';
-                $result = dbInsert('mails', $n, $v);
+                    $n = 'senderid, receiverid, title, content, sendtime';
+                    $v = '' . $senderid . ', ' . $receiverid . ', "' . $emailtitle . '", "' . $emailtitlecontent . '", ' . $sendtime . '';
+                    $result = dbInsert('mails', $n, $v);
+                }
             }
+
 
 
             $msg = '<font color=red><b>Posting succeeded</b></font>'.$futuredelete;

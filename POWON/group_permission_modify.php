@@ -46,38 +46,40 @@ $MemberListRest = ($MemberListRest ==3)? 0:$MemberListRest;
 //发布帖子
 if($_POST['permissionsubmit'])
 {
-    foreach($MemberList AS $key=>$val){
-        $uid = $val['uid'];
-        $Id = $_POST['pid'];
-        $permission = $_POST['permission'.$uid.''];
-        switch ($permission){
-            case 0:
-                $view =0;
-                $comment=0;
-                $addlink=0;
-                break;
-            case 1:
-                $view =1;
-                $comment=0;
-                $addlink=0;
-                break;
-            case 2:
-                $view =1;
-                $comment=1;
-                $addlink=0;
-                break;
-            case 3:
-                $view =1;
-                $comment=1;
-                $addlink=1;
-                break;
-        }
-        $postpermissionempty = $_POST['postpermission'.$val['uid']];
+    if (is_array($MemberList)) {
+        foreach ($MemberList AS $key => $val) {
+            $uid = $val['uid'];
+            $Id = $_POST['pid'];
+            $permission = $_POST['permission' . $uid . ''];
+            switch ($permission) {
+                case 0:
+                    $view = 0;
+                    $comment = 0;
+                    $addlink = 0;
+                    break;
+                case 1:
+                    $view = 1;
+                    $comment = 0;
+                    $addlink = 0;
+                    break;
+                case 2:
+                    $view = 1;
+                    $comment = 1;
+                    $addlink = 0;
+                    break;
+                case 3:
+                    $view = 1;
+                    $comment = 1;
+                    $addlink = 1;
+                    break;
+            }
+            $postpermissionempty = $_POST['postpermission' . $val['uid']];
 
-        if (!$postpermissionempty){
-            $presult = dbUpdate('gpostspermission','view='.$view.', comment='.$comment.', addlink='.$addlink.'', 'uid='.$uid.' and pid='.$Id.'');
-        }else{
-            $presult = dbInsert('gpostspermission','uid,pid,view,comment,addlink',''.$uid.','.$Id.','.$view.','.$comment.','.$addlink.'');
+            if (!$postpermissionempty) {
+                $presult = dbUpdate('gpostspermission', 'view=' . $view . ', comment=' . $comment . ', addlink=' . $addlink . '', 'uid=' . $uid . ' and pid=' . $Id . '');
+            } else {
+                $presult = dbInsert('gpostspermission', 'uid,pid,view,comment,addlink', '' . $uid . ',' . $Id . ',' . $view . ',' . $comment . ',' . $addlink . '');
+            }
         }
     }
 }

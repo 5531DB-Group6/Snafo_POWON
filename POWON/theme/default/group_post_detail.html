@@ -167,6 +167,10 @@
 
                                                 <!--{/loop}-->
                                                 <!--{/if}-->
+                                                <br/>
+                                                <!--{if !empty($Video)}-->
+                                                {$Video}
+                                                <!--{/if}-->
                                             </td>
                                         </tr>
                                     </table>
@@ -261,8 +265,8 @@
                             </div>
                             <div class="pct">
                                 <div class="pcb">
-                                    <!--{if $hval['isdisplay']}-->
-                                    <div class="locked">提示: <em>该帖被管理员或版主屏蔽</em></div>
+                                    <!--{if !$hval['isdisplay']}-->
+                                    <div class="locked">提示: <em>the reply has been blocked</em></div>
                                     <!--{else}-->
                                     <div class="t_fsz">
                                         <table cellspacing="0" cellpadding="0">
@@ -271,6 +275,10 @@
                                                     {$hval['content']}
                                                     <br/>
                                                     <img src="{$hval['image']}" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
+                                                    <br/>
+                                                    <!--{if !empty($hval['video'])}-->
+                                                    {$hval['video']}
+                                                    <!--{/if}-->
                                                 </td>
                                             </tr>
                                         </table>
@@ -337,9 +345,6 @@
                     </span>
                 </div>
             </form>
-        </div>
-        <div style="width:960px; margin:0 auto; padding:10px 0px; text-align:right">
-            ${fpage($zCount, $linum, [8,3,4,5,6,7,0,1,2])}
         </div>
         <!--Reply START-->
         <!--{if $commentPermit && !$mute}-->
@@ -412,6 +417,15 @@
                                 </p>
                                 <!--{/if}-->
                             </div>
+                            <br/>
+                            <div>
+                                <p><b>add new vote option:</b></p>
+                                <p><input type="text" name="newoption" class="px" /></p>
+                            </div>
+                            <p class="ptm pnpost">
+                                <button type="submit" name="optionsubmit" id="optionsubmit" class="pn pnc vm" value="true" tabindex="5">
+                                    <strong>submit new option</strong></button>
+                            </p>
                             <!--{/if}-->
                             <input name="pid" type="hidden" value="{$Id}" />
                             <input name="gid" type="hidden" value="{$groupId}" />

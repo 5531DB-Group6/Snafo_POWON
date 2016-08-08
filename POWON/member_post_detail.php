@@ -94,7 +94,7 @@ if(!empty($friendcheck)||!empty($groupmatecheck)){
     if (!empty($checkpermission)){
         $viewPermit=$checkpermission[0]['view'];
         $commentPermit=$checkpermission[0]['comment'];
-        $addlinkPermit=$checkpermission[0]['addpermit'];
+        $addlinkPermit=$checkpermission[0]['addlink'];
     }else{
         $viewPermit=1;
         $commentPermit=1;
@@ -123,7 +123,7 @@ $zCount = $TZCount['count(pid)'];
 $linum = 10;
 $Lpage = empty($_GET['page'])?1:$_GET['page'];
 //循环帖子回复信息
-$select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image';
+$select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image, t.video as video';
 $HTiZi = dbDuoSelect('uposts as t','user as u',' on t.authorid=u.uid',null,null,$select,'t.parentid='.$Id.' and t.isdel=0 and t.first=0','t.pid asc');
 
 //保存帖子回复
@@ -156,6 +156,17 @@ if($_POST['replysubmit'])
     $addtime = time();				//发表时间
     $futuredelete = "";
 
+    $contentcheck = (string)$content;
+    $bHasLink = strpos($contentcheck, 'http') !== false || strpos($contentcheck, 'www.') !== false;
+
+    if($bHasLink && !$addlinkPermit){
+        $msg = '<font color=red><b>you are not allowed to add link</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+    }
 
     if (empty($content) && $picture==null){
         $msg = '<font color=red><b>please add content</b></font>';

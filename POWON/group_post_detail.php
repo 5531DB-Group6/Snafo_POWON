@@ -118,7 +118,7 @@ if($isadmin||$_COOKIE['uid']==(int)$BanZhu){
 $checkpermission = dbselect('gpostspermission','view,comment,addlink','pid='.$Id.' and uid='.$_COOKIE['uid'].'');
 $viewPermit=$checkpermission[0]['view'];
 $commentPermit=$checkpermission[0]['comment'];
-$addlinkPermit=$checkpermission[0]['addpermit'];
+$addlinkPermit=$checkpermission[0]['addlink'];
 
 if($GuanLi){
     $viewPermit=1;
@@ -166,7 +166,7 @@ $zCount = $TZCount['count(pid)'];
 $linum = 10;
 $Lpage = empty($_GET['page'])?1:$_GET['page'];
 //循环帖子回复信息
-$select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image';
+$select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image, t.video as video';
 $HTiZi = dbDuoSelect('gposts as t','user as u',' on t.authorid=u.uid',null,null,$select,'t.parentid='.$Id.' and t.isdel=0 and t.first=0','t.pid asc', setLimit($linum));
 
 $title = $Title.' - '.WEB_NAME;
@@ -214,6 +214,38 @@ if($_POST['replysubmit'])
     $addtime = time();				//发表时间
     $groupId = $_POST['gid'];			//类别ID
     $futuredelete = "";
+
+    $contentcheck = (string)$content;
+
+    $bHasLink = strpos($contentcheck, 'http') !== false || strpos($contentcheck, 'www.') !== false;
+
+    if($bHasLink && !$addlinkPermit){
+        $msg = '<font color=red><b>you are not allowed to add link</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+    }
+    /*
+    $regex = "((https?|ftp)\:\/\/)?"; // SCHEME
+    $regex .= "([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?"; // User and Pass
+    $regex .= "([a-z0-9-.]*)\.([a-z]{2,3})"; // Host or IP
+    $regex .= "(\:[0-9]{2,5})?"; // Port
+    $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path
+    $regex .= "(\?[a-z+&\$_.-][a-z0-9;:@&%=+\/\$_.-]*)?"; // GET Query
+    $regex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?"; // Anchor
+
+    if(preg_match("/^$regex$/", $contentcheck))
+    {
+        $msg = '<font color=red><b>you are not allowed to add link</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+    }
+    */
 
     if (empty($content) && $picture==null){
         $msg = '<font color=red><b>please add content</b></font>';
@@ -338,6 +370,63 @@ if($_POST['votesubmit'])
 
     }
 
+}
+
+if($_POST['optionsubmit']) {
+    //判断用户是否登录
+    if (!$_COOKIE['uid']) {
+
+        $notice = 'Sorry，you have not logged in';
+        include 'close.php';
+        exit;
+    }
+
+    if (!$commentPermit) {
+
+        $msg = '<font color=red><b>you are not allowed to vonte</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+    }
+
+    if ($votecheck) {
+
+        $msg = '<font color=red><b>you have already voted</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+    }
+
+    $parentid = $Id;                    //跟帖时记录贴子ID
+    $groupId = $_POST['gid'];            //类别ID
+    $option = $_POST['newoption'];
+
+    $gpost = dbSelect('gposts','*','pid='.$Id.' and isdel=0 and first=1','',1);
+
+    $newoptions = $gpost[0]['voteoptions'].'+||+'.$option;
+    $result = dbUpdate('gposts', 'voteoptions="'.$newoptions.'"', 'pid='.$Id.'');
+
+    if (!$result) {
+        $msg = '<font color=red><b>add new option failed，please contact the administrator</b></font>';
+        $url = $_SERVER['HTTP_REFERER'];
+        $style = 'alert_error';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+    } else {
+        $msg = '<font color=red><b>add option succeeded</b></font>';
+        $url = 'group_post_detail.php?pid=' . $Id;
+        $style = 'alert_right';
+        $toTime = 3000;
+        include 'notice.php';
+        exit;
+
+
+    }
 }
 
 

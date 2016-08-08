@@ -48,10 +48,10 @@
                                 <?php if(is_array($GroupList)){foreach($GroupList AS $key=>$val) { ?>
                                 <tr style="width:80px;height:100px">
                                     <td style="width:60px;height:80px;text-align: center;" >
-                                        <a href="group_postlist.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>
+                                        <a href="group_info.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>
                                     </td>
                                     <td>
-                                        <h2><a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></h2>
+                                        <h2><a href="group_info.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></h2>
                                         <p class="xg2"><?php echo $val['description']; ?></p>
                                         <?php if(!empty($val['owner'])){?>
                                         <p>Owner: <span class="xi2"><?php echo getUserName($val['owner']); ?></span></p>

@@ -62,6 +62,10 @@
 			setcookie('picture', $result[0]['picture'], $longTime);
 			//setcookie('grade',$grade,$longTime);
 
+			$_SESSION['uid']=$result[0]['uid'];
+			$_SESSION['username']=$result[0]['username'];
+			$_SESSION['udertype']=$result[0]['udertype'];
+
 
 			$msg = '<font color=green><b>login succeeded</b></font>';
 			$url = $_SERVER['HTTP_REFERER'];

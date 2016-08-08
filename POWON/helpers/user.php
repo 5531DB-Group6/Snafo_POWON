@@ -65,13 +65,22 @@
 	//检测邮箱格式
 	function checkEmail($mail)
 	{
-		$pattern='/^[\w-]+@([a-zA-Z0-9-]+\.)+((com)|(cn)|(net)|(edu))$/i';
+		$pattern='/^[(\w-)||(\w-+\.+\w-)]+@([a-zA-Z0-9-]+\.)+((com)|(cn)|(net)|(edu))$/i';
+		/*
+		if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+			return false;
+		}else{
+			return true;
+		}
+		*/
+
 		if(preg_match($pattern, $mail))
 		{
 			return false;
 		}else{
 			return true;
 		}
+
 	}
 
 	//检测验证码

@@ -85,9 +85,6 @@
 
                 <div class="bm bw0 pgs cl">
                     <span  class="pgb y"><a href="member.php?mlist=1">Back</a></span>
-                <div style="width:800px; margin:0 auto; padding:10px 0px; text-align:right">
-                    <?php echo fpage($zCount,$linum,[8,3,4,5,6,7,0,1,2]); ?>
-                </div>
             </div>
         </div>
     </div>

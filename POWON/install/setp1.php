@@ -24,17 +24,17 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>Installation Guide</h1>
+		<h1>Setup Guide</h1>
 		<span>Group 6</span>
 	<div class="setup step1">
-		<h2>Install stated</h2>
-		<p>Examine the install environment</p>
+		<h2>Install status</h2>
+		<p>Environment check</p>
 	</div>
 	<div class="stepstat">
 		<ul>
-			<li class="current">Examine the install environment</li>
-			<li class="unactivated">Examine the authority</li>
-			<li class="unactivated">Establish data base</li>
+			<li class="current">Environment</li>
+			<li class="unactivated">Authorisation</li>
+			<li class="unactivated">Data base</li>
 			<li class="unactivated last">Install</li>
 		</ul>
 		<div class="stepstatbg stepstat1"></div>

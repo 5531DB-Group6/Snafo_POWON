@@ -5,17 +5,17 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>Installation Guide</h1>
+		<h1>Setup Guide</h1>
 		<span>Group 6</span>
 	<div class="setup step3">
-		<h2>Establish database</h2>
-		<p>Database Installing</p>
+		<h2>Database</h2>
+		<p>Database Install</p>
 	</div>
 	<div class="stepstat">
 		<ul>
-			<li class="">Examine environment</li>
-			<li class="">File authority</li>
-			<li class="current">Establish database</li>
+			<li class="current">Environment</li>
+			<li class="unactivated">Authorisation</li>
+			<li class="unactivated">Data base</li>
 			<li class="unactivated last">Install</li>
 		</ul>
 		<div class="stepstatbg stepstat1"></div>

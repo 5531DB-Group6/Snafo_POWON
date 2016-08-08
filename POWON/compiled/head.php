@@ -7,7 +7,7 @@
 				<div id="um">
 					<div class="avt y"><a href="home_tx.php"><img src="<?php echo $GGpicture; ?>" /></a></div>
 					<p>
-						<img src="public/images/mailbox.png" style="width: auto; height: auto;max-width: 30px;max-height: 50px" ><a href="mailbox.php" ><b>Mailbox</b></a>
+						<img src="public/images/mailbox.png" style="width: auto; height: auto;max-width: 30px;max-height: 50px" ><a href="mailbox.php"  target="_blank"><b>Mailbox</b></a>
 						<strong class="vwmy"><a href="home.php"><?php echo $_COOKIE['username']; ?></a></strong>
 					<span class="pipe">|</span><a href="home.php">User Page</a>
 					<?php if($_COOKIE['udertype']){?>

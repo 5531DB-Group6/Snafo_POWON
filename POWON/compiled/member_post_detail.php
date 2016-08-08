@@ -119,6 +119,9 @@
                                                 <?php echo $Content; ?>
                                                 <br/>
                                                 <img src="<?php echo $Image; ?>" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
+                                                <?php if(!empty($Video)){?>
+                                                <?php echo $Video; ?>
+                                                <?php }?>
                                             </td>
                                         </tr>
                                     </table>
@@ -222,6 +225,10 @@
                                                     <?php echo $hval['content']; ?>
                                                     <br/>
                                                     <img src="<?php echo $hval['image']; ?>" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
+                                                    <br/>
+                                                    <?php if(!empty($hval['video'])){?>
+                                                    <?php echo $hval['video']; ?>
+                                                    <?php }?>
                                                 </td>
                                             </tr>
                                         </table>
@@ -269,9 +276,6 @@
         <div class="pgs mtm mbm cl">
 			<span class="pgb y" id="visitedforumstmp">
 			<a href="member_postlist.php?uid=<?php echo $authorid; ?>">Back to List</a></span>
-        </div>
-        <div style="width:960px; margin:0 auto; padding:10px 0px; text-align:right">
-            <?php echo fpage($zCount, $linum, [8,3,4,5,6,7,0,1,2]); ?>
         </div>
         <!--回帖 START-->
         <?php if($commentPermit){?>

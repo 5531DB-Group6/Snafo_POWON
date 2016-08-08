@@ -38,35 +38,39 @@ $GroupMatesList = dbConn(trim($sql), true);
 
 if($_POST['visibilitysubmitbtn'])
 {
-    foreach($FriendList as $key=>$val){
-        $vpermissionempty = $_POST['vpermission'.$val['uid']];
-        $firstname = $_POST['firstnamevisible'.$val['uid']];
-        $lastname = $_POST['lastnamevisible'.$val['uid']];
-        $sex = $_POST['gendervisible'.$val['uid']];
-        $birth = $_POST['birthdayvisible'.$val['uid']];
-        $address = $_POST['addressvisible'.$val['uid']];
-        $place = $_POST['regionvisible'.$val['uid']];
-        $profession = $_POST['professionvisible'.$val['uid']];
-        if ($vpermissionempty){
-            $fresult=dbInsert('profilevisiblemember','uid, tid, firstname_visible, lastname_visible, sex_visible, bday_visible, address_visible, place_visible, profession_visible',''.$_COOKIE['uid'].','.$val['uid'].', '.$firstname.','.$lastname.', '.$sex.', '.$birth.','.$address.','.$place.','.$profession.'');
-        }else{
-            $fresult=dbupdate('profilevisiblemember','firstname_visible='.$firstname.',lastname_visible='.$lastname.', sex_visible='.$sex.', bday_visible='.$birth.', address_visible='.$address.', place_visible='.$place.', profession_visible='.$profession.'','uid='.$_COOKIE['uid'].' and tid='.$val['uid'].'');
+    if (is_array($FriendList)) {
+        foreach ($FriendList as $key => $val) {
+            $vpermissionempty = $_POST['vpermission' . $val['uid']];
+            $firstname = $_POST['firstnamevisible' . $val['uid']];
+            $lastname = $_POST['lastnamevisible' . $val['uid']];
+            $sex = $_POST['gendervisible' . $val['uid']];
+            $birth = $_POST['birthdayvisible' . $val['uid']];
+            $address = $_POST['addressvisible' . $val['uid']];
+            $place = $_POST['regionvisible' . $val['uid']];
+            $profession = $_POST['professionvisible' . $val['uid']];
+            if ($vpermissionempty) {
+                $fresult = dbInsert('profilevisiblemember', 'uid, tid, firstname_visible, lastname_visible, sex_visible, bday_visible, address_visible, place_visible, profession_visible', '' . $_COOKIE['uid'] . ',' . $val['uid'] . ', ' . $firstname . ',' . $lastname . ', ' . $sex . ', ' . $birth . ',' . $address . ',' . $place . ',' . $profession . '');
+            } else {
+                $fresult = dbupdate('profilevisiblemember', 'firstname_visible=' . $firstname . ',lastname_visible=' . $lastname . ', sex_visible=' . $sex . ', bday_visible=' . $birth . ', address_visible=' . $address . ', place_visible=' . $place . ', profession_visible=' . $profession . '', 'uid=' . $_COOKIE['uid'] . ' and tid=' . $val['uid'] . '');
+            }
         }
     }
 
-    foreach($GroupMatesList as $key=>$val){
-        $vpermissionempty = $_POST['vpermission'.$val['uid']];
-        $firstname = $_POST['firstnamevisible'.$val['uid']];
-        $lastname = $_POST['lastnamevisible'.$val['uid']];
-        $sex = $_POST['gendervisible'.$val['uid']];
-        $birth = $_POST['birthdayvisible'.$val['uid']];
-        $address = $_POST['addressvisible'.$val['uid']];
-        $place = $_POST['regionvisible'.$val['uid']];
-        $profession = $_POST['professionvisible'.$val['uid']];
-        if ($vpermissionempty){
-            $gresult=dbInsert('profilevisiblemember','uid, tid, firstname_visible, lastname_visible, sex_visible, bday_visible, address_visible, place_visible, profession_visible',''.$_COOKIE['uid'].','.$val['uid'].', '.$firstname.','.$lastname.', '.$sex.', '.$birth.','.$address.','.$place.','.$profession.'');
-        }else{
-            $gresult=dbupdate('profilevisiblemember','firstname_visible='.$firstname.',lastname_visible='.$lastname.', sex_visible='.$sex.', bday_visible='.$birth.', address_visible='.$address.', place_visible='.$place.', profession_visible='.$profession.'','uid='.$_COOKIE['uid'].' and tid='.$val['uid'].'');
+    if (is_array($GroupMatesList)) {
+        foreach ($GroupMatesList as $key => $val) {
+            $vpermissionempty = $_POST['vpermission' . $val['uid']];
+            $firstname = $_POST['firstnamevisible' . $val['uid']];
+            $lastname = $_POST['lastnamevisible' . $val['uid']];
+            $sex = $_POST['gendervisible' . $val['uid']];
+            $birth = $_POST['birthdayvisible' . $val['uid']];
+            $address = $_POST['addressvisible' . $val['uid']];
+            $place = $_POST['regionvisible' . $val['uid']];
+            $profession = $_POST['professionvisible' . $val['uid']];
+            if ($vpermissionempty) {
+                $gresult = dbInsert('profilevisiblemember', 'uid, tid, firstname_visible, lastname_visible, sex_visible, bday_visible, address_visible, place_visible, profession_visible', '' . $_COOKIE['uid'] . ',' . $val['uid'] . ', ' . $firstname . ',' . $lastname . ', ' . $sex . ', ' . $birth . ',' . $address . ',' . $place . ',' . $profession . '');
+            } else {
+                $gresult = dbupdate('profilevisiblemember', 'firstname_visible=' . $firstname . ',lastname_visible=' . $lastname . ', sex_visible=' . $sex . ', bday_visible=' . $birth . ', address_visible=' . $address . ', place_visible=' . $place . ', profession_visible=' . $profession . '', 'uid=' . $_COOKIE['uid'] . ' and tid=' . $val['uid'] . '');
+            }
         }
     }
 
@@ -75,6 +79,6 @@ if($_POST['visibilitysubmitbtn'])
 }
 
 
-$title = '个人资料 - '.WEB_NAME;
+$title = 'Personal info - '.WEB_NAME;
 include template("home_infopermission.html");
 

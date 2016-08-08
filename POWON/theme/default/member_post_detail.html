@@ -119,6 +119,9 @@
                                                 {$Content}
                                                 <br/>
                                                 <img src="{$Image}" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
+                                                <!--{if !empty($Video)}-->
+                                                {$Video}
+                                                <!--{/if}-->
                                             </td>
                                         </tr>
                                     </table>
@@ -222,6 +225,10 @@
                                                     {$hval['content']}
                                                     <br/>
                                                     <img src="{$hval['image']}" style="width:auto;height:auto;max-width: 600px;max-height:600px;" />
+                                                    <br/>
+                                                    <!--{if !empty($hval['video'])}-->
+                                                    {$hval['video']}
+                                                    <!--{/if}-->
                                                 </td>
                                             </tr>
                                         </table>
@@ -269,9 +276,6 @@
         <div class="pgs mtm mbm cl">
 			<span class="pgb y" id="visitedforumstmp">
 			<a href="member_postlist.php?uid={$authorid}">Back to List</a></span>
-        </div>
-        <div style="width:960px; margin:0 auto; padding:10px 0px; text-align:right">
-            ${fpage($zCount, $linum, [8,3,4,5,6,7,0,1,2])}
         </div>
         <!--回帖 START-->
         <!--{if $commentPermit}-->
