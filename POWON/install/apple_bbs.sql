@@ -119,6 +119,8 @@ CREATE TABLE IF NOT EXISTS `bbs_chat` (
   `uid` int(11) NOT NULL,
   `fid` int(11) NOT NULL,
   `msg` text,
+  `posttime` int(12) NOT NULL,
+  `isread` tinyint(1) NOT NULL DEFAULT '0',
    PRIMARY KEY (`chatid`),
   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
   FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE)

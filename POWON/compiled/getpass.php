@@ -13,7 +13,7 @@
 		<div class="mn">
 			<div class="bm" id="main_message">
 				<div class="bm_h bbs" id="main_hnav">
-					<h3 id="layer_reginfo_t" class="xs2">找回密码</h3>
+					<h3 id="layer_reginfo_t" class="xs2">Retrieve password </h3>
 				</div>
 				<p id="returnmessage4"></p>
 				<form method="post" autocomplete="off" name="register" id="registerform" action="">
@@ -23,9 +23,9 @@
 								<div class="rfm">
 									<table>
 										<tr>
-											<th><span class="rq">*</span><label for="5sMVeV">用户名:</label></th>
+											<th><span class="rq">*</span><label for="5sMVeV">username:</label></th>
 											<td><input type="text" id="5sMVeV" onblur="checkRegOut('5sMVeV','请输入用户名');" onfocus="checkReg('5sMVeV')" name="username" class="px" autocomplete="off" size="25" maxlength="15"/></td>
-											<td class="tipcol"><i id="tip_5sMVeV" class="p_tip">用户名由 3 到 12 个字符组成</i></td>
+											<td class="tipcol"><i id="tip_5sMVeV" class="p_tip">char 3-10</i></td>
 										</tr>
 									</table>
 								</div>
@@ -33,17 +33,17 @@
 									<table>
 										<tr>
 											<th><span class="rq">*</span><label for="FQ817D">Email:</label></th>
-											<td><input type="text" id="FQ817D" name="mail"  onblur="checkRegOut('FQ817D','请输入正确的邮箱地址');" onfocus="checkReg('FQ817D')" size="25" class="px" /><br /><em id="emailmore">&nbsp;</em></td>
-											<td class="tipcol"><i id="tip_FQ817D" class="p_tip">请输入正确的邮箱地址</i></td>
+											<td><input type="text" id="FQ817D" name="mail"  onblur="checkRegOut('FQ817D','please enter currect address');" onfocus="checkReg('FQ817D')" size="25" class="px" /><br /><em id="emailmore">&nbsp;</em></td>
+											<td class="tipcol"><i id="tip_FQ817D" class="p_tip">please enter currect address</i></td>
 										</tr>
 									</table>
 								</div>
 								<div class="rfm">
 									<table>
 										<tr>
-											<th><span class="rq">*</span><label for="yzm">验证码:</label></th>
+											<th><span class="rq">*</span><label for="yzm">verification code:</label></th>
 											<td><input style="width:50px;" maxlength="4" type="text" id="yzm" name="yzm" onfocus="checkReg('yzm')" size="25" class="px" /><br /><em id="emailmore">&nbsp;</em></td>
-											<td class="tipcol"><i id="tip_yzm" class="p_tip"><img src="verify.php" id="p_yzm" onclick="show('p_yzm')" style="cursor:pointer" /> <a href="javascript:;" onclick="show('p_yzm')">看不清？</a></i></td>
+											<td class="tipcol"><i id="tip_yzm" class="p_tip"><img src="verify.php" id="p_yzm" onclick="show('p_yzm')" style="cursor:pointer" /> <a href="javascript:;" onclick="show('p_yzm')">Cannot see？</a></i></td>
 										</tr>
 									</table>
 								</div>

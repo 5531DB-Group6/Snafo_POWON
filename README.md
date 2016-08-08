@@ -19,20 +19,23 @@
 18) login check if expired, change status (chao)</br>
 19) bonus, send post, or reply has option to delete in the future time </br> </strike>
 
-1) first name of the existing number is show as * </br>
-2) new added group member does not show in the profile visibility list. </br>
+1) <strike>first name of the existing number is show as * </strike></br>
+2) <strike>new added group member does not show in the profile visibility list. </strike></br>
 3) <strike>Fatal error: Call to undefined function jason_decode() in E:\Program Files\wamp\www\Snafo_POWON\POWON\pay.php on line 29 (chao)</strike> </br>
 4) <strike>invite member by email not done (chao) </strike></br>
 5) view add/link in permission not done. </br>
-6) group admin can mute somebody. modify the post permission </br>
+6) <strike>group admin can mute somebody. modify the post permission</strike> </br>
 7) <strike>?? membership payment is not updated? （chao)</strike></br>
-8) group, friend list can show inactive user. </br>
+8) <strike>group, friend list can show inactive user. </strike></br>
 9) <strike>public infor, group news to mailbox/ (chao)</strike> </br>
-10) The group owner has a feature to view and manage the permissions to any content </br>
+10) <strike>The group owner has a feature to view and manage the permissions to any content </strike></br>
 11) post video. (chao) </br>
 12) <strike>send gift from group list, friend list. (chao) </strike></br>
 13) qin's bonus</br>
 14) <strike> chao's bonus: delte post, change post and reply isdel to 1. put in common.php, friend post, friend reply. (chao)</strike></br>
 15  <strike>Has a issue when user against jump to payment page, by type address to get into index page (chao)</strike></br>
-16 issue: personal post cannot see reply. </br>
-
+16 <strike>issue: personal post cannot see reply. </strike></br>
+17 <strike>issue: avatar pic size too big in chat. </strike></br>
+18 <strike>issue: send email to inactive member.</strike></br>
+19 issue:email validation
+20 new post email add link
