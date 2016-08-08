@@ -40,4 +40,5 @@
 19 issue:email validation </br>
 20 new post email add link </br>
 21 Install has issue: $result && mysqli_affected_rows($conn) false. And where to dbInsert('profilevisible',$n,$v) to admin account. </br>
-
+22 new first group post, has empty array for each Assertion </br>
+23 admin reply admin's group post. admin is blocked to see the reply. </br>
