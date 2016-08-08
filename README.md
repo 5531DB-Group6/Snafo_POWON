@@ -36,6 +36,6 @@
 15  <strike>Has a issue when user against jump to payment page, by type address to get into index page (chao)</strike></br>
 16 <strike>issue: personal post cannot see reply. </strike></br>
 17 <strike>issue: avatar pic size too big in chat. </strike></br>
-18 issue: send email to inactive member.</br>
+18 <strike>issue: send email to inactive member.</strike></br>
 19 issue:email validation
 20 new post email add link
