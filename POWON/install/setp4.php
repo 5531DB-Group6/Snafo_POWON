@@ -40,7 +40,7 @@
 		}
 		mysqli_set_charset($conn, DB_CHARSET);
 		
-		$arr=explode('; dbg6;',$sql);
+		$arr=explode('dbg6;',$sql);
 
 		foreach($arr as $val){
 			if(!empty($val))
