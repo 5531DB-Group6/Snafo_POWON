@@ -38,3 +38,4 @@
 17 <strike>issue: avatar pic size too big in chat. </strike></br>
 18 issue: send email to inactive member.</br>
 19 issue:email validation
+20 new post email add link
