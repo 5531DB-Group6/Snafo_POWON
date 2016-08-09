@@ -51,7 +51,7 @@ if ($mute && !$admin){
         $authorid = $_COOKIE['uid'];		//发布人ID
         $title = strMagic($_POST['subject']);		//标题
         $content = strMagic($_POST['content']);		//内容
-        $video = strMagic($_POST['video']);     //video
+        $video = addslashes($_POST['video']);     //video
         $addtime = time();			//发表时间
         $groupId = $_POST['gid'];		//类别ID
         $voteNum = $_POST['voteNum'];

@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   `title` varchar(600) NOT NULL,
   `content` mediumtext DEFAULT NULL,
   `image` varchar(200) DEFAULT NULL,
-  `video` varchar(200) DEFAULT NULL,
+  `video` mediumtext DEFAULT NULL,
   `voteoptions` varchar(600) DEFAULT NULL,
   `gid` int(10) NOT NULL,
   `addtime` int(12) NOT NULL,

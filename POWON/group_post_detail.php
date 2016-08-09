@@ -210,7 +210,7 @@ if($_POST['replysubmit'])
     $authorid = $_COOKIE['uid'];			//发布人ID
     $content = strMagic($_POST['message']);		//内容
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
-    $video = strMagic($_POST['video']);  //video
+    $video = addslashes($_POST['video']);  //video
     $addtime = time();				//发表时间
     $groupId = $_POST['gid'];			//类别ID
     $futuredelete = "";
@@ -432,7 +432,7 @@ if($_POST['optionsubmit']) {
 
 
     //删除，放入回收站
-    if(!empty($_GET['del'])&&$GuanLi){
+    if(!empty($_GET['del'])&&($GuanLi||$isAuthor)){
 
         $result = dbUpdate('gposts', "isdel=1", 'pid='.$Id.'');
         $result = dbUpdate('gposts', "isdel=1", 'parentid = '.$Id.'');
