@@ -159,8 +159,10 @@ if ($admin) {
         $result = dbInsert('gmembers', 'gid,uid,approved', '' . $groupId . ',' . $Tuid . ',1');
         if ($result) {
             $gposts = dbselect('gposts','pid','first=1 and isdel=0 and gid='.$groupId.'');
-            foreach($gposts as $key=>$val){
-                dbInsert('gpostspermission','pid, uid',''.$val['pid'].','.$Tuid.'');
+            if (is_array($gposts)) {
+                foreach ($gposts as $key => $val) {
+                    dbInsert('gpostspermission', 'pid, uid', '' . $val['pid'] . ',' . $Tuid . '');
+                }
             }
 
             $msg = '<font color=red><b>operation succeeded</b></font>';

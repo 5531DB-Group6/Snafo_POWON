@@ -32,7 +32,7 @@ if(!$result)
 $select='u.uid as uid, u.username as username, u.picture as picture';
 $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].'','u.username asc');
 
-$sql = 'select * from '.DB_PREFIX.'user where uid in (select distinct g2.uid from  '.DB_PREFIX.'gmembers g1, '.DB_PREFIX.'gmembers g2 where g1.uid='.$_COOKIE['uid'].' and g1.gid=g2.gid and g2.uid!='.$_COOKIE['uid'].' and g2.uid not in (select fid from '.DB_PREFIX.'friend where uid='.$_COOKIE['uid'].'))';
+$sql = 'select * from '.DB_PREFIX.'user where uid in (select distinct g2.uid from  '.DB_PREFIX.'gmembers g1, '.DB_PREFIX.'gmembers g2 where g1.uid='.$_COOKIE['uid'].' and g1.gid=g2.gid and g2.uid!='.$_COOKIE['uid'].' and g1.approved=1 and g2.approved=1 and g2.uid not in (select fid from '.DB_PREFIX.'friend where uid='.$_COOKIE['uid'].'))';
 $GroupMatesList = dbConn(trim($sql), true);
 
 
