@@ -25,7 +25,7 @@
                     <table cellspacing="0" cellpadding="0" class="tfm">
                         <div>
                             </br>
-                            Candidate email address  <input type="text" name="emailaddress"> </br>
+                            Candidate email address  <input type="text" name="emailaddress" id="emailaddress"> </br>
                         </div>
                         <td style="vertical-align: middle;width: 100px;">
                             <button type="submit" name="invitesubmitbtn" id="invitesubmitbtn" value="invitesubmitbtn" style="background-color: #4CAF50; border: none;padding: 7px 16px;text-align: center;font-size:12px;margin: 4px 2px;border-radius: 8px;cursor: pointer;color:white;"><strong>Send</strong></button>
