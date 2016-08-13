@@ -23,8 +23,9 @@
 	
 ?>
 <div class="container">
+
 	<div class="header">
-		<h1>Setup Guide</h1>
+		<h2>Setup Guide</h2>
 		<span>Group 6</span>
 	<div class="setup step1">
 		<h2>Install status</h2>

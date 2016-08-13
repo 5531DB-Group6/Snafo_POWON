@@ -63,9 +63,8 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>Setup Guide</h1>
 		<span>Group 6</span>
-		<div class="setup step2">
+		<div class="setup step4">
 			<h2>File authority</h2>
 			<p>Root authority</p>
 		</div>

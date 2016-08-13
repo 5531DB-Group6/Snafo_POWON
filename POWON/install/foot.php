@@ -1,1 +1,1 @@
-<div class="footer">&copy;2015 phpxy Inc.</div>
+<div class="footer">&copy;2016 POWON </div>

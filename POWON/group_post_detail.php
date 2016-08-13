@@ -436,6 +436,14 @@ if($_POST['optionsubmit']) {
 
         $result = dbUpdate('gposts', "isdel=1", 'pid='.$Id.'');
         $result = dbUpdate('gposts', "isdel=1", 'parentid = '.$Id.'');
+        $result = dbDel('gpostdelete','pid='.$Id.'');
+
+        $result = dbSelect('gposts','pid','parentid='.$Id.'');
+        if(isset($result)){
+            foreach ($result as $item) {
+                $answer =  dbDel('gpostdelete','pid='.$item['pid'].'');
+            }
+        }
         header('location:group_postlist.php?gid='.$groupId);
 
     }

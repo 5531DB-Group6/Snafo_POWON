@@ -26,7 +26,7 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>Setup Guide</h1>
+		<h2>Setup Guide</h2>
 		<span>Group 6</span>
 	<div class="setup step2">
 		<h2>File authorisation</h2>

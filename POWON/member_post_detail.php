@@ -249,6 +249,14 @@ if(in_array($_COOKIE['uid'], $NBanZhu))
 
         $result = dbUpdate('uposts', "isdel=1", 'pid='.$Id.'');
         $result = dbUpdate('uposts', "isdel=1", 'parentid = '.$Id.'');
+        $result = dbDel('upostdelete','pid='.$Id.'');
+
+        $result = dbSelect('uposts','pid','parentid='.$Id.'');
+        if(isset($result)){
+            foreach ($result as $item) {
+                $answer =  dbDel('upostdelete','pid='.$item['pid'].'');
+            }
+        }
         header('location:member_postlist.php?uid='.$authorid.'');
 
     }

@@ -5,7 +5,7 @@
 ?>
 <div class="container">
 	<div class="header">
-		<h1>Installation</h1>
+		<h2>Installation Guide</h2>
 		<span>Group 6</span>
 	</div>
 	<div class="main" style="margin-top:-123px;">
