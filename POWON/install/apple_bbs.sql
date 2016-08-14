@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `bbs_user` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `username` char(32) NOT NULL, UNIQUE ,
+  `username` char(32) NOT NULL,
   `password` char(32) NOT NULL,
   `email` char(30) NOT NULL,
   `udertype` tinyint(2) NOT NULL,
@@ -17,14 +17,12 @@ CREATE TABLE IF NOT EXISTS `bbs_user` (
    `profession` varchar(50) DEFAULT NULL,
    `status` tinyint(1) NOT NULL DEFAULT '0',
    `coins` tinyint(2) NOT NULL DEFAULT '10',
-   PRIMARY KEY (`uid`),
    CHECK (`sex` = 0 or `sex` =1 or `sex` =2),
    CHECK (`undertype` = 0 or `undertype` = 1 ),
    CHECK (`status` =0 or `status` =1 or `status` =2),
-   CONSTRAINT chk_user CHECK (uid >0 AND coins>=0)
+   CONSTRAINT chk_user CHECK (uid >0 AND coins>=0),
+   PRIMARY KEY (`uid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
-
-
 
 CREATE TABLE IF NOT EXISTS `bbs_groups` (
   `gid` int(10) NOT NULL AUTO_INCREMENT,
@@ -38,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bbs_groups` (
   `lastpost` varchar(600) DEFAULT NULL,
   `namestyle` char(10) DEFAULT NULL,
   `ispass` tinyint(2) NOT NULL DEFAULT '1',
-   CHECK (`ispass` = 0 or `ispass` = 1 ),
+  CHECK (`ispass` = 0 or `ispass` = 1 ),
   PRIMARY KEY (`gid`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
 
@@ -48,12 +46,12 @@ CREATE TABLE IF NOT EXISTS `bbs_gmembers` (
   `approved` tinyint(2) NOT NULL DEFAULT '0',
   `admin` tinyint(2) NOT NULL DEFAULT '0',
   `mute` tinyint(2) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`gid`,`uid`),
-  FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE,
-  FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
   CHECK (`admin` = 0 or `admin` = 1 ),
   CHECK (`approved` = 0 or `approved` = 1 ),
-  CHECK (`mute` = 0 or `mute` = 1 )
+  CHECK (`mute` = 0 or `mute` = 1 ),
+  PRIMARY KEY (`gid`,`uid`),
+  FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE,
+  FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_gposts` (
@@ -72,10 +70,10 @@ CREATE TABLE IF NOT EXISTS `bbs_gposts` (
   `hits` int(12) NOT NULL DEFAULT '0',
   `isdel` tinyint(2) NOT NULL DEFAULT '0',
   `isdisplay` tinyint(2) NOT NULL DEFAULT '1',
-   PRIMARY KEY (`pid`),
-   FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE,
    CHECK (`isdel` = 0 or `isdel` = 1 ),
-   CHECK (`isdisplay` = 0 or `isdisplay` = 1 )
+   CHECK (`isdisplay` = 0 or `isdisplay` = 1 ),
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`gid`) REFERENCES `bbs_groups`(`gid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_gpostdelete` (
@@ -93,10 +91,10 @@ CREATE TABLE IF NOT EXISTS `bbs_mails` (
   `content` mediumtext DEFAULT NULL,
   `sendtime` int(12) NOT NULL,
   `isread` tinyint(2)  DEFAULT '0',
+   CHECK (`isread` = 0 or `isread` = 1 ),
    PRIMARY KEY (`mailid`),
    FOREIGN KEY (`senderid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-   FOREIGN KEY (`receiverid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-   CHECK (`isread` = 0 or `isread` = 1 )
+   FOREIGN KEY (`receiverid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_uposts` (
@@ -113,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `bbs_uposts` (
   `hits` int(12) NOT NULL DEFAULT '0',
   `isdel` tinyint(2) NOT NULL DEFAULT '0',
   `isdisplay` tinyint(2) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`pid`),
-  FOREIGN KEY (`authorid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
    CHECK (`isdel` = 0 or `isdel` = 1 ),
-   CHECK (`isdisplay` = 0 or `isdisplay` = 1 )
+   CHECK (`isdisplay` = 0 or `isdisplay` = 1 ),
+  PRIMARY KEY (`pid`),
+  FOREIGN KEY (`authorid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_upostdelete` (
@@ -147,11 +145,11 @@ CREATE TABLE IF NOT EXISTS `bbs_friend` (
   `approved` tinyint(2) NOT NULL DEFAULT '0',
   `type` tinyint(2) NOT NULL DEFAULT '0',
   `addtime` int(12) NOT NULL,
+  CHECK (`approved` = 0 or `approved` = 1 ),
+  CHECK (`type` = 0 or `type` = 1 or `type` = 2 ),
   PRIMARY KEY (`uid`,`fid`),
   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-  FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-  CHECK (`approved` = 0 or `approved` = 1 ),
-  CHECK (`type` = 0 or `type` = 1 or `type` = 2 )
+  FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_chat` (
@@ -161,11 +159,11 @@ CREATE TABLE IF NOT EXISTS `bbs_chat` (
   `msg` text,
   `posttime` int(12) NOT NULL,
   `isread` tinyint(1) NOT NULL DEFAULT '0',
+    CHECK (`isread` = 0 or `isread` = 1 ),
    PRIMARY KEY (`chatid`),
   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-  FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-  CHECK (`isread` = 0 or `isread` = 1 )
-) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
+  FOREIGN KEY (`fid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE)
+  ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_profileVisible` (
   `uid` int(11) NOT NULL,
@@ -176,15 +174,15 @@ CREATE TABLE IF NOT EXISTS `bbs_profileVisible` (
   `address_visible` tinyint(2) DEFAULT '2',
   `place_visible` tinyint(2) DEFAULT '2',
    `profession_visible` tinyint(2) DEFAULT '2',
-   PRIMARY KEY (`uid`),
-   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
   CHECK (`firstname_visible` = 0 or `firstname_visible` = 1 or `firstname_visible` = 2),
   CHECK (`lastname_visible` = 0 or `lastname_visible` = 1 or `lastname_visible` = 2),
   CHECK (`sex_visible` = 0 or `sex_visible` = 1 or `sex_visible` = 2),
   CHECK (`bday_visible` = 0 or `bday_visible` = 1 or `bday_visible` = 2),
   CHECK (`address_visible` = 0 or `address_visible` = 1 or `address_visible` = 2),
   CHECK (`place_visible` = 0 or `place_visible` = 1 or `place_visible` = 2 ),
-  CHECK (`profession_visible` = 0 or `profession_visible` = 1  or `profession_visible` = 2)
+  CHECK (`profession_visible` = 0 or `profession_visible` = 1  or `profession_visible` = 2),
+   PRIMARY KEY (`uid`),
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_profileVisibleMember` (
@@ -197,16 +195,16 @@ CREATE TABLE IF NOT EXISTS `bbs_profileVisibleMember` (
   `address_visible` tinyint(2) DEFAULT '1',
   `place_visible` tinyint(2) DEFAULT '1',
   `profession_visible` tinyint(2) DEFAULT '1',
-   PRIMARY KEY (`uid`,`tid`),
-   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-   FOREIGN KEY (`tid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
   CHECK (`firstname_visible` = 0 or `firstname_visible` = 1 or `firstname_visible` = 2),
   CHECK (`lastname_visible` = 0 or `lastname_visible` = 1 or `lastname_visible` = 2),
   CHECK (`sex_visible` = 0 or `sex_visible` = 1 or `sex_visible` = 2),
   CHECK (`bday_visible` = 0 or `bday_visible` = 1 or `bday_visible` = 2),
   CHECK (`address_visible` = 0 or `address_visible` = 1 or `address_visible` = 2),
   CHECK (`place_visible` = 0 or `place_visible` = 1 or `place_visible` = 2 ),
-  CHECK (`profession_visible` = 0 or `profession_visible` = 1  or `profession_visible` = 2)
+  CHECK (`profession_visible` = 0 or `profession_visible` = 1  or `profession_visible` = 2),
+   PRIMARY KEY (`uid`,`tid`),
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+   FOREIGN KEY (`tid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_gpostsPermission` (
@@ -215,12 +213,12 @@ CREATE TABLE IF NOT EXISTS `bbs_gpostsPermission` (
   `view` tinyint(2) DEFAULT '1',
   `comment` tinyint(2) DEFAULT '1',
   `addlink` tinyint(2) DEFAULT '1',
-   PRIMARY KEY (`pid`,`uid`),
-   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE,
    CHECK (`view` = 0 or `view` = 1 ),
    CHECK (`comment` = 0 or `comment` = 1 ),
-   CHECK (`addlink` = 0 or `addlink` = 1 )
+   CHECK (`addlink` = 0 or `addlink` = 1 ),
+   PRIMARY KEY (`pid`,`uid`),
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_upostsPermission` (
@@ -229,12 +227,12 @@ CREATE TABLE IF NOT EXISTS `bbs_upostsPermission` (
   `view` tinyint(2) DEFAULT '1',
   `comment` tinyint(2) DEFAULT '1',
   `addlink` tinyint(2) DEFAULT '1',
-   PRIMARY KEY (`pid`,`uid`),
-   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-   FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE,
    CHECK (`view` = 0 or `view` = 1 ),
    CHECK (`comment` = 0 or `comment` = 1 ),
-   CHECK (`addlink` = 0 or `addlink` = 1 )
+   CHECK (`addlink` = 0 or `addlink` = 1 ),
+   PRIMARY KEY (`pid`,`uid`),
+   FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
+   FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_upostsPermissionPublic` (
@@ -242,21 +240,21 @@ CREATE TABLE IF NOT EXISTS `bbs_upostsPermissionPublic` (
   `view` tinyint(2) DEFAULT '1',
   `comment` tinyint(2) DEFAULT '1',
   `addlink` tinyint(2) DEFAULT '1',
-   PRIMARY KEY (`pid`),
-   FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE,
    CHECK (`view` = 0 or `view` = 1 ),
    CHECK (`comment` = 0 or `comment` = 1 ),
-   CHECK (`addlink` = 0 or `addlink` = 1 )
+   CHECK (`addlink` = 0 or `addlink` = 1 ),
+   PRIMARY KEY (`pid`),
+   FOREIGN KEY (`pid`) REFERENCES `bbs_uposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_voterecord` (
   `pid` int(10) NOT NULL,
   `uid` int(11) NOT NULL,
   `vote` tinyint(2) DEFAULT '0',
+   CHECK (`vote` = 0 or `vote` = 1 ),
    PRIMARY KEY (`pid`,`uid`),
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE,
-   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE,
-   CHECK (`vote` = 0 or `vote` = 1 )
+   FOREIGN KEY (`pid`) REFERENCES `bbs_gposts`(`pid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8; dbg6;
 
 CREATE TABLE IF NOT EXISTS `bbs_bill` (
@@ -268,4 +266,3 @@ CREATE TABLE IF NOT EXISTS `bbs_bill` (
    PRIMARY KEY (`billid`),
    FOREIGN KEY (`uid`) REFERENCES `bbs_user`(`uid`) ON DELETE CASCADE
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1; dbg6;
-
