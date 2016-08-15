@@ -58,7 +58,7 @@
                         <th class="<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>">
                             <a href="admin_post_detail.php?pid=<?php echo $val['pid']; ?>" class="xst"><?php echo $val['title']; ?></a>
                             <p>
-                                <?php echo stringSubstr($val['content'],0,301); ?>
+                                <?php echo stringSubstr($val['content'],0,1000); ?>
                             </p>
                         </th>
                         <td class="by" style="text-align: center">
@@ -179,7 +179,7 @@
                                     <p><a href="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium">
                                         <?php if(!empty($LatestPost)){?> <h1><?php echo $LatestPost[0]['title']; ?></h1> <?php }?></a></p>
                                         <p>
-                                            <?php echo stringSubstr($LatestPost[0]['content'],0,301); ?>
+                                            <?php echo stringSubstr($LatestPost[0]['content'],0,1000); ?>
                                         </p>
                                     </p>
                                     <a title="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
@@ -242,13 +242,16 @@
                                         <a href="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium">
                                             <?php if(!empty($LatestPost)){?> <h1> <?php echo $LatestPost[0]['title']; ?> </h1><?php }?></a>
                                         <p>
-                                           <?php echo stringSubstr($LatestPost[0]['content'],0,301); ?>
+                                           <?php echo stringSubstr($LatestPost[0]['content'],0,1000); ?>
                                         </p>
                                     </p>
+                                    <?php if(!empty($LatestPost[0]['image'])){?>
                                         <a title="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
-                                        <?php echo $LatestPost[0]['video']; ?>
+                                    <?php }?>
+                                    <?php if(!empty($LatestPost[0]['video'])){?>
+                                    <?php echo $LatestPost[0]['video']; ?>
+                                    <?php }?>
                                 </tr>
-                                </hr>
                                 <?php }?>
 
 

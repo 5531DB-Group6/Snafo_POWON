@@ -58,7 +58,7 @@
                         <th class="<!--{if $val['addtime']>$newt}-->new<!--{else}-->common<!--{/if}-->">
                             <a href="admin_post_detail.php?pid={$val['pid']}" class="xst">{$val['title']}</a>
                             <p>
-                                ${stringSubstr($val['content'],0,301)}
+                                ${stringSubstr($val['content'],0,1000)}
                             </p>
                         </th>
                         <td class="by" style="text-align: center">
@@ -179,7 +179,7 @@
                                     <p><a href="member_post_detail.php?pid={$LatestPost[0]['pid']}" class="xst" style="font-size: medium">
                                         <!--{if !empty($LatestPost)}--> <h1>{$LatestPost[0]['title']}</h1> <!--{/if}--></a></p>
                                         <p>
-                                            ${stringSubstr($LatestPost[0]['content'],0,301)}
+                                            ${stringSubstr($LatestPost[0]['content'],0,1000)}
                                         </p>
                                     </p>
                                     <a title="member_post_detail.php?pid={$LatestPost[0]['pid']}"><img src="{$LatestPost[0]['image']}" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
@@ -242,11 +242,15 @@
                                         <a href="group_post_detail.php?pid={$LatestPost[0]['pid']}" class="xst" style="font-size: medium">
                                             <!--{if !empty($LatestPost)}--> <h1> {$LatestPost[0]['title']} </h1><!--{/if}--></a>
                                         <p>
-                                           ${stringSubstr($LatestPost[0]['content'],0,301)}
+                                           ${stringSubstr($LatestPost[0]['content'],0,1000)}
                                         </p>
                                     </p>
+                                    <!--{if !empty($LatestPost[0]['image'])}-->
                                         <a title="group_post_detail.php?pid={$LatestPost[0]['pid']}"><img src="{$LatestPost[0]['image']}" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
-                                        {$LatestPost[0]['video']}
+                                    <!--{/if}-->
+                                    <!--{if !empty($LatestPost[0]['video'])}-->
+                                    {$LatestPost[0]['video']}
+                                    <!--{/if}-->
                                 </tr>
                                 </hr>
                                 <!--{/if}-->

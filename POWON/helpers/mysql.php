@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	 * 查询 表名,[查询字段],[查询条件],[排序方式],[偏移量和读取数量]
+	 * inquiry table name,[inquire items],[condition],[order by],[offset and limitation]
 	 */
 	function dbSelect($tableName, $selectName = '*', $where = null, $orderBy = null, $limit = null)
 	{
@@ -20,7 +20,7 @@
 		return dbConn(trim($sql), true);
 	}
 
-	//多表查询 表名1,表名2,[查询字段],[查询条件],[排序方式],[偏移量和读取数量]
+	//multiple table inquiry table name 1,table name 2, table name 3, [inquire items],[condition],[order by],[offset and limitation]
 	function dbDuoSelect($tableName1, $tableName2, $on, $tableName3=null, $on1=null, $selectName='*', $where=null, $orderBy=null ,$limit=null){
 
 		$sql='select '.$selectName.' from '.DB_PREFIX.$tableName1.' inner join '.DB_PREFIX.$tableName2.' '.$on;
@@ -46,7 +46,7 @@
 	
 	}
 
-	//计算查询结果  表名,[sql函数],[查询条件]
+	//calculate inquiry result  table name,[sql function],[condition]
 	function dbFuncSelect($tableName, $funcName='sum(id)', $where=null)
 	{
 		$sql='select '.$funcName.' from '.DB_PREFIX.$tableName;
@@ -63,7 +63,7 @@
 	
 	}
 
-	//添加,传进来的都是字符串  表名,[字符串：字段名],[字符串：值]
+	//insertion  table name,[string: attribute ],[value]
 	function dbInsert($tableName, $Key=null, $Val=null){
 
 		$sql='';
@@ -89,7 +89,7 @@
 		
 	}
 
-	//删除  表名,[查询条件]
+	//deletion  table name,[condition]
 	function dbDel($tableName, $where=null)
 	{
 		if(empty($where)){
@@ -100,7 +100,7 @@
 		return dbConn(trim($sql));
 	}
 
-	//修改  表名,[字段名1=值1，...],[条件]
+	//modification  table name,[attribute=value，...],[condition]
 	function dbUpdate($tableName, $value, $where=null)
 	{
 		if(empty($where)){
@@ -114,7 +114,7 @@
 	}
 	
 	/**
-	 * 打开数据库,参数1：sql语句，参数2：为true时返回查询结果集，参数3：为true时sql语句中使用了sql函数
+	 * open database,param1：sql statement，param2：return result when true，param3：true if sql functions are used
 	 * @param 
 	 * @param 
 	 * @param 
