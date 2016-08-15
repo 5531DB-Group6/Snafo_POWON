@@ -8,8 +8,7 @@
 <!--HEAD end-->
 
 <!--CONTENT start-->
-<script src="/POWON/public/js/moment.js" type="text/javascript"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+
 
 <div id="wp" class="wp">
     <div id="pt" class="bm cl">
@@ -53,20 +52,21 @@
                     <table summary="ppostlist" id="ppostlist" cellspacing="0" cellpadding="0">
                         <?php if(is_array($publicpost)){foreach($publicpost AS $key=>$val) { ?>
                         <tr>
-                            <td class="icn">
-                                <a href="admin_post_detail.php?pid=<?php echo $val['pid']; ?>" title="public post"><img src="<?php echo $domain_resource; ?>/images/folder_<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>.gif" /></a>
-                            </td>
-                            <th class="<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>">
-                                <a href="admin_post_detail.php?pid=<?php echo $val['pid']; ?>" class="xst"><?php echo $val['title']; ?></a>
-                                <p>
-                                    <?php echo stringSubstr($val['content'],0,301); ?>
-                                </p>
-                            </th>
-                            <td class="by" style="text-align: center">
-                                <cite><?php echo getUserName($val['authorid']); ?></cite>
-                                <em><span class="xi1"><?php echo formatTime($val['addtime']); ?></span></em>
-                            </td>
-                        </tr>
+                        <td class="icn">
+                            <a href="admin_post_detail.php?pid=<?php echo $val['pid']; ?>" title="public post"><img src="<?php echo $domain_resource; ?>/images/folder_<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>.gif" /></a>
+                        </td>
+                        <th class="<?php if($val['addtime']>$newt){?>new<?php } else { ?>common<?php }?>">
+                            <a href="admin_post_detail.php?pid=<?php echo $val['pid']; ?>" class="xst"><?php echo $val['title']; ?></a>
+                            <p>
+                                <?php echo stringSubstr($val['content'],0,301); ?>
+                            </p>
+                        </th>
+                        <td class="by" style="text-align: center">
+                            <cite><?php echo getUserName($val['authorid']); ?></cite>
+                            <em><span class="xi1"><?php echo formatTime($val['addtime']); ?></span></em>
+                        </td>
+                    </tr>
+
                         <?php }}?>
                     </table>
                 </form>
@@ -77,76 +77,76 @@
 
         <?php if($_COOKIE['uid']  && $_COOKIE['username']){?>
 
-        <!--friend start-->
-        <div class="bm bmw cl">
-            <div class="bm_h cl">
-                <th>
-                    <a href="member.php?mlist=1&cat=0"><b>My Friends</b></a>
-                </th>
-                <?php if(!empty($FriendRequest)){?>
-                <td><span class="pipe">|</span></td>
-                <td class="common" style="text-align: right">
-                    <a href="home_friend.php" style="color: rgba(159, 27, 5, 0.94);"><b>You have a friend request</b></a>
-                </td>
-                <?php }?>
-            </div>
-            <div id="friendlist" class="bm_c">
-                <table cellspacing="0" cellpadding="0" class="fl_tb">
-                    <?php if(is_array($FriendList)){foreach($FriendList AS $key=>$val) { ?>
-                    <?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
-                    <?php
-                        $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
-                    ?>
-                    <td style="width:80px;height:100px;text-align: center;" >
-                        <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
-                        <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
-                            <?php if(!empty($msg)){?>
-                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
-                            <?php } else { ?>
-                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
-                            <?php }?></a>
-                        <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
-                    </td>
-                    <?php }}?>
-                    <?php if($FriendListRest!=0 and !empty($FriendList)){?>
-                    <?php
-                    for($i = 1;$i <= $FriendListRest; $i++){
-                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
-                    }
-                    ?>
-                    <?php }?>
-                </table>
-            </div>
-        </div>
-        <!--friend end-->
+        <!--&lt;!&ndash;friend start&ndash;&gt;-->
+        <!--<div class="bm bmw cl">-->
+            <!--<div class="bm_h cl">-->
+                <!--<th>-->
+                    <!--<a href="member.php?mlist=1&cat=0"><b>My Friends</b></a>-->
+                <!--</th>-->
+                <!--&lt;!&ndash;{if !empty($FriendRequest)}&ndash;&gt;-->
+                <!--<td><span class="pipe">|</span></td>-->
+                <!--<td class="common" style="text-align: right">-->
+                    <!--<a href="home_friend.php" style="color: rgba(159, 27, 5, 0.94);"><b>You have a friend request</b></a>-->
+                <!--</td>-->
+                <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div id="friendlist" class="bm_c">-->
+                <!--<table cellspacing="0" cellpadding="0" class="fl_tb">-->
+                    <!--&lt;!&ndash;{loop $FriendList $key $val}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{if $key%8==0 and $key!=0}&ndash;&gt;<tr> </tr>&lt;!&ndash;{/if}&ndash;&gt;-->
+                    <!--<?php-->
+                        <!--$msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')-->
+                    <!--?>-->
+                    <!--<td style="width:80px;height:100px;text-align: center;" >-->
+                        <!--<a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>-->
+                        <!--<a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">-->
+                            <!--&lt;!&ndash;{if !empty($msg)}&ndash;&gt;-->
+                            <!--<img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >-->
+                            <!--&lt;!&ndash;{else}&ndash;&gt;-->
+                            <!--<img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >-->
+                            <!--&lt;!&ndash;{/if}&ndash;&gt;</a>-->
+                        <!--<h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>-->
+                    <!--</td>-->
+                    <!--&lt;!&ndash;{/loop}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{if $FriendListRest!=0 and !empty($FriendList)}&ndash;&gt;-->
+                    <!--<?php-->
+                    <!--for($i = 1;$i <= $FriendListRest; $i++){-->
+                    <!--echo '<td style="width:80px;height:100px;text-align: center;" ></td>';-->
+                    <!--}-->
+                    <!--?>-->
+                    <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;friend end&ndash;&gt;-->
 
         <!--group start-->
-        <div class="bm bmw  cl">
-            <div class="bm_h cl">
-                <b><a href="group.php?glist=1&cat=0">My Groups</a></b>
-                <td><span class="pipe">|</span></td>
-                <td class="common" style="text-align: right">
-                    <b><a href="group_reg.php" style="color: rgba(159, 27, 5, 0.94);">Create Group</a></b>
-                </td>
-            </div>
-            <div id="your_groups" class="bm_c">
-                <table cellspacing="0" cellpadding="0" class="fl_tb">
-                    <?php if(is_array($GrMenu)){foreach($GrMenu AS $key=>$val) { ?>
-                    <?php if($key%4==0 and $key!=0){?><tr> </tr><?php }?>
-                    <td style="width:60px;height:80px;text-align: center;" >
-                        <a href="group_postlist.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>
-                    </td>
-                    <td>
-                        <h2><a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></h2>
-                        <p class="xg2"><?php echo $val['description']; ?></p>
-                        <?php if(!empty($val['owner'])){?>
-                        <p>Owner: <span class="xi2"><?php echo getUserName($val['owner']); ?></span></p>
-                        <?php }?>
-                    </td>
-                    <?php }}?>
-                </table>
-            </div>
-        </div>
+        <!--<div class="bm bmw  cl">-->
+            <!--<div class="bm_h cl">-->
+                <!--<b><a href="group.php?glist=1&cat=0">My Groups</a></b>-->
+                <!--<td><span class="pipe">|</span></td>-->
+                <!--<td class="common" style="text-align: right">-->
+                    <!--<b><a href="group_reg.php" style="color: rgba(159, 27, 5, 0.94);">Create Group</a></b>-->
+                <!--</td>-->
+            <!--</div>-->
+            <!--<div id="your_groups" class="bm_c">-->
+                <!--<table cellspacing="0" cellpadding="0" class="fl_tb">-->
+                    <!--&lt;!&ndash;{loop $GrMenu $key $val}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{if $key%4==0 and $key!=0}&ndash;&gt;<tr> </tr>&lt;!&ndash;{/if}&ndash;&gt;-->
+                    <!--<td style="width:60px;height:80px;text-align: center;" >-->
+                        <!--<a href="group_postlist.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<h2><a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></h2>-->
+                        <!--<p class="xg2"><?php echo $val['description']; ?></p>-->
+                        <!--&lt;!&ndash;{if !empty($val['owner'])}&ndash;&gt;-->
+                        <!--<p>Owner: <span class="xi2"><?php echo getUserName($val['owner']); ?></span></p>-->
+                        <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+                    <!--</td>-->
+                    <!--&lt;!&ndash;{/loop}&ndash;&gt;-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
         <!--group end-->
 
         <!--friend Posts start-->
@@ -163,17 +163,7 @@
                             </table>
                     </div>
                     <div id="threadlist" class="tl bm bmw">
-                        <div class="th">
-                            <table cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <th style="width:80px;">Username</th>
-                                    <td class="common"><p>Post Title</p><p>Post Content</p></td>
-                                    <td class="by" style="text-align: right">Image Preview</td>
-                                    <td class="by" style="text-align: center">Post Time</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="bm_c">
+                        <p class="bm_c">
                             <table summary="forum_2" id="forum_2" cellspacing="0" cellpadding="0">
                                 <?php if(is_array($FriendList)){foreach($FriendList AS $key=>$val) { ?>
                                 <?php
@@ -183,23 +173,30 @@
                             ?>
                                 <?php if(!empty($LatestPost)){?>
                                 <tr style="width:80px;height:100px">
-                                    <th style="width:80px;height:100px;text-align: center;">
-                                        <a href="member_home.php?uid=<?php echo $val['uid']; ?>" title="member's home page"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px"></a>
-                                        <h1 class="xs2"><a href="memberhome.php?uid=<?php echo $val['uid']; ?>" class="xst" ><?php echo $val['username']; ?></a></h1>
-                                    </th>
-                                    <td class="common">
-                                        <p><a href="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium"><?php if(!empty($LatestPost)){?><?php echo $LatestPost[0]['title']; ?><?php }?></a></p>
+
+                                    <cite><?php echo getUserName($LatestPost[0]['authorid']); ?> <em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em> </cite>
+
+                                    <p><a href="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium">
+                                        <?php if(!empty($LatestPost)){?> <h1><?php echo $LatestPost[0]['title']; ?></h1> <?php }?></a></p>
                                         <p>
                                             <?php echo stringSubstr($LatestPost[0]['content'],0,301); ?>
                                         </p>
-                                    </td>
-                                    <td style="width:80px;height:100px;text-align: center;">
-                                        <a title="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
-                                    </td>
-                                    <td class="by" style="text-align: center">
-                                        <em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em>
-                                    </td>
+                                    </p>
+                                    <a title="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
+                                    <?php echo $LatestPost[0]['video']; ?>
+
+
+                                    <!--<p  style="text-align: right">-->
+                                        <!--<cite><?php echo getUserName($LatestPost[0]['authorid']); ?> </cite>-->
+                                        <!--<em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em>-->
+                                    <!--</p>-->
+
                                 </tr>
+
+
+
+                                </hr>
+
                                 <?php }?>
                                 <?php }}?>
                             </table>
@@ -224,17 +221,7 @@
                         </table>
                     </div>
                     <div id="gthreadlist" class="tl bm bmw">
-                        <div class="th">
-                            <table cellspacing="0" cellpadding="0">
-                                <tr>
-                                    <td class="by" style="width:60px;">Group </td>
-                                    <td class="by">Name </td>
-                                    <td class="common"><p>Post Title</p><p>Post Content</p></td>
-                                    <td class="by" style="text-align: right">Image Preview</td>
-                                    <td class="by" style="text-align: center">&nbsp;&nbsp;&nbsp; Author&nbsp; &nbsp; &nbsp;  &nbsp;Post Time</td>
-                                </tr>
-                            </table>
-                        </div>
+
                         <div class="bm_c">
                             <table summary="forum_2" id="forum_3" cellspacing="0" cellpadding="0">
                                 <?php if(is_array($GrMenu)){foreach($GrMenu AS $key=>$val) { ?>
@@ -246,31 +233,26 @@
                                 <?php if(!empty($LatestPost)){?>
                                 <tr style="width:80px;height:100px">
 
-                                    <td class="by" style="width:60px;height:80px;text-align: center;" >
-                                        <a href="group_postlist.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>
-                                    </td>
-                                    <td class="by">
-                                        <b><a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></b>
-                                        <p class="xg2"><?php echo $val['description']; ?></p>
-                                        <?php if(!empty($val['owner'])){?>
-                                        <p>Owner: <span class="xi2"><?php echo getUserName($val['owner']); ?></span></p>
-                                        <?php }?>
-                                    </td>
-                                    <td class="common">
-                                        <a href="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium"><?php if(!empty($LatestPost)){?><?php echo $LatestPost[0]['title']; ?><?php }?></a>
+                                    <center><b><a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>" ><?php echo $val['name']; ?> Group</a></b> </center>
+
+
+                                    <cite><?php echo getUserName($LatestPost[0]['authorid']); ?> <em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em> </cite>
+
+                                    <p>
+                                        <a href="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium">
+                                            <?php if(!empty($LatestPost)){?> <h1> <?php echo $LatestPost[0]['title']; ?> </h1><?php }?></a>
                                         <p>
-                                            <?php echo stringSubstr($LatestPost[0]['content'],0,301); ?>
+                                           <?php echo stringSubstr($LatestPost[0]['content'],0,301); ?>
                                         </p>
-                                    </td>
-                                    <td style="width:80px;height:100px;text-align: center;">
+                                    </p>
                                         <a title="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
-                                    </td>
-                                    <td class="by" style="text-align: center">
-                                        <cite><?php echo getUserName($LatestPost[0]['authorid']); ?></cite>
-                                        <em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em>
-                                    </td>
+                                        <?php echo $LatestPost[0]['video']; ?>
                                 </tr>
+                                </hr>
                                 <?php }?>
+
+
+
                                 <?php }}?>
                             </table>
                         </div>
@@ -282,66 +264,66 @@
 
 
         <!--user start-->
-        <div class="bm bmw  cl">
-            <div class="bm_h cl">
-                <h2><a href="member.php?mlist=0&cat=0">All POWON Members</a></h2>
-            </div>
-            <div id="memberlist" class="bm_c">
-                <table cellspacing="0" cellpadding="0" class="fl_tb">
-                    <?php if(is_array($UserList)){foreach($UserList AS $key=>$val) { ?>
-                    <?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
-                    <?php
-                        $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
-                    ?>
-                    <td style="width:80px;height:100px;text-align: center;" >
-                        <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
-                        <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
-                            <?php if(!empty($msg)){?>
-                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
-                            <?php } else { ?>
-                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
-                            <?php }?></a>
-                        <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
-                    </td>
-                    <?php }}?>
+        <!--<div class="bm bmw  cl">-->
+            <!--<div class="bm_h cl">-->
+                <!--<h2><a href="member.php?mlist=0&cat=0">All POWON Members</a></h2>-->
+            <!--</div>-->
+            <!--<div id="memberlist" class="bm_c">-->
+                <!--<table cellspacing="0" cellpadding="0" class="fl_tb">-->
+                    <!--&lt;!&ndash;{loop $UserList $key $val}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{if $key%8==0 and $key!=0}&ndash;&gt;<tr> </tr>&lt;!&ndash;{/if}&ndash;&gt;-->
+                    <!--<?php-->
+                        <!--$msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')-->
+                    <!--?>-->
+                    <!--<td style="width:80px;height:100px;text-align: center;" >-->
+                        <!--<a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>-->
+                        <!--<a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">-->
+                            <!--&lt;!&ndash;{if !empty($msg)}&ndash;&gt;-->
+                            <!--<img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >-->
+                            <!--&lt;!&ndash;{else}&ndash;&gt;-->
+                            <!--<img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >-->
+                            <!--&lt;!&ndash;{/if}&ndash;&gt;</a>-->
+                        <!--<h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>-->
+                    <!--</td>-->
+                    <!--&lt;!&ndash;{/loop}&ndash;&gt;-->
 
-                    <?php
-                    for($i = 1;$i <= $UserListRest; $i++){
-                    echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
-                        }
-                    ?>
-                </table>
-            </div>
-        </div>
+                    <!--<?php-->
+                    <!--for($i = 1;$i <= $UserListRest; $i++){-->
+                    <!--echo '<td style="width:80px;height:100px;text-align: center;" ></td>';-->
+                        <!--}-->
+                    <!--?>-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
         <!--user end-->
 
         <!--group start-->
-        <div class="bm bmw  cl">
-            <div class="bm_h cl">
-                <b><a href="group.php?glist=0&cat=0">All Groups</a></b>
-                <td><span class="pipe">|</span></td>
-                <td class="common" style="text-align: right">
-                    <b><a href="group_reg.php" style="color: rgba(159, 27, 5, 0.94);">Create Group</a></b>
-                </td>
-            </div>
-            <div id="all_groups" class="bm_c">
-                <table cellspacing="0" cellpadding="0" class="fl_tb">
-                    <?php if(is_array($GrMenuAll)){foreach($GrMenuAll AS $key=>$val) { ?>
-                    <?php if($key%4==0 and $key!=0){?><tr> </tr><?php }?>
-                    <td style="width:60px;height:80px;text-align: center;" >
-                        <a href="group_info.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>
-                    </td>
-                    <td>
-                        <h2><a href="group_info.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></h2>
-                        <p class="xg2"><?php echo $val['description']; ?></p>
-                        <?php if(!empty($val['owner'])){?>
-                        <p>Owner: <span class="xi2"><?php echo getUserName($val['owner']); ?></span></p>
-                        <?php }?>
-                    </td>
-                    <?php }}?>
-                </table>
-            </div>
-        </div>
+        <!--<div class="bm bmw  cl">-->
+            <!--<div class="bm_h cl">-->
+                <!--<b><a href="group.php?glist=0&cat=0">All Groups</a></b>-->
+                <!--<td><span class="pipe">|</span></td>-->
+                <!--<td class="common" style="text-align: right">-->
+                    <!--<b><a href="group_reg.php" style="color: rgba(159, 27, 5, 0.94);">Create Group</a></b>-->
+                <!--</td>-->
+            <!--</div>-->
+            <!--<div id="all_groups" class="bm_c">-->
+                <!--<table cellspacing="0" cellpadding="0" class="fl_tb">-->
+                    <!--&lt;!&ndash;{loop $GrMenuAll $key $val}&ndash;&gt;-->
+                    <!--&lt;!&ndash;{if $key%4==0 and $key!=0}&ndash;&gt;<tr> </tr>&lt;!&ndash;{/if}&ndash;&gt;-->
+                    <!--<td style="width:60px;height:80px;text-align: center;" >-->
+                        <!--<a href="group_info.php?gid=<?php echo $val['gid']; ?>"><img src="<?php echo $val['grouppic']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" alt="<?php echo $val['name']; ?>" /></a>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<h2><a href="group_info.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?></a></h2>-->
+                        <!--<p class="xg2"><?php echo $val['description']; ?></p>-->
+                        <!--&lt;!&ndash;{if !empty($val['owner'])}&ndash;&gt;-->
+                        <!--<p>Owner: <span class="xi2"><?php echo getUserName($val['owner']); ?></span></p>-->
+                        <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+                    <!--</td>-->
+                    <!--&lt;!&ndash;{/loop}&ndash;&gt;-->
+                <!--</table>-->
+            <!--</div>-->
+        <!--</div>-->
         <!--group end-->
         <?php }?>
 

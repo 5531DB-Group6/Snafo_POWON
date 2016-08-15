@@ -43,6 +43,12 @@
                     <?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
+                            <?php if(!empty($msg)){?>
+                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php } else { ?>
+                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php }?></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
                     </td>
                     <?php }}?>
@@ -90,6 +96,12 @@
                     <?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
+                        <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
+                            <?php if(!empty($msg)){?>
+                            <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php } else { ?>
+                            <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
+                            <?php }?></a>
                         <h2><p><span class="xi2"><?php echo $val['username']; ?></span></p></h2>
                         <h2><a href="mailbox_sendgift.php?senderid=<?php echo $val['uid']; ?>">
                             <img src="public/images/gift.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px">

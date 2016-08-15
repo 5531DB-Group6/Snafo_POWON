@@ -23,7 +23,7 @@
             <div id="ct" class="ct2_a wp cl" >
                 <div style="float:left;margin-top:8px;border:none;background-color:transparent;margin-left: 10px;width:117px;" >
                     <div class="tbn">
-                        <h2 class="mt bbda">设置</h2>
+                        <h2 class="mt bbda">User page</h2>
                         <ul>
                             <li ><a href="home_tx.php">Change Avatar</a></li>
                             <li><a href="home.php">Personal Info</a></li>
