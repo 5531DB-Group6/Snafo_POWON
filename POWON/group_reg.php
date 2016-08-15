@@ -1,32 +1,32 @@
 <?php
 /**
- * 注册
+ * Registeration
  */
 include './common/common.php';
 include 'logincheck.php';
 $title = 'Create Group - ' . WEB_NAME;
 
 
-//验证是否为提交注册信息
+//check whether the registration has been submitted
 if (!empty($_POST['regsubmit']))
 {
     $gname = trim($_POST['groupname']);
     $description = trim($_POST['groupdescription']);
 
-    //错误跳转页默认值
+    //error handle
     $url = $_SERVER['HTTP_REFERER'];
     $style = 'alert_error';
     $toTime = 3000;
 
-    $alterNotice = false;	//提示页面标记位
-    //验证用户名长度
+    $alterNotice = false;
+    //check the length of the username
     if(stringLen($gname,3,60))
     {
         $alterNotice = true;
         $msgArr[] = '<font color=red><b>Wrong length of username：consist of 3 to 12 characters</b></font>';
     }
 
-    //判断数据库里是否存在这个用户名
+    //check whether there exists a same username
     $exists = dbSelect('groups','gid', 'name="'.$gname.'"','uid desc',1);
     if($exists)
     {
@@ -34,7 +34,6 @@ if (!empty($_POST['regsubmit']))
         $msgArr[] = '<font color=red><b>group name has been used</b></font>';
     }
 
-    //验证是否需要显示提示信息
     if($alterNotice)
     {
         $msg = join('<br />', $msgArr);
@@ -42,7 +41,7 @@ if (!empty($_POST['regsubmit']))
         exit;
     }
 
-    //创建用户
+    //create the user
     $uid = $_COOKIE['uid'];
     $n = 'name, owner,description';
     $v = '"'.$gname.'", "'.$uid.'","'.$description.'"';
@@ -53,7 +52,7 @@ if (!empty($_POST['regsubmit']))
         $msg = '<font color=red><b>Failed to create the group, pleas contact the administrator</b></font>';
         include 'notice.php';
     }else{
-        //注册成功后自动登录
+        //automatic login after registration
         $result = dbSelect('groups','gid', 'name="'.$gname.'"', 'gid desc', 1);
         $gid = $result[0]['gid'];
         echo $gid;

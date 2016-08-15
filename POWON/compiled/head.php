@@ -60,21 +60,21 @@
 
 <?php
 
-    $UserList = dbSelect('user','uid,username,picture','status!=1','username asc');
-    $UserListRest = 8-count($UserList)%8;
-    $UserListRest = ($UserListRest ==8)? 0:$UserListRest;
+    $UserListhead = dbSelect('user','uid,username,picture','status!=1','username asc');
+    $UserListResthead = 8-count($UserListhead)%8;
+    $UserListResthead = ($UserListResthead ==8)? 0:$UserListResthead;
 
     $select='u.uid as uid, u.username as username, u.picture as picture';
-    $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].' and u.status!=1','u.username asc');
-    $FriendListRest = 8-count($FriendList)%8;
-    $FriendListRest = ($FriendListRest ==8)? 0:$FriendListRest;
+    $FriendListhead = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.approved=1',null,null,$select,'f.uid ='.$_COOKIE['uid'].' and u.status!=1','u.username asc');
+    $FriendListResthead = 8-count($FriendList)%8;
+    $FriendListResthead = ($FriendListResthead ==8)? 0:$FriendListResthead;
 
     $FriendRequest = dbSelect('friend','uid,approved,type','fid='.$_COOKIE['uid'].' and approved=0','');
 
-    $GrMenuAll = dbSelect('groups','gid,name,owner, grouppic',null,'name asc');
+    $GrMenuAllhead = dbSelect('groups','gid,name,owner, grouppic',null,'name asc');
 
     $select='g.gid as gid, g.name as name, g.grouppic as grouppic,g.owner as owner';
-    $GrMenu = DBduoSelect('groups as g','gmembers as m','on g.gid = m.gid and m.approved=1',null,null,$select,'m.uid ='.$_COOKIE['uid'].'','g.name asc');
+    $GrMenuhead = DBduoSelect('groups as g','gmembers as m','on g.gid = m.gid and m.approved=1',null,null,$select,'m.uid ='.$_COOKIE['uid'].'','g.name asc');
 
 ?>
 
@@ -172,19 +172,19 @@
 
 			<div class="dropdown">
 				<div class="divider">
-					<a href="member.php?mlist=1"  title="My Friends" class="dropbtn"><B>My Friends</B></a>
+					<a href="member.php?mlist=1&cat=0"  title="My Friends" class="dropbtn"><B>My Friends</B></a>
 					<button onclick="myFunction()" class="dropbtn" style="background-image: url(public/images/dropdown_menu_icon.png) " ></button>
 					<div id="myDropdown" class="dropdown-content">
-						<?php if(is_array($FriendList)){foreach($FriendList AS $key=>$val) { ?>
+						<?php if(is_array($FriendListhead)){foreach($FriendListhead AS $key=>$val) { ?>
 						<?php if($key%8==0 and $key!=0){?><tr> </tr><?php }?>
 						<?php
-                        $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
+                        $chatmsg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
                     ?>
 						<td style="width:80px;height:100px;text-align: center;" >
 							<a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 40px;max-height: 60px" >
 								<span class="xi2"><?php echo $val['username']; ?>
 									<a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
-										<?php if(!empty($msg)){?>
+										<?php if(!empty($chatmsg)){?>
 										<img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
 										<?php } else { ?>
 										<img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
@@ -194,9 +194,9 @@
 							</a>
 						</td>
 						<?php }}?>
-						<?php if($FriendListRest!=0 and !empty($FriendList)){?>
+						<?php if($FriendListResthead!=0 and !empty($FriendListhead)){?>
 						<?php
-                    for($i = 1;$i <= $FriendListRest; $i++){
+                    for($i = 1;$i <= $FriendListResthead; $i++){
                     echo '<td style="width:80px;height:100px;text-align: center;" ></td>';
 						}
 						?>
@@ -209,7 +209,7 @@
 					<a href="group.php?glist=1" class="dropbtn" title="My Groups"><b>My Groups</b></a>
 					<button onclick="myFunction1()" class="dropbtn" style="background-image: url(public/images/dropdown_menu_icon.png) "></button>
 					<div id="myDropdown1" class="dropdown-content">
-							<?php if(is_array($GrMenu)){foreach($GrMenu AS $key=>$val) { ?>
+							<?php if(is_array($GrMenuhead)){foreach($GrMenuhead AS $key=>$val) { ?>
 						<td style="width:80px;height:100px;text-align: center;" >
 							<a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?>
 									<p class="xg2"><?php echo $val['description']; ?></p>
@@ -228,15 +228,15 @@
 				<a href="member.php?mlist=0&cat=0"  title="All members" class="dropbtn"><B>All POWON Members</B></a>
 				<button onclick="myFunction2()" class="dropbtn" style="background-image: url(public/images/dropdown_menu_icon.png) "></button>
 				<div id="myDropdown2" class="dropdown-content">
-					<?php if(is_array($UserList)){foreach($UserList AS $key=>$val) { ?>
+					<?php if(is_array($UserListhead)){foreach($UserListhead AS $key=>$val) { ?>
 					<?php
-                        $msg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
+                        $chatmsg = dbselect('chat','*','uid='.$val['uid'].' and fid='.$_COOKIE['uid'].' and isread=0')
                     ?>
 					<td style="width:80px;height:100px;text-align: center;" >
 						<a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 40px;max-height: 60px" >
 								<span class="xi2"><?php echo $val['username']; ?>
 									<a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
-										<?php if(!empty($msg)){?>
+										<?php if(!empty($chatmsg)){?>
 										<img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
 										<?php } else { ?>
 										<img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
@@ -253,7 +253,7 @@
 				<a href="group.php?glist=0&cat=0" class="dropbtn" title="All Groups"><b>All Groups</b></a>
 				<button onclick="myFunction3()" class="dropbtn" style="background-image: url(public/images/dropdown_menu_icon.png) "></button>
 				<div id="myDropdown3" class="dropdown-content">
-					<?php if(is_array($GrMenuAll)){foreach($GrMenuAll AS $key=>$val) { ?>
+					<?php if(is_array($GrMenuAllhead)){foreach($GrMenuAllhead AS $key=>$val) { ?>
 					<td style="width:80px;height:100px;text-align: center;" >
 						<a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>"><?php echo $val['name']; ?>
 							<p class="xg2"><?php echo $val['description']; ?></p>

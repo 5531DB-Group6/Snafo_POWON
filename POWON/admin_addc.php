@@ -18,14 +18,14 @@ if (!$isadmin){
 }
 
 
-//发布帖子
+//add post
 if($_POST['topicsubmit'])
 {
-    $authorid = $_COOKIE['uid'];		//发布人ID
-    $title = strMagic($_POST['subject']);		//标题
-    $content = strMagic($_POST['content']);		//内容
-    $addtime = time();			//发表时间
-    $groupId = $_POST['gid'];		//类别ID
+    $authorid = $_COOKIE['uid'];
+    $title = strMagic($_POST['subject']);
+    $content = strMagic($_POST['content']);
+    $addtime = time();
+    $groupId = $_POST['gid'];
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
 
     if(empty($title)) {

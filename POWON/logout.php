@@ -1,6 +1,6 @@
 <?php
 /**
- * 注销
+ * logout
  */
 	include './common/common.php';
 

@@ -1,11 +1,11 @@
 <?php
 /**
- * 个人资料
+ * profile permission to singal friend/group mate
  */
 
 include './common/common.php';
 include 'logincheck.php';
-//判断用户是否登录
+//check login status
 if(empty($_COOKIE['uid']))
 {
     $msg = '<font color=red><b>You have not logged in</b></font>';
@@ -16,7 +16,7 @@ if(empty($_COOKIE['uid']))
     exit;
 }
 
-//读取个人资料
+//read personal information
 $result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and status!=2','',1);
 $visible = dbSelect('profilevisible','*', 'uid='.$_COOKIE['uid'].' ','',1);
 if(!$result)
@@ -35,7 +35,7 @@ $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.appr
 $sql = 'select * from '.DB_PREFIX.'user where uid in (select distinct g2.uid from  '.DB_PREFIX.'gmembers g1, '.DB_PREFIX.'gmembers g2 where g1.uid='.$_COOKIE['uid'].' and g1.gid=g2.gid and g2.uid!='.$_COOKIE['uid'].' and g1.approved=1 and g2.approved=1 and g2.uid not in (select fid from '.DB_PREFIX.'friend where uid='.$_COOKIE['uid'].'))';
 $GroupMatesList = dbConn(trim($sql), true);
 
-
+//modify visibility
 if($_POST['visibilitysubmitbtn'])
 {
     if (is_array($FriendList)) {
@@ -73,8 +73,7 @@ if($_POST['visibilitysubmitbtn'])
             }
         }
     }
-
-    //header('location:home.php');
+    
 
 }
 

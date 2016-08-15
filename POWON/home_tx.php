@@ -1,12 +1,12 @@
 <?php
 /**
- * 个人资料，用户签名
+ * change avatar
  */
 
 	include './common/common.php';
 	include 'logincheck.php';
 
-	//修改头像
+	//change avatar
 	if($_POST['profilesubmitbtn'])
 	{
 		$picture = upload('pic');
@@ -24,7 +24,7 @@
 	}
 	}
 
-	//读取头像
+	//read the personal avatar
 	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and status!=2','',1);
 	if(!$result)
 	{
@@ -38,7 +38,7 @@
 	$Jg = $result[0]['place'];
 	
 	
-	$title = '用户签名 - '.WEB_NAME;
+	$title = 'Change Avatar - '.WEB_NAME;
 	include template("home_tx.html");
 
 ?>

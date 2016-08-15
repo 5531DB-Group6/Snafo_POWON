@@ -21,7 +21,7 @@ if ($_POST['newpostsubmitbtn']){
     header('location:admin_addc.php');
 }
 
-//读取版块内帖子信息
+//public post information
 $ListContent = dbSelect('pposts','*','isdel=0','pid desc');
 
 $title = $OnGname.' - '.WEB_NAME;

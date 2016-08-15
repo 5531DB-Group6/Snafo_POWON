@@ -1,6 +1,6 @@
 <?php
 /**
- * 注册
+ * Search
  */
 	include './common/common.php';
 	

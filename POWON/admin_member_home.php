@@ -19,7 +19,7 @@ if (!$isadmin){
 
 $uid=$_REQUEST['uid'];
 
-//读取个人资料
+//read personal information
 $result = dbSelect('user','*', 'uid='.$uid.'','',1);
 if(!$result)
 {

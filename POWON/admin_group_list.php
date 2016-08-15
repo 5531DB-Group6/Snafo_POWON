@@ -15,7 +15,7 @@ if (!$isadmin){
     exit;
 }
 
-$linum = 10;	//每页显示数量
+$linum = 10;	//limit of display of each page
 
 $GroupList = dbSelect('groups','*',null,'name asc');
 

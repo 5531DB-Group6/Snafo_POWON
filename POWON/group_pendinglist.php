@@ -6,7 +6,7 @@ include './common/common.php';
 include 'logincheck.php';
 
 
-//判断ID是否存在
+//determine whether the group exists
 if(empty($_GET['gid']) || !is_numeric($_GET['gid']))
 {
     $msg = '<font color=red><b>Illegal operation is not allowed</b></font>';
@@ -59,11 +59,10 @@ if(!$OnMenu)
 $TZCount = dbFuncSelect('gmembers','count(uid)','gid='.$groupId.' and approved=1');
 $zCount = $TZCount['count(uid)'];
 
-$linum = 10;	//每页显示数量
+$linum = 10;
 
 
 $select='u.uid as uid, u.username as username,u.picture as picture,m.admin as admin';
-//$MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=1',null,null,$select,'m.gid ='.$groupId.'');
 $PendingList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=0',null,null,$select,'m.gid ='.$groupId.'');
 
 if($admin){
@@ -157,16 +156,6 @@ if($admin){
         }
     }
 }
-
-
-
-/*
-//该板块下今日主题数量
-$newt = time()-1000;
-$start_time = strtotime(date('Y-m-d',time()));
-$JRCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and (addtime>='.$start_time.' and addtime<='.time().')');
-$JCount = $JRCount['count(pid)'];
-*/
 
 $title = $OnGname.' - '.WEB_NAME;
 $menu = WEB_NAME;

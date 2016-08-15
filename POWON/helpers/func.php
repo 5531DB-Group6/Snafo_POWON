@@ -50,7 +50,7 @@
 
 
 	/**
-	 * 魔术转译
+	 * translate
 	 * @param String $data
 	 * @return String
 	 */

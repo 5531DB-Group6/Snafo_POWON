@@ -17,7 +17,7 @@ if (!$isadmin){
 
 
 
-$linum = 10;	//每页显示数量
+$linum = 10;
 
 
 $MemberList = dbSelect('user','*',null,'username asc');

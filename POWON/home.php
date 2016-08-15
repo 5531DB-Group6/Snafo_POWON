@@ -1,12 +1,12 @@
 <?php
 /**
- * 个人资料
+ * Personal information
  */
 
 	include './common/common.php';
     include 'logincheck.php';
 
-	//读取个人资料
+	//read personal information
 	$result = dbSelect('user','*', 'uid='.$_COOKIE['uid'].' and status!=2','',1);
 	$visible = dbSelect('profilevisible','*', 'uid='.$_COOKIE['uid'].' ','',1);
 	if(!$result)
@@ -54,7 +54,7 @@
     }
 
 
-    //修改个人资料
+    //modify information
     if($_POST['profilesubmitbtn'])
     {
 
@@ -66,6 +66,7 @@
         $place = $_POST['place'];
         $profession = $_POST['profession'];
 
+        //profile visibility
         $firstname_visible = $_POST['firstname_visible'];
         $lastname_visible = $_POST['lastname_visible'];
         $sex_visible = $_POST['sex_visible'];
@@ -76,8 +77,6 @@
 
         $owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',birthday="'.$birth.'",address="'.$address.'",region="'.$place.'",profession="'.$profession.'" ', 'uid='.$_COOKIE['uid'].'');
         $visible= dbUpdate('profilevisible', 'firstname_visible='.$firstname_visible.',lastname_visible='.$lastname_visible.',sex_visible='.$sex_visible.',bday_visible='.$bday_visible.',address_visible='.$address_visible.',place_visible='.$place_visible.',profession_visible='.$profession_visible.'','uid='.$_COOKIE['uid'].'');
-        //$owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',birthday="'.$birth.'",region="'.$place.'"', 'uid='.$_COOKIE['uid'].'');
-        //$owner = dbUpdate('user', 'firstname="'.$firstname.'",lastname="'.$lastname.'",sex='.$sex.',region="'.$place.'"', 'uid='.$_COOKIE['uid'].'');
         if($owner || $visible)
         {
             header('location:home.php');

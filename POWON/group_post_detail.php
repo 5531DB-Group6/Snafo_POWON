@@ -7,7 +7,7 @@ include './common/common.php';
 include 'logincheck.php';
 
 
-//判断帖子ID是否存在
+//determine whether the post exists
 if(empty($_REQUEST['pid']) || !is_numeric($_REQUEST['pid']))
 {
     $msg = '<font color=red><b>Illegal operation is not allowed</b></font>';
@@ -18,17 +18,17 @@ if(empty($_REQUEST['pid']) || !is_numeric($_REQUEST['pid']))
 }
 $Id=$_REQUEST['pid'];
 
-//读取帖子信息
+//read post's information
 $TiZi = dbSelect('gposts','*','pid='.$Id.' and isdel=0 and first=1','',1);
-$authorid = $TiZi[0]['authorid'];		//作者ID
-$Title = $TiZi[0]['title'];		//标题
-$Content = $TiZi[0]['content'];		//内容
+$authorid = $TiZi[0]['authorid'];
+$Title = $TiZi[0]['title'];
+$Content = $TiZi[0]['content'];
 $Image = $TiZi[0]['image'];
 $Video = $TiZi[0]['video'];
-$Addtime = getFormatTime($TiZi[0]['addtime']);		//发布时间
-$groupId = $TiZi[0]['gid'];		//版块ID
-$Replycount = $TiZi[0]['replycount'];	//回复数量
-$Hits = $TiZi[0]['hits'];//点击数量
+$Addtime = getFormatTime($TiZi[0]['addtime']);
+$groupId = $TiZi[0]['gid'];
+$Replycount = $TiZi[0]['replycount'];
+$Hits = $TiZi[0]['hits'];
 if (!empty($TiZi[0]['voteoptions'])){
     $voteoptions = explode('+||+', $TiZi[0]['voteoptions']);
 }else{
@@ -57,13 +57,7 @@ if (!empty($voteoptions)) {
     $voteresult = dbConn(trim($sql),true);
 }
 
-
-
-
-//$Elite = $TiZi[0]['elite'];		//精华
-//$Rate = $TiZi[0]['rate'];			//所需积分数量
-
-//读取上一条
+//read last one
 $top = dbSelect('gposts','id','pid>'.$Id.' and isdel=0 and first=1 and gid ='.$groupId.'','id desc',1);
 if($top)
 {
@@ -71,7 +65,7 @@ if($top)
 }else{
     $topid=false;
 }
-//读取下一条
+//read next one
 $down = dbSelect('gposts','id','pid<'.$Id.' and isdel=0 and first=1and gid ='.$groupId.'','id desc',1);
 if($down){
     $downid = $down[0]['pid'];
@@ -135,7 +129,7 @@ if(!$viewPermit){
     exit;
 }
 
-//点击帖子时访问次数加1
+//update the view count
 $result = dbUpdate('gposts', 'hits=hits+1', 'pid='.$Id.' and isdel=0 and first=1');
 if(!$result)
 {
@@ -146,7 +140,7 @@ if(!$result)
     include 'notice.php';
 }
 
-//读取会员信息
+//read member's information
 $User = dbSelect('user','username,email,udertype,regtime,lasttime,picture','uid='.$authorid.'','',1);
 if($User)
 {
@@ -156,26 +150,23 @@ if($User)
     $R_egtime = formatTime($User[0]['regtime'],false);
     $L_asttime = formatTime($User[0]['lasttime'],false);
     $P_icture = $User[0]['picture'];
-    //$A_utograph = $User[0]['autograph'];
-    //$G_rade = $User[0]['grade'];
 }
 
-//该主题下的所有回复数量
+//the reply counts of this post
 $TZCount = dbFuncSelect('gposts','count(pid)','parentid='.$Id.' and isdel=0 and first=0');
 $zCount = $TZCount['count(pid)'];
 $linum = 10;
 $Lpage = empty($_GET['page'])?1:$_GET['page'];
-//循环帖子回复信息
+//the reply list
 $select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image, t.video as video';
 $HTiZi = dbDuoSelect('gposts as t','user as u',' on t.authorid=u.uid',null,null,$select,'t.parentid='.$Id.' and t.isdel=0 and t.first=0','t.pid asc', setLimit($linum));
 
 $title = $Title.' - '.WEB_NAME;
 $ggg = 'Concordia';
 
-//保存帖子回复
+//save the reply
 if($_POST['replysubmit'])
 {
-    //判断用户是否登录
     if(!$_COOKIE['uid']){
 
         $notice='Sorry，you have not logged in';
@@ -204,15 +195,15 @@ if($_POST['replysubmit'])
         exit;
     }
 
-    $parentid = $Id;					//跟帖时记录贴子ID
+    $parentid = $Id;
     $titleTmp = dbSelect('gposts','title','pid="'.$parentid.'"','id desc',1);
     $title = $titleTmp[0]['title'];
-    $authorid = $_COOKIE['uid'];			//发布人ID
-    $content = strMagic($_POST['message']);		//内容
+    $authorid = $_COOKIE['uid'];
+    $content = strMagic($_POST['message']);
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
-    $video = addslashes($_POST['video']);  //video
-    $addtime = time();				//发表时间
-    $groupId = $_POST['gid'];			//类别ID
+    $video = addslashes($_POST['video']);
+    $addtime = time();
+    $groupId = $_POST['gid'];
     $futuredelete = "";
 
     $contentcheck = (string)$content;
@@ -227,25 +218,6 @@ if($_POST['replysubmit'])
         include 'notice.php';
         exit;
     }
-    /*
-    $regex = "((https?|ftp)\:\/\/)?"; // SCHEME
-    $regex .= "([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?"; // User and Pass
-    $regex .= "([a-z0-9-.]*)\.([a-z]{2,3})"; // Host or IP
-    $regex .= "(\:[0-9]{2,5})?"; // Port
-    $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?"; // Path
-    $regex .= "(\?[a-z+&\$_.-][a-z0-9;:@&%=+\/\$_.-]*)?"; // GET Query
-    $regex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?"; // Anchor
-
-    if(preg_match("/^$regex$/", $contentcheck))
-    {
-        $msg = '<font color=red><b>you are not allowed to add link</b></font>';
-        $url = $_SERVER['HTTP_REFERER'];
-        $style = 'alert_error';
-        $toTime = 3000;
-        include 'notice.php';
-        exit;
-    }
-    */
 
     if (empty($content) && $picture==null){
         $msg = '<font color=red><b>please add content</b></font>';
@@ -284,10 +256,10 @@ if($_POST['replysubmit'])
             }
         }
 
-        //更新帖子的回复数量[replycount]
+        //update the replycount
         $result = dbUpdate('gposts', 'replycount=replycount+1', 'pid='.$parentid.'');
 
-        //更新版块表的回复数量[replycount]
+
         $result = dbUpdate('groups', 'replycount=replycount+1', 'gid='.$groupId.'');
         //header('location:detail.php?id='.$Id);
         $msg = '<font color=red><b>Reply succeeded</b></font>'.$futuredelete;
@@ -316,7 +288,7 @@ if ($_POST['newpostsubmitbtn']){
 $votecheck = dbSelect('voterecord','*','pid='.$Id.' and uid='.$_COOKIE['uid'].'');
 if($_POST['votesubmit'])
 {
-    //判断用户是否登录
+    //check if the user has logged in
     if(!$_COOKIE['uid']){
 
         $notice='Sorry，you have not logged in';
@@ -344,8 +316,8 @@ if($_POST['votesubmit'])
         exit;
     }
 
-    $parentid = $Id;					//跟帖时记录贴子ID
-    $groupId = $_POST['gid'];			//类别ID
+    $parentid = $Id;
+    $groupId = $_POST['gid'];
     $vote=$_POST['voteselect'];
 
     $n='pid, uid, vote';
@@ -373,7 +345,7 @@ if($_POST['votesubmit'])
 }
 
 if($_POST['optionsubmit']) {
-    //判断用户是否登录
+   //whether the user has logged in
     if (!$_COOKIE['uid']) {
 
         $notice = 'Sorry，you have not logged in';
@@ -401,8 +373,8 @@ if($_POST['optionsubmit']) {
         exit;
     }
 
-    $parentid = $Id;                    //跟帖时记录贴子ID
-    $groupId = $_POST['gid'];            //类别ID
+    $parentid = $Id;
+    $groupId = $_POST['gid'];
     $option = $_POST['newoption'];
 
     $gpost = dbSelect('gposts','*','pid='.$Id.' and isdel=0 and first=1','',1);

@@ -9,8 +9,6 @@ $menu = WEB_NAME;
 
 $publicpost = dbSelect('pposts','*','','pid desc');
 
-//echo ($_COOKIE['username'] =="");
-//判断用户是否登录
 
 if( $_COOKIE['uid'] )
 {
@@ -33,22 +31,14 @@ if( $_COOKIE['uid'] )
 
 }
 
-//读取帖子总数
-$motifCount = dbFuncSelect('category','sum(motifcount)','parentid<>0');
-$tzCount = $motifCount['sum(motifcount)'];
 
-//会员数量
+//member count
 $userCount = dbFuncSelect('user','count(uid)');
 $userC = $userCount['count(uid)'];
 
-//最新加入会员
+//new member
 $newUser = dbSelect('user','username','','uid desc',1);
 $uName = $newUser ? $newUser[0]['username'] : 'none';
 
-//读取图片友情链接
-//$imgUrl = dbSelect('link','*','description!="" or logo!=""','displayorder desc,lid desc');
-
-//读取文字友情链接
-//$textUrl = dbSelect('link','*','logo<=>null or logo=""','displayorder desc,lid desc');
 
 include template("index.html");

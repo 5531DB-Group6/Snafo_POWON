@@ -1,6 +1,6 @@
 <?php
 /**
- * 个人资料
+ * friend request operation
  */
 
 include './common/common.php';
@@ -10,6 +10,7 @@ include 'logincheck.php';
 $select='u.uid as uid, u.username as username, u.picture as picture';
 $Friend = dbDuoSelect('friend as f','user as u','on u.uid=f.uid and f.approved=0',null,null,$select,'f.fid='.$_COOKIE['uid'].'','f.addtime desc');
 
+//approve the request
 if ($_POST['approvesubmitbtn']){
     $uid=$_POST['approvesubmitbtn'];
     $type = $_POST['type_'.$uid.''];
@@ -40,6 +41,7 @@ if ($_POST['approvesubmitbtn']){
     }
 }
 
+//reject
 if ($_POST['rejectsubmitbtn']){
     $uid=$_POST['rejectsubmitbtn'];
 

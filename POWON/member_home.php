@@ -1,6 +1,6 @@
 <?php
 /**
- * 个人资料
+ * homepage of other member
  */
 
 include './common/common.php';

@@ -27,7 +27,7 @@
                     <dl class="a" id="lf_member">
                         <dt><a href="javascript:;" title="Members">Members</a></dt>
                         <dd>
-                            <a href="group_memberlist.php?gid=<?php echo $OnGid; ?>" title="Member List">Member List</a>
+                            <a href="group_memberlist.php?gid=<?php echo $OnGid; ?>&cat=0" title="Member List">Member List</a>
                         </dd>
                         <dd class="bdl_a">
                             <a href="group_pendinglist.php?gid=<?php echo $OnGid; ?>" title="Pending List">Pending List</a>

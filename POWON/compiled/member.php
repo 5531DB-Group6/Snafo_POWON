@@ -44,7 +44,7 @@
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
                         <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
-                            <?php if(!empty($msg)){?>
+                            <?php if(!empty($chatmsg)){?>
                             <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
                             <?php } else { ?>
                             <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
@@ -97,7 +97,7 @@
                     <td style="width:80px;height:100px;text-align: center;" >
                         <a href="member_home.php?uid=<?php echo $val['uid']; ?>"><img src="<?php echo $val['picture']; ?>" style="width: auto; height: auto;max-width: 60px;max-height: 80px" ></a>
                         <a href="member_chatbox_index.php?uid=<?php echo $val['uid']; ?>"target="_blank">
-                            <?php if(!empty($msg)){?>
+                            <?php if(!empty($chatmsg)){?>
                             <img src="public/images/unread_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
                             <?php } else { ?>
                             <img src="public/images/read_Chat.png" style="width: auto; height: auto;max-width: 20px;max-height: 30px" >
@@ -191,7 +191,7 @@
             <div id="memberlist" class="bm_c">
                 <table cellspacing="0" cellpadding="0" class="fl_tb">
                     <?php
-                    $ageTmp='';
+                    $ageTmp='Unknown';
                     $tdnum = 0;
                                 ?>
                     <?php if(is_array($UserList)){foreach($UserList AS $key=>$val) { ?>
@@ -254,7 +254,7 @@
             <div id="memberlist" class="bm_c">
                 <table cellspacing="0" cellpadding="0" class="fl_tb">
                     <?php
-                    $proTmp='';
+                    $proTmp='Unknown';
                     $tdnum = 0;
                                 ?>
                     <?php if(is_array($UserList)){foreach($UserList AS $key=>$val) { ?>
@@ -317,7 +317,7 @@
             <div id="memberlist" class="bm_c">
                 <table cellspacing="0" cellpadding="0" class="fl_tb">
                     <?php
-                    $proTmp='';
+                    $proTmp='Unknown';
                     $tdnum = 0;
                                 ?>
                     <?php if(is_array($UserList)){foreach($UserList AS $key=>$val) { ?>
@@ -349,10 +349,8 @@
             </div>
         </div>
     </div>
-
-
     <?php }?>
-</div>
+
 <!--CONTENT end-->
 
 <!--FOOT start-->

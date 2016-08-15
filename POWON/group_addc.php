@@ -6,7 +6,7 @@
 	include './common/common.php';
     include 'logincheck.php';
 
-	//判断ID是否存在
+	//determine whether the group exists
     if(empty($_REQUEST['gid']) || !is_numeric($_REQUEST['gid']))
     {
         $msg = '<font color=red><b>Illegal operation is not allowed</b></font>';
@@ -45,15 +45,15 @@ if ($mute && !$admin){
     $MemberListRest = 3-count($MemberList)%3;
     $MemberListRest = ($MemberListRest ==3)? 0:$MemberListRest;
 
-	//发布帖子
+	//add post
 	if($_POST['topicsubmit'])
     {
-        $authorid = $_COOKIE['uid'];		//发布人ID
-        $title = strMagic($_POST['subject']);		//标题
-        $content = strMagic($_POST['content']);		//内容
-        $video = addslashes($_POST['video']);     //video
-        $addtime = time();			//发表时间
-        $groupId = $_POST['gid'];		//类别ID
+        $authorid = $_COOKIE['uid'];
+        $title = strMagic($_POST['subject']);
+        $content = strMagic($_POST['content']);
+        $video = addslashes($_POST['video']);
+        $addtime = time();
+        $groupId = $_POST['gid'];
         $voteNum = $_POST['voteNum'];
         $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
         $futuredelete = "";
@@ -105,7 +105,7 @@ if ($mute && !$admin){
                 }
             }
 
-            //更新版块表的主题数量[Motifcount](跟帖是回复数量[eplycount])和最后发表[lastpost]
+            //update the last post
             $last = $insertId.'+||+'.$title.'+||+'.$addtime.'+||+'.$_COOKIE['username'];
             $result = dbUpdate('groups', 'motifcount=motifcount+1, lastpost="'.$last.'"', 'gid='.$groupId.'');
             $presult = dbInsert('gpostspermission','uid,pid,view,comment,addlink',''.$_COOKIE['uid'].','.$insertId.',1,1,1');

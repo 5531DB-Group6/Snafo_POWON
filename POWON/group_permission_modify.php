@@ -6,9 +6,7 @@
 include './common/common.php';
 include 'logincheck.php';
 
-//判断ID是否存在
-
-//判断帖子ID是否存在
+//determin whether the post exists
 if(empty($_REQUEST['pid']) || !is_numeric($_REQUEST['pid']))
 {
     $msg = '<font color=red><b>Illegal operation is not allowed</b></font>';
@@ -43,7 +41,7 @@ $MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.ap
 $MemberListRest = 3-count($MemberList)%3;
 $MemberListRest = ($MemberListRest ==3)? 0:$MemberListRest;
 
-//发布帖子
+//add a new post
 if($_POST['permissionsubmit'])
 {
     if (is_array($MemberList)) {

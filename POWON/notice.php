@@ -2,5 +2,5 @@
 /**
  * 提示
  */
-	$title = '提示 - ' . WEB_NAME;
+	$title = 'Notice - ' . WEB_NAME;
 	include template("notice.html");

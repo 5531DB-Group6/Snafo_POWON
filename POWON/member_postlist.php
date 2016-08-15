@@ -33,19 +33,19 @@ if($statuscheck[0]['status']==1){
     exit;
 }
 
-//该版块下的主题数量
+//user's post count
 $TZCount = dbFuncSelect('uposts','count(pid)','first=1 and isdel=0 and authorid='.$uid.'');
 $zCount = $TZCount['count(pid)'];
 
-$linum = 10;	//每页显示数量
+$linum = 10;
 
-//读取版块内帖子信息
+//read post list
 $ListContent = dbSelect('uposts','pid,title,authorid,addtime,replycount,hits','first=1 and isdel=0 and authorid='.$uid.'','pid desc', setLimit($linum));
 
-//该板块下今日主题数量
+//today's post count
 $newt = time()-1000;
 $start_time = strtotime(date('Y-m-d',time()));
-$JRCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and (addtime>='.$start_time.' and addtime<='.time().')');
+$JRCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and authorid='.$uid.' and (addtime>='.$start_time.' and addtime<='.time().')');
 $JCount = $JRCount['count(pid)'];
 
 $title = 'Personal Post List - '.WEB_NAME;

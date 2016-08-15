@@ -10,7 +10,7 @@
 
     $result = dbSelect('user','uid,username,udertype,picture,status,lasttime,expiretime', 'username="'.$username.'" and password="'.md5($password).'"');
 
-	//判断是否使用了自动登录
+	//check whether the auto login has been selected
 	if($cookietime)
     {
         $longTime = time()+2592000;
@@ -47,14 +47,11 @@
 			}
 			//$money = REWARD_LOGIN;
 			if (formatTime($result[0]['lasttime']) < date('Y-m-d')) {
-				//更新最后登录时间,首次登陆还要加积分
+				//update the last login time
 				$lasttime = dbUpdate('user', 'lasttime=' . time() . 'uid=' . $result[0]['uid'] . '');
-				//$first = true;
-				//$grade = $result[0]['grade']+(int)$money;
 			} else {
-				//更新最后登录时间
+				//update the last login time
 				$lasttime = dbUpdate('user', 'lasttime=' . time() . '', 'uid=' . $result[0]['uid'] . '');
-				//$grade = $result[0]['grade'];
 			}
 			setcookie('uid', $result[0]['uid'], $longTime);
 			setcookie('username', $result[0]['username'], time() + 2592000);
@@ -73,14 +70,7 @@
 			$toTime = 3000;
 
 			include 'notice.php';
-
-			/*
-            if($first)
-            {
-                $msg = '每天登陆';
-                include 'layer.php';
-            }
-            */
+			
 		}
 	}
 

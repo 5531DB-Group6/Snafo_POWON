@@ -14,14 +14,14 @@ $FriendList = DBduoSelect('user as u','friend as f','on u.uid = f.fid and f.appr
 $sql = 'select * from '.DB_PREFIX.'user where uid in (select distinct g2.uid from  '.DB_PREFIX.'gmembers g1, '.DB_PREFIX.'gmembers g2 where g1.uid='.$_COOKIE['uid'].' and g1.gid=g2.gid and g2.uid!='.$_COOKIE['uid'].' and g2.uid not in (select fid from '.DB_PREFIX.'friend where uid='.$_COOKIE['uid'].'))';
 $GroupMatesList = dbConn(trim($sql), true);
 
-//发布帖子
+//add new personal post
 if($_POST['topicsubmit'])
 {
-    $authorid = $_COOKIE['uid'];		//发布人ID
-    $title = strMagic($_POST['subject']);		//标题
-    $content = strMagic($_POST['content']);		//内容
-    $video = strMagic($_POST['video']);  //video
-    $addtime = time();			//发表时间
+    $authorid = $_COOKIE['uid'];
+    $title = strMagic($_POST['subject']);
+    $content = strMagic($_POST['content']);
+    $video = strMagic($_POST['video']);
+    $addtime = time();
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
     $futuredelete = "";
 
@@ -63,6 +63,7 @@ if($_POST['topicsubmit'])
             }
         }
 
+        //modify permission
         $permission = $_POST['permissionpublic'];
         switch ($permission) {
             case 0:

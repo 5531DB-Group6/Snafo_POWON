@@ -29,7 +29,7 @@ $receiver = dbSelect('user','uid, username','uid= '.$result['receiverid'].'')[0]
 $sender = dbSelect('user','uid, username','uid= '.$result['senderid'].'')[0];
 $user = dbSelect('user','uid, username','uid= '.$_COOKIE['uid'].'')[0];
 
-//保存帖子回复
+
 if($_POST['replysubmit'])
 {
 

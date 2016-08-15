@@ -4,7 +4,7 @@
 include './common/common.php';
 
 
-//判断用户是否登录
+//check if the user has logged ins
 if(!$_COOKIE['uid'])
 {
     $notice = 'Sorry，you are currently not logged in.';

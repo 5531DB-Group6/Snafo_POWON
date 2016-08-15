@@ -6,7 +6,7 @@
 include './common/common.php';
 include 'logincheck.php';
 
-//判断帖子ID是否存在
+//check whether the user exists
 if(empty($_REQUEST['pid']) || !is_numeric($_REQUEST['pid']))
 {
     $msg = '<font color=red><b>Illegal operation is not allowed</b></font>';
@@ -17,7 +17,7 @@ if(empty($_REQUEST['pid']) || !is_numeric($_REQUEST['pid']))
 }
 $Id=$_REQUEST['pid'];
 
-//点击帖子时访问次数加1
+//upgrade hits
 $result = dbUpdate('uposts', 'hits=hits+1', 'pid='.$Id.' and isdel=0 and first=1 and isdisplay=1');
 if(!$result)
 {
@@ -28,19 +28,19 @@ if(!$result)
     include 'notice.php';
 }
 
-//读取帖子信息
+//read post informations
 $TiZi = dbSelect('uposts','*','pid='.$Id.' and isdel=0 and first=1 and isdisplay=1','',1);
-$authorid = $TiZi[0]['authorid'];		//作者ID
-$Title = $TiZi[0]['title'];		//标题
-$Content = $TiZi[0]['content'];		//内容
+$authorid = $TiZi[0]['authorid'];
+$Title = $TiZi[0]['title'];
+$Content = $TiZi[0]['content'];
 $Image = $TiZi[0]['image'];
 $Video = $TiZi[0]['video'];
-$Addtime = getFormatTime($TiZi[0]['addtime']);		//发布时间
-$Replycount = $TiZi[0]['replycount'];	//回复数量
-$Hits = $TiZi[0]['hits'];//点击数量
+$Addtime = getFormatTime($TiZi[0]['addtime']);
+$Replycount = $TiZi[0]['replycount'];
+$Hits = $TiZi[0]['hits'];
 
 
-//读取上一条
+//read last post
 $top = dbSelect('gposts','id','pid>'.$Id.' and isdel=0 and first=1 and authorid ='.$authorid.'','id desc',1);
 if($top)
 {
@@ -48,7 +48,7 @@ if($top)
 }else{
     $topid=false;
 }
-//读取下一条
+//read next post
 $down = dbSelect('gposts','id','pid<'.$Id.' and isdel=0 and first=1and authorid ='.$authorid.'','id desc',1);
 if($down){
     $downid = $down[0]['pid'];
@@ -63,7 +63,7 @@ $isOwner = ($authorid==$_COOKIE['uid']) || $admin[0]['udertype'];
 
 
 
-//读取会员信息
+//read user information
 $User = dbSelect('user','username,email,udertype,regtime,lasttime,picture','uid='.$authorid.'','',1);
 if($User)
 {
@@ -117,16 +117,16 @@ if(!$viewPermit){
         exit;
     }
 
-//该主题下的所有回复数量
+//post count of this user
 $TZCount = dbFuncSelect('uposts','count(pid)','parentid='.$Id.' and isdel=0 and first=0 and isdiplay=1');
 $zCount = $TZCount['count(pid)'];
 $linum = 10;
 $Lpage = empty($_GET['page'])?1:$_GET['page'];
-//循环帖子回复信息
+//reply list
 $select = 't.pid as pid,t.isdisplay as isdisplay,t.authorid as authorid,t.content as content,t.addtime as addtime,t.isdel as isdel,u.username as username,u.email as email,u.udertype as udertype,u.regtime as regtime,u.lasttime as lasttime,u.picture as picture,t.image as image, t.video as video';
 $HTiZi = dbDuoSelect('uposts as t','user as u',' on t.authorid=u.uid',null,null,$select,'t.parentid='.$Id.' and t.isdel=0 and t.first=0','t.pid asc');
 
-//保存帖子回复
+//same reply
 if($_POST['replysubmit'])
 {
     //判断用户是否登录
@@ -146,14 +146,14 @@ if($_POST['replysubmit'])
         exit;
     }
 
-    $parentid = $Id;					//跟帖时记录贴子ID
+    $parentid = $Id;
     $titleTmp = dbSelect('uposts','title','pid="'.$parentid.'"','id desc',1);
     $title = $titleTmp[0]['title'];
-    $ReplyAuthorid = $_COOKIE['uid'];			//发布人ID
-    $content = strMagic($_POST['message']);		//内容
-    $video = strMagic($_POST['video']);  //video
+    $ReplyAuthorid = $_COOKIE['uid'];
+    $content = strMagic($_POST['message']);
+    $video = strMagic($_POST['video']);
     $picture = ($_FILES['pic']['error']>0)? null:upload('pic');
-    $addtime = time();				//发表时间
+    $addtime = time();
     $futuredelete = "";
 
     $contentcheck = (string)$content;
@@ -206,19 +206,15 @@ if($_POST['replysubmit'])
             }
         }
 
-        //更新帖子的回复数量[replycount]
+        //update replycount
         $result = dbUpdate('uposts', 'replycount=replycount+1', 'pid='.$parentid.'');
 
-        //更新版块表的回复数量[replycount]
         $msg = '<font color=red><b>Reply succeeded</b></font>'.$futuredelete;
         $url = 'member_post_detail.php?pid='.$Id.'';
         $style = 'alert_right';
         $toTime = 3000;
         include 'notice.php';
-        /*
-        $msg = '回帖赠送';
-        include 'layer.php';
-        */
+
         exit;
 
     }
@@ -230,21 +226,7 @@ $title = $Title.' - '.WEB_NAME;
 $ggg = 'COMP 5531';
 
 
-//查找版主或管理员
-/*
-$NBanZhu = explode(',',$BanZhu);
-if(in_array($_COOKIE['uid'], $NBanZhu))
-{
-    $GuanLi=true;
-}else{
-    if($_COOKIE['udertype'])
-    {
-        $GuanLi=true;
-    }
-}
-*/
-
-    //删除，放入回收站
+    //delet the post
     if(!empty($_GET['del'])&&$isOwner){
 
         $result = dbUpdate('uposts', "isdel=1", 'pid='.$Id.'');
@@ -260,7 +242,7 @@ if(in_array($_COOKIE['uid'], $NBanZhu))
         header('location:member_postlist.php?uid='.$authorid.'');
 
     }
-    //删除回帖，放入回收站
+    //delete the reply
     if(!empty($_GET['delht']) ){
         $replyauthor = dbSelect('uposts','authorid','pid='.$_GET['hid'].'');
         if ($isadmin || $replyauthor[0]['authorid']==$_COOKIE['uid']) {

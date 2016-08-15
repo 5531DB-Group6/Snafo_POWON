@@ -39,40 +39,6 @@ if((!$result || $approved==0)&&!$admin)
     exit;
 }
 
-//读取导航索引
-/*
-$classId = 1;
-$category = dbSelect('category','cid,classname,parentid','parentid<>0 and cid='.$classId.'','',1);
-if($category)
-{
-    $smallName = $category[0]['classname'];
-    $smallId = $category[0]['cid'];
-    $parentCategory = dbSelect('category','cid,classname','cid='.$category[0]['parentid'].'','',1);
-    if($parentCategory)
-    {
-        $bigName = $parentCategory[0]['classname'];
-        $bigId = $parentCategory[0]['cid'];
-    }else{
-        $msg = '<font color=red><b>非法操作</b></font>';
-        $url = $_SERVER['HTTP_REFERER'];
-        $style='alert_error';
-        $toTime = 3000;
-        include 'notice.php';
-        exit;
-    }
-
-}else{
-
-    $msg = '<font color=red><b>非法操作</b></font>';
-    $url = $_SERVER['HTTP_REFERER'];
-    $style = 'alert_error';
-    $toTime = 3000;
-    include 'notice.php';
-    exit;
-}
-*/
-
-
 
 $OnMenu = dbSelect('groups','gid,name,owner','gid='.$groupId.' and ispass=1','orderby desc,gid desc');
 if(!$OnMenu)
@@ -90,12 +56,6 @@ if(!$OnMenu)
 
 $OwnerId = (int)$Owner;
 
-//读取所有大版块信息
-//$LTmenu = dbSelect('category','cid,classname','parentid=0 and ispass=1','orderby desc,cid desc');
-//读取所有小版块信息
-//$LTsMenu = dbSelect('category','cid,classname,parentid','parentid<>0 and ispass=1','orderby desc,cid desc');
-
-
 //number of members
 $TZCount = dbFuncSelect('gmembers','count(uid)','gid='.$groupId.' and approved=1');
 $zCount = $TZCount['count(uid)'];
@@ -103,11 +63,27 @@ $zCount = $TZCount['count(uid)'];
 $linum = 10;	//每页显示数量
 
 //Read group member info
-//$ListContent = dbSelect('gposts','uid,title,authorid,addtime,replycount,hits,style','first=1 and isdel=0 and gid='.$groupId.'','pid desc', setLimit($linum));
-$select='u.uid as uid, u.username as username,u.picture as picture,m.admin as admin, m.mute as mute';
-//$MemberList = DBduoSelect('groups as g','gmembers as m','on g.gid = m.gid','user as u','on u.uid = m.uid',$select,'g.gid ='.$groupId.'');
-$MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=1 and status!=1',null,null,$select,'m.gid ='.$groupId.'');
-//$PendingList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=0',null,null,$select,'m.gid ='.$groupId.'');
+//$select='u.uid as uid, u.username as username,u.picture as picture,m.admin as admin, m.mute as mute';
+//$MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid and m.approved=1 and status!=1',null,null,$select,'m.gid ='.$groupId.'');
+
+$Cat = $_GET['cat'];
+switch ($Cat){
+    case 1;
+        $select='u.uid as uid, u.username as username, u.picture as picture, u.birthday as birthday, m.mute as mute';
+        $MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid',null,null,$select,'m.gid ='.$groupId.' and m.approved=1 and u.status!=1','u.birthday desc');
+        break;
+    case 2;
+        $select='u.uid as uid, u.username as username, u.picture as picture, u.profession as profession, m.mute as mute';
+        $MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid',null,null,$select,'m.gid ='.$groupId.' and m.approved=1 and u.status!=1','u.profession desc');
+        break;
+    case 3;
+        $select='u.uid as uid, u.username as username, u.picture as picture, u.region as region, m.mute as mute';
+        $MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid',null,null,$select,'m.gid ='.$groupId.' and m.approved=1 and u.status!=1','u.region desc');
+        break;
+    default:
+        $select='u.uid as uid, u.username as username,u.picture as picture, m.mute as mute';
+        $MemberList = DBduoSelect('user as u','gmembers as m','on u.uid = m.uid',null,null,$select,'m.gid ='.$groupId.' and m.approved=1 and u.status!=1','u.username desc');
+}
 
 if($admin){
     //kick out member
@@ -211,16 +187,6 @@ if($admin){
         }
     }
 }
-
-
-
-/*
-//该板块下今日主题数量
-$newt = time()-1000;
-$start_time = strtotime(date('Y-m-d',time()));
-$JRCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and (addtime>='.$start_time.' and addtime<='.time().')');
-$JCount = $JRCount['count(pid)'];
-*/
 
 $title = $OnGname.' - '.WEB_NAME;
 $menu = WEB_NAME;

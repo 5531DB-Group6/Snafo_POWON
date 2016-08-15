@@ -6,7 +6,7 @@ include './common/common.php';
 include 'logincheck.php';
 
 
-//判断ID是否存在
+//check if the group exists
 if(empty($_GET['gid']) || !is_numeric($_GET['gid']))
 {
     $msg = '<font color=red><b>Illegal operation is not allowed</b></font>';
@@ -34,38 +34,7 @@ if(!$isadmin){
         exit;
     }
 }
-//读取导航索引
-/*
-$classId = 1;
-$category = dbSelect('category','cid,classname,parentid','parentid<>0 and cid='.$classId.'','',1);
-if($category)
-{
-    $smallName = $category[0]['classname'];
-    $smallId = $category[0]['cid'];
-    $parentCategory = dbSelect('category','cid,classname','cid='.$category[0]['parentid'].'','',1);
-    if($parentCategory)
-    {
-        $bigName = $parentCategory[0]['classname'];
-        $bigId = $parentCategory[0]['cid'];
-    }else{
-        $msg = '<font color=red><b>非法操作</b></font>';
-        $url = $_SERVER['HTTP_REFERER'];
-        $style='alert_error';
-        $toTime = 3000;
-        include 'notice.php';
-        exit;
-    }
 
-}else{
-
-    $msg = '<font color=red><b>非法操作</b></font>';
-    $url = $_SERVER['HTTP_REFERER'];
-    $style = 'alert_error';
-    $toTime = 3000;
-    include 'notice.php';
-    exit;
-}
-*/
 
 $result = dbSelect('gmembers','uid,approved,admin','uid='.$_COOKIE['uid'].' and gid='.$groupId.'','',1);
 $admin = $result[0]['admin'];
@@ -96,15 +65,13 @@ if ($_POST['newpostsubmitbtn']){
 }
 
 
-//该版块下的主题数量
+//posts count of this group
 $TZCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and gid='.$groupId.'');
 $zCount = $TZCount['count(pid)'];
 
 
-$linum = 10;	//每页显示数量
+$linum = 10;
 
-//读取版块内帖子信息
-//$ListContent = dbSelect('gposts','pid,title,authorid,addtime,replycount,hits','first=1 and isdel=0 and gid='.$groupId.'','pid desc', setLimit($linum));
 
 $select='g.pid as pid, g.title as title, g.authorid as authorid,g.addtime as addtime,g.image as image, g.replycount as replycount, g.hits as hits';
 $ListContent = DBduoSelect('gposts as g','gpostspermission as p','on g.pid=p.pid',null,null,$select,'g.first=1 and g.isdel=0 and p.uid='.$_COOKIE['uid'].' and g.gid='.$groupId.' and p.view=1','g.pid desc');
@@ -114,10 +81,10 @@ if($isadmin){
 }
 
 
-//该板块下今日主题数量
+//todays's post count in this group
 $newt = time()-1000;
 $start_time = strtotime(date('Y-m-d',time()));
-$JRCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and (addtime>='.$start_time.' and addtime<='.time().')');
+$JRCount = dbFuncSelect('gposts','count(pid)','first=1 and isdel=0 and gid='.$groupId.' and (addtime>='.$start_time.' and addtime<='.time().')');
 $JCount = $JRCount['count(pid)'];
 
 $title = $OnGname.' - '.WEB_NAME;

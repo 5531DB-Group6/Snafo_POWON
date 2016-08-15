@@ -1,6 +1,6 @@
 <?php
 /**
- * 个人资料，用户签名
+ * group information and operation
  */
 
 include './common/common.php';
@@ -44,20 +44,6 @@ if($isadmin||$isOwner){
 }else{
     $admin=0;
 }
-
-/*
-if(!$result)
-{
-    $msg = '<font color=red><b>You are not a member of the group</b></font>';
-    $url = $_SERVER['HTTP_REFERER'];
-    $style = 'alert_error';
-    $toTime = 3000;
-    include 'notice.php';
-    exit;
-}
-*/
-
-
 
 if ($admin) {
     //Change the logo and the description of the group
