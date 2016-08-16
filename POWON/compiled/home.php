@@ -255,9 +255,7 @@
 					<li><a href="home_postlist.php">Post List</a></li>
 					<li><a href="home_membership.php">Membership</a></li>
 					<li><a href="home_inviteToPOWON.php">Invite new member</a></li>
-					<!--<li><a href="home_qm.php">个人签名</a></li>-->
-					<!--<li><a href="home_pass.php">密码安全</a></li>-->
-					<!--<li><a href="home_sc.php">收藏管理</a></li>-->
+					<li ><a href="home_pass.php">Password/Email</a></li>
 				</ul>
 			</div>
 		</div>

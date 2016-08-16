@@ -62,7 +62,7 @@
                             </p>
                         </th>
                         <td class="by" style="text-align: center">
-                            <cite><?php echo getUserName($val['authorid']); ?></cite>
+                            <cite><font color="#00008b"><?php echo getUserName($val['authorid']); ?></font></cite>
                             <em><span class="xi1"><?php echo formatTime($val['addtime']); ?></span></em>
                         </td>
                     </tr>
@@ -172,9 +172,9 @@
                                 //$LatestPost = dbSelect('uposts','pid,title,addtime,image,content','first=1 and authorid='.$val['uid'].' and isdel = 0','pid desc',1);
                             ?>
                                 <?php if(!empty($LatestPost)){?>
-                                <tr style="width:80px;height:100px">
+                                <tr>
 
-                                    <cite><?php echo getUserName($LatestPost[0]['authorid']); ?> <em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em> </cite>
+                                    <cite><font color="#00008b"><?php echo getUserName($LatestPost[0]['authorid']); ?> </font><em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em> </cite>
 
                                     <p><a href="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium">
                                         <?php if(!empty($LatestPost)){?> <h1><?php echo $LatestPost[0]['title']; ?></h1> <?php }?></a></p>
@@ -182,7 +182,7 @@
                                             <?php echo stringSubstr($LatestPost[0]['content'],0,1000); ?>
                                         </p>
                                     </p>
-                                    <a title="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
+                                    <a title="member_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 160px;max-height: 200px"></a>
                                     <?php echo $LatestPost[0]['video']; ?>
 
 
@@ -190,6 +190,9 @@
                                         <!--<cite><?php echo getUserName($LatestPost[0]['authorid']); ?> </cite>-->
                                         <!--<em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em>-->
                                     <!--</p>-->
+
+                                <br/>
+                                <br/>
 
                                 </tr>
 
@@ -231,12 +234,12 @@
                                 //$LatestPost = dbSelect('gposts','pid, title,addtime,image,authorid','first=1 and gid='.$val['gid'].' and isdel = 0','pid desc',1);
                                 ?>
                                 <?php if(!empty($LatestPost)){?>
-                                <tr style="width:80px;height:100px">
+                                <tr>
 
                                     <center><b><a href="group_postlist.php?gid=<?php echo $val['gid']; ?>" style="color:<?php echo $val['namestyle']; ?>" ><?php echo $val['name']; ?> Group</a></b> </center>
 
 
-                                    <cite><?php echo getUserName($LatestPost[0]['authorid']); ?> <em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em> </cite>
+                                    <cite><font color="#00008b"><?php echo getUserName($LatestPost[0]['authorid']); ?> </font><em><span class="xi1"><?php echo getFormatTime($LatestPost[0]['addtime']); ?></span></em> </cite>
 
                                     <p>
                                         <a href="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>" class="xst" style="font-size: medium">
@@ -246,12 +249,15 @@
                                         </p>
                                     </p>
                                     <?php if(!empty($LatestPost[0]['image'])){?>
-                                        <a title="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 80px;max-height: 100px"></a>
+                                        <a title="group_post_detail.php?pid=<?php echo $LatestPost[0]['pid']; ?>"><img src="<?php echo $LatestPost[0]['image']; ?>" style="width: auto; height: auto;max-width: 160px;max-height: 200px"></a>
                                     <?php }?>
                                     <?php if(!empty($LatestPost[0]['video'])){?>
                                     <?php echo $LatestPost[0]['video']; ?>
                                     <?php }?>
                                 </tr>
+                                </hr>
+                                <br/>
+                                <br/>
                                 <?php }?>
 
 

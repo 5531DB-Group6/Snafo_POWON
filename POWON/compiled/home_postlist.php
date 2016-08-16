@@ -25,15 +25,13 @@
                     <div class="tbn">
                         <h2 class="mt bbda">User page</h2>
                         <ul>
-                            <li ><a href="home_tx.php">Change Avatar</a></li>
-                            <li><a href="home.php">Personal Info</a></li>
-                            <li><a href="home_friend.php">Friend Requests</a></li>
+                            <li><a href="home_tx.php">Change Avatar</a></li>
+                            <li ><a href="home.php">Personal Info</a></li>
+                            <li ><a href="home_friend.php">Friend Requests</a></li>
                             <li class="a"><a href="home_postlist.php">Post List</a></li>
-                            <li><a href="home_membership.php">Membership</a></li>
+                            <li class="a"><a href="home_friend.php">Membership</a></li>
                             <li><a href="home_inviteToPOWON.php">Invite new member</a></li>
-                            <!--<li><a href="home_qm.php">个人签名</a></li>-->
-                            <!--<li><a href="home_pass.php">密码安全</a></li>-->
-                            <!--<li><a href="home_sc.php">收藏管理</a></li>-->
+                            <li ><a href="home_pass.php">Password/Email</a></li>
                         </ul>
                     </div>
                 </div>

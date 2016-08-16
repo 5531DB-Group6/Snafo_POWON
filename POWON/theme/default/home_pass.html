@@ -11,69 +11,43 @@
 <div id="wp" class="wp">
 	<div id="pt" class="bm cl">
 		<div class="z">
-			<a href="./" class="nvhm" title="首页">{$title}</a> <em>&rsaquo;</em><a href="home.php">设置</a> <em>&rsaquo;</em>修改头像
+			<a href="./" class="nvhm" title="Home">{$title}</a> <em>&rsaquo;</em><a href="home.php">User Page</a> <em>&rsaquo;</em>Password modification
 		</div>
 	</div>
 	<div id="ct" class="ct2_a wp cl">
 		<div class="mn">
 		<div class="bm bw0">
-		<p class="bbda pbm mbm">您必须填写旧密码才能修改下面的资料</p>
+		<p class="bbda pbm mbm">you must enter the old password to modify the information below</p>
 		<form action="" method="post" autocomplete="off">
-			<table summary="个人资料" cellspacing="0" cellpadding="0" class="tfm">
+			<table summary="personal information" cellspacing="0" cellpadding="0" class="tfm">
 			<tr>
-			<th><span class="rq" title="必填">*</span>旧密码</th>
+			<th><span class="rq" title="Please enter">*</span>Old Password</th>
 			<td><input type="password" name="oldpassword" id="oldpassword" class="px" /></td>
 			</tr>
 			<tr>
-			<th>新密码</th>
+			<th>New Password</th>
 			<td>
 			<input type="password" name="newpassword" id="newpassword" class="px" />
-			<p class="d">如不需要更改密码，此处请留空 </p>
+			<p class="d">leave it as bland if no new password is needed </p>
 			</td>
 			</tr>
 			<tr>
-			<th>确认新密码</th>
+			<th>confirm new password</th>
 			<td>
 			<input type="password" name="newpassword2" id="newpassword2"class="px" />
-			<p class="d">如不需要更改密码，此处请留空 </p>
+			<p class="d">leave it as bland if no new password is needed </p>
 			</td>
 			</tr>
 			<tr id="contact">
-			<th>Email</th>
+			<th>New Email</th>
 			<td>
 			<input type="text" name="emailnew" id="emailnew" value="{$result[0]['email']}" class="px" />
-			<p class="d">取回密码时使用</p>
 			</td>
 			</tr>
-			
-			<tr>
-			<th>安全提问</th>
-			<td>
-			<select name="questionidnew" id="questionidnew">
-				<option selected>保持原有的安全提问和答案</option>
-				<option <!--{if $result[0]['problem']=='无安全提问'}-->selected<!--{/if}-->>无安全提问</option>
-				<option <!--{if $result[0]['problem']=='母亲的名字'}-->selected<!--{/if}-->>母亲的名字</option>
-				<option <!--{if $result[0]['problem']=='爷爷的名字'}-->selected<!--{/if}-->>爷爷的名字</option>
-				<option <!--{if $result[0]['problem']=='父亲出生的城市'}-->selected<!--{/if}-->>父亲出生的城市</option>
-				<option <!--{if $result[0]['problem']=='您其中一位老师的名字'}-->selected<!--{/if}-->>您其中一位老师的名字</option>
-				<option <!--{if $result[0]['problem']=='您个人计算机的型号'}-->selected<!--{/if}-->>您个人计算机的型号</option>
-				<option <!--{if $result[0]['problem']=='您最喜欢的餐馆名称'}-->selected<!--{/if}-->>您最喜欢的餐馆名称</option>
-				<option <!--{if $result[0]['problem']=='驾驶执照最后四位数字'}-->selected<!--{/if}-->>驾驶执照最后四位数字</option>
-			</select>
-			<p class="d">如果您启用安全提问，登录时需填入相应的项目才能登录 </p>
-			</td>
-			</tr>
-			
-			<tr>
-			<th>回答</th>
-			<td>
-			<input type="text" name="answernew" id="answernew" value="{$result[0]['result']}" class="px" />
-			<p class="d">如您设置新的安全提问，请在此输入答案 </p>
-			</td>
-			</tr>
+
 			<tr>
 			<th>&nbsp;</th>
-			<td><button type="submit" name="pwdsubmit" value="true" class="pn pnc" /><strong>保存</strong></button></td>
+			<td><button type="submit" name="pwdsubmit" value="true" class="pn pnc" /><strong>Save</strong></button></td>
 			</tr>
 			</table>
 		</form>
@@ -87,11 +61,13 @@
 			<div class="tbn">
 				<h2 class="mt bbda">设置</h2>
 				<ul>
-					<li><a href="home_tx.php">修改头像</a></li>
-					<li><a href="home.php">个人资料</a></li>
-					<li><a href="home_qm.php">个人签名</a></li>
-					<li class="a"><a href="home_pass.php">密码安全</a></li>
-					<!--<li><a href="home_sc.php">收藏管理</a></li>-->
+					<li><a href="home_tx.php">Change Avatar</a></li>
+					<li ><a href="home.php">Personal Info</a></li>
+					<li ><a href="home_friend.php">Friend Requests</a></li>
+					<li><a href="home_postlist.php">Post List</a></li>
+					<li><a href="home_friend.php">Membership</a></li>
+					<li><a href="home_inviteToPOWON.php">Invite new member</a></li>
+					<li class="a"><a href="home_pass.php">Password/Email</a></li>
 				</ul>
 			</div>
 		</div>

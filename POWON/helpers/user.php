@@ -62,7 +62,7 @@
 		}
 	}
 	
-	//检测邮箱格式
+	//check email validation
 	function checkEmail($mail)
 	{
 		$pattern='/^[(\w-)||(\w-+\.+\w-)]+@([a-zA-Z0-9-]+\.)+((com)|(cn)|(net)|(edu))$/i';
