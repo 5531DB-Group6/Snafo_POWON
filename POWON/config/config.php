@@ -10,27 +10,27 @@
  * -------------------------------------------------------------------------------------------------+
  */
 
-    // 一
-    define('TIMEZONE', 'Asia/shanghai');                    //时区
-    define('GPC', get_magic_quotes_gpc() ? 0 : 1);              //魔术转译
 
-    // 二
-    define('DOMAIN_RESOURCE', 'public'); //静态资源目录
+    define('TIMEZONE', 'Asia/shanghai');                    //timezone
+    define('GPC', get_magic_quotes_gpc() ? 0 : 1);
 
-    // 三
-    define('WEB_NAME', 'POWON');                        //站点名称，将显示在浏览器窗口标题等位置
-    define('WEB_BTM', 'Group 6');                             //网站名称，将显示在页面底部的联系方式处
-    define('WEB_URL', 'https://confsys.encs.concordia.ca/CrsMgr/');             //网站 URL，将作为链接显示在页面底部
-    define('WEB_ICP', 'Concordia COMP5531');                    //页面底部可以显示 ICP 备案信息
-    define('WEB_ISCLOSE', false);                           //true暂时将站点关闭，其他人无法访问，但不影响管理员访问
-    define('WEB_REG', true);                                //true开启注册功能
 
-    // 四
-    define('TPL_SKIN', 'theme/default');                    //模版文件存放位置
-    define('TPL_CACHE', 'compiled');                        //模版文件缓存位置
+    define('DOMAIN_RESOURCE', 'public'); //root of resources
+
+
+    define('WEB_NAME', 'POWON');                        //website name in header
+    define('WEB_BTM', 'Group 6');                             //website name in footer
+    define('WEB_URL', 'https://confsys.encs.concordia.ca/CrsMgr/');             //website url
+    define('WEB_ICP', 'Concordia COMP5531');                    //infomation
+    define('WEB_ISCLOSE', false);
+    define('WEB_REG', true);
+
+
+    define('TPL_SKIN', 'theme/default');                    //root of html files
+    define('TPL_CACHE', 'compiled');                        //root of compiled files
     
-    // 五
-    define('REWARD_LOGIN', 2);                                 //每天首次登陆赠送2积分
-    define('REWARD_REG', 50);                                  //注册赠送50积分
-    define('REWARD_T', 2);                                     //发帖赠送2积分
-    define('REWARD_H', 1);                                     //回帖赠送1积分
+
+    define('REWARD_LOGIN', 2);
+    define('REWARD_REG', 50);
+    define('REWARD_T', 2);
+    define('REWARD_H', 1);                                   

@@ -5,9 +5,9 @@
  * -----------------------------------------------------------------------------------------------+
  */
 
-    define('DB_HOST','localhost');      //数据库连接地址(IP)
-    define('DB_USER','root');           //数据库登陆账号
-    define('DB_PASS','');         //数据库登陆账号对应的密码
-    define('DB_NAME','powon_snafo');      //数据库名称
-    define('DB_CHARSET','utf8');        //数据库字符集
-    define('DB_PREFIX','powon_');         //数据表前缀
+    define('DB_HOST','localhost');      //IP address of the Database
+    define('DB_USER','root');           //Username of the Database
+    define('DB_PASS','');         //pass word of the user
+    define('DB_NAME','powon_snafo');      //name of the Database
+    define('DB_CHARSET','utf8');
+    define('DB_PREFIX','powon_');         //prefix of the Database
